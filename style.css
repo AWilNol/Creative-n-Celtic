@@ -101,7 +101,7 @@ h3 {
 }
 
 #mission-section img {
-  max-width: 50%;
+  max-width: 45%;
   height: auto;
 }
 
@@ -175,7 +175,7 @@ h3 {
 }
 
 .carousel {
-  max-height: 400px;
+  max-height: 550px;
   max-width: 400px;
   display: center;
   object-fit: center;
@@ -186,7 +186,7 @@ h3 {
 .carousel-item img {
   object-fit: cover;  
   object-position: center;
-  height: 30vh;
+  height: 40vh;
   overflow: hidden;
 }
 
