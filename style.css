@@ -1,0 +1,198 @@
+/* You can add custom CSS and extend Boostrap styles in this file. Remember, Bootstrap is just CSS at the end of the day! */
+body {
+  position: relative;
+  background-color: #87CEEB;
+}
+
+li {
+  display: inline-block;
+  text-align: center;
+  font-family: Satisfy;  
+}
+
+.nav-link {
+  color: rgb(224, 255, 255);
+}
+
+ul {
+  list-style: none;
+  font-size: 28px;
+  display: flex;  
+}
+
+h3 {
+   font-family: Satisfy; 
+}
+
+p {
+  font-family: serif;
+}
+
+button {
+  font-family: Sevillana;
+}
+
+footer {
+  font-family: Satisfy;
+  align-items: bottom;
+  background-color: rgba(123, 104, 238, .5);
+  padding: 5px;
+}
+
+.hero-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), 
+                    rgba(0, 0, 0, 0.2)), 
+                    url("img/bitterroots.jpg");
+  background-size: cover;
+  padding: 350px 20vh 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  justify-content: center;
+}
+
+.hero-text {
+  font-family: Satisfy;
+  text-align: center;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: whitesmoke;
+}
+
+#owner {
+  background-repeat: none;  
+  background-position: 0 40%;
+  height: auto;
+  width: 12vw;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion) {
+  .animate__fadeInUp, .animate__hinge, .animate__slide {transform: none;}
+}
+
+#modal {
+  color: black;  
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.btn btn-secondary {
+  background-color: green;
+}
+
+.btn btn-primary {
+  background-color: mediumvioletred;
+}
+
+h3 {
+ text-align: center;
+}
+
+#mission-section {
+  background-color: #DAF7A7;
+  padding: 30px 0;
+}
+
+#mission-section img {
+  max-width: 60%;
+  height: auto;
+}
+
+#mission-target {
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+}
+
+#mission-section .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#mission-section .col-md-6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.img-fluid {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+}
+
+.skill {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+#contact-section {  
+  background-color: #DAF7A7;
+  padding: 20px;  
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  #contact-section .row {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  #contact-section .logo:nth-child(1) {
+    margin-left: 20px;
+  }
+}
+
+.logo:hover {
+  color: purple;
+}
+
+.scroll-top .navbar {
+  background-color: transparent;
+}
+
+.carousel {
+  max-height: 400px;
+  max-width: 400px;
+  display: center;
+  object-fit: center;
+  padding: 10px;
+  margin: 0 auto; 
+}
+
+.carousel-item img {
+  object-fit: cover;  
+  object-position: center;
+  height: 30vh;
+  overflow: hidden;
+}
+
+.nifty {
+  display: block;
+  margin: 0 auto 10px auto;
+  max-width: 100px; 
+  height: auto;
+}
