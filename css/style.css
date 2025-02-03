@@ -5,6 +5,13 @@ body {
    height: 635px;
    overflow: hidden;}
 
+.main {
+   position: relative;
+   overflow: auto;
+   margin-top: 0;
+   margin-left: 265px;
+   padding: 1em;}
+
 .container {
    position: relative;
    text-alignment: center;
@@ -22,7 +29,7 @@ body {
    text-align: center;
    top: 50%;
    left: 38.5%;
-   bottom: 80px;   
+   bottom: 80px;
    font-family: Lora;
    font-size: 35px;}
 
