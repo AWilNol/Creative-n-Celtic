@@ -8,8 +8,8 @@
 }
 
 body {
-   width: 1315px;
-   height: 635px;
+   width: 1315vw;
+   height: 635vh;
    overflow: hidden;}
 
 .main {
