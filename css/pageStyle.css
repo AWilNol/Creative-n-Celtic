@@ -167,11 +167,6 @@ See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
     flex-grow: 0;
   }
 
-  .images:active {
-    display: flex;
-    flex-grow: 2;
-  }
-
  img {
    object-fit: cover;
    width: 100%;
