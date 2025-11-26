@@ -81,6 +81,7 @@ body {
 
 .navigation {
   background-image: url('./images/WOODGRAIN.jpg');
+  background-repeat: no-repeat;
   width: 265px;
   height: 100%;
   position: fixed;
