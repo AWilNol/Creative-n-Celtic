@@ -164,7 +164,7 @@ See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
 
   .images:active {
     display: flex;
-    flex-grow: 2;
+    flex-grow: 1;
   }
 
  img {
