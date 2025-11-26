@@ -8,7 +8,8 @@
 
 
 body {
-   background-image: url('./images/WOODGRAIN.jpg') cover;
+   background-image: url('./images/WOODGRAIN.jpg');
+   background-size: cover;
    background-position: center center;
    background-repeat: no-repeat;      
    width: 100vw;
@@ -41,7 +42,7 @@ body {
 
 .bottom-center {
    position: absolute;
-   text-align: center;
+   text-align: center center;
    top: 45%;
    left: 38.5%;
    bottom: 80px;
@@ -50,7 +51,7 @@ body {
 
 .bottom-centera {
    position: absolute;
-   text-align: center;
+   text-align: center center;
    top: 50%;
    left: 38%;
    bottom: 80px;
