@@ -55,7 +55,7 @@ legend {
 }
 
 .banner {
-  width: 1000px;
+  width: 100%;
   height: 20%;
   position: ;
 }
@@ -138,11 +138,11 @@ body {
 #gallery-container {
    margin: 200px auto;
    height: 100px;
-   display: flex;
+   display: absolute;
    justify-content: center;
    align-items: center;
    overflow: hidden;
-   /*background-color: #bdd8f1;*/
+   background-color: #bdd8f1;
 }
 
 /*
