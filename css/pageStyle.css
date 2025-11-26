@@ -100,9 +100,9 @@ body {
   font-size: 200%;}
 
 .logo {  
-  width: 152px;
+  width: 150px;
   height: 150px;
-  margin: 0 auto .5em;
+  margin: 0;
   border: 5px solid white;  
   line-height: 150px;
   color: black;
