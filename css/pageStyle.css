@@ -60,6 +60,12 @@ legend {
   position: ;
 }
 
+.container {
+   background-image: url('./images/background.jpg');
+   background-color: rgba(0, 0, 0, .5);
+   margin: 0;   
+}
+
 body {    
    position: relative;
    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
@@ -67,13 +73,7 @@ body {
    font-family: Encode Sans Condensed, sans-serif;  
    font-size: 1em;}
    
-.container {
-   background-image: url('./images/background.jpg');
-   background-color: rgba(0, 0, 0, .5);
-   margin: 0;
-   
-}
-   
+ 
 #about-section {
    background-color: rgba(176, 224, 230, .5);
    margin: .5px, .5px;   
