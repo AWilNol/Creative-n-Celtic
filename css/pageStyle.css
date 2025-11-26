@@ -74,7 +74,7 @@ body {
 }
 
 .text {
-  background-color: #B0E0E6;
+  background-color: rgba(222, 255, 255, .05);
   text-indent: 290px;
   padding: 10px;
 }
