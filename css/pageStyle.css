@@ -67,7 +67,7 @@ body {
    font-family: Encode Sans Condensed, sans-serif;  
    font-size: 1em;}
    
-container {
+.container {
    background-image: url('./images/background.jpg');
    background-color: rgba(0, 0, 0, .5);
    margin: 0;
