@@ -60,14 +60,6 @@ legend {
   position: ;
 }
 
-.container {
-   background-image: url('./images/background.jpg');
-   background-size: cover;
-  position: relative;
-   text-align: center;
-   overflow: hidden;
-   height: 100%;}  
-
 body {    
    position: relative;
    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
