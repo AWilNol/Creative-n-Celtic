@@ -103,6 +103,8 @@ body {
   width: 150px;
   height: 150px;
   margin: 0 auto .5em;
+  border-color: transparent;
+  border-width: 5px;
   line-height: 150px;
   color: black;
   text-transform: uppercase;}
