@@ -162,11 +162,6 @@ See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
 
 /* Courtesy https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 
-  .images:hover {
-    display: flex;
-    flex-grow: 0;
-  }
-
   .images:active {
     display: flex;
     flex-grow: 2;
