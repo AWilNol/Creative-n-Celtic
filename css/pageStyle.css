@@ -152,7 +152,7 @@ See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
 
  .images {
    display: grid;
-   grid-template-rows: 2 20vh;
+   grid-template-rows: 20vh;
    grid-template-columns: repeat(13, 9vw);
    transition: all 0.3s ease(gravity);
    background-color: #82a6cb;
