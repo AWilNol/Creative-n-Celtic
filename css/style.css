@@ -37,7 +37,7 @@ body {
   position: absolute;
   top: 30%;
   left: 51.5%;
-  text-align: center;
+  text-align: center center;
   transform: translate(-50%, -50%);}
 
 .bottom-center {
