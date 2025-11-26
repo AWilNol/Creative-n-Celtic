@@ -62,7 +62,8 @@ legend {
 
 body {    
    position: relative;
-   background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+   background-color: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+   background-image:
    margin: 0;
    font-family: Encode Sans Condensed, sans-serif;  
    font-size: 1em;}
