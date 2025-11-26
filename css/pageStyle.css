@@ -62,9 +62,11 @@ legend {
 
 .container {
    background-image: url('./images/background.jpg');
-   background-color: rgba(0, 0, 0, .5);
-   margin: 0;   
-}
+   background-size: cover;
+  position: relative;
+   text-align: center;
+   overflow: hidden;
+   height: 100%;}  
 
 body {    
    position: relative;
