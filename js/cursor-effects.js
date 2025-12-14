@@ -1,4 +1,5 @@
-document.addEventListener('click', function(e) {
+console.log("JavaScript file loaded!");
+document.body.addEventListener('click', function(e) {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
