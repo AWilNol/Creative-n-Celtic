@@ -102,6 +102,7 @@ body {
   background-color: rgba(255, 255, 255, .5);
   text-indent: 290px;
   padding: 10px;
+  clear: both;
 }
 
 nav.navigation {
@@ -288,5 +289,23 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
 
 /* On screens smaller than 768px (typical tablet breakpoint) */
 
+@media screen and (max-width: 767px) {
+    .navigation {
+        position: static; /* Navigation flows naturally back into the document flow */
+        width: 100%;     /* Takes full width */
+        height: auto;    /* Height adjusts to content */
+    }
 
+    .main {
+        margin-left: 0;  /* Removes the 20% offset */
+        width: 100%;     /* Takes full width */
+    }
+    
+    /* Revert floats for mobile view so items stack vertically */
+    .gallery, .social-links {
+        float: none;
+        margin: 1em auto;
+    }
+}
+Use code with caution.
 
