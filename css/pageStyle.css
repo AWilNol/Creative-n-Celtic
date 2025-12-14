@@ -108,8 +108,7 @@ body {
   border-width: 5px;
   line-height: 150px;
   color: black;
-  text-transform: uppercase;
-  float: left;}
+  text-transform: uppercase;}
 
 .logo:hover {
   border-color: purple;}
