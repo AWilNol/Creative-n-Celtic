@@ -96,7 +96,7 @@ body {
 
 .site-info {
   margin: .3em auto;
-  text-align: left;
+  text-align: center;
   font-size: 200%;}
 
 .logo {  
@@ -110,8 +110,7 @@ body {
   text-transform: uppercase;}
 
 .logo:hover {
-  border-color: purple;
-  border-width: 5px;}
+  border-color: purple;}
 
 .site-links {
   margin: .5em 1em;
