@@ -84,7 +84,7 @@ body {
   background-repeat: no-repeat;
   width: 25%;
   height: 100%;
-  position: fixed;
+  position: left fixed;
   top: 0;
   left: 0;}
 
