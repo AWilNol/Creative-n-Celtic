@@ -150,14 +150,14 @@ body {
 
 /*
 This gallery is credit to iGadget: https://codepen.io/iGadget
-See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
+See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
 */
 
  .images {
    display: grid;
-   grid-template-rows: 20vh;
    grid-template-columns: repeat(13, 9vw);
-   transition: all 0.3s ease(gravity);
+   grid-template-rows: 20vh;
+   transition: all 0.3s ease-in-out;
    background-color: #82a6cb;
    border-radius: 10px;
    padding: 0.25em;
@@ -166,45 +166,31 @@ See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
 /* Courtesy https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 
   .images:hover {
-    border-color: green;
+    border: 1px solid green;
   }
 
- img {
+ .images img {
    object-fit: cover;
    width: 100%;
    height: 100%;
-   left: 0;
-   top: 0;
+   position: static;
    text-align: center;
-   transition: all 0.15s ease(downhill);
-   position: flex;
+   transition: all 0.3s ease-in-out;
    box-shadow: 0 0 0 #000 0;
-
-   /* APRIL TO JUSTINE: Thank you for all your help; appreciate you! */
-   /*opacity: 0.67;*/
-   /*filter: sepia(80%) hue-rotate(180deg);*/
 }
 
- img:first-child {
+ .images img:first-child {
    border-radius: 10px 0 0 10px;
 }
 
- img:last-child {
+ .images img:last-child {
    border-radius: 0 10px 10px 0;
 }
-/*I am guessing this area controls size, but changes do not have desired effect/s.*/
-#gallery-container img:hover~img {
-  left: 1%;
-  width: 10%;
-  height: 10%;
-}
 
-#gallery-container img:first-child:hover {
-  left:1%;
-}
-
-#gallery-container img:last-child:hover {
-  left: 1%;
+.images img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  z-index: 10;
 }
 
 .social-links {
