@@ -8,7 +8,7 @@ function getRandomColor() {
   }
   return color;
 }
-document.body.addEventListener('click', function(e) {
+document.body.addEventListener('click', (e) => {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);

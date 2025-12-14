@@ -85,12 +85,13 @@ legend {
   position: relative;
 }
 
-body {    
+html, body {    
    position: relative;
    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
    margin: 0;
    font-family: Encode Sans Condensed, sans-serif;  
-   font-size: 1em;}
+   font-size: 1em;
+   height: 100%;}
    
  
 #about-section {
