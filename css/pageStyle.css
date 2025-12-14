@@ -82,7 +82,7 @@ body {
 .navigation {
   background-image: url('./images/background.jpg');
   background-repeat: no-repeat;
-  width: 15%;
+  width: 20%;
   height: 100%;
   position: fixed;
   float: left;
