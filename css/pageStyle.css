@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Tinos&display=swap');
 
-@media screen and (min-width: 768px) and (min-width: 360px), (max-width: 1440px) {
+@media screen and (min-width: 768px) {
    .navigation {
-       position: fixed;}
+       position: fixed;
+	   width: 25%;}
    .main {
-       margin: auto;}
+       margin-left: 25%;}
    body {
-       margin: auto;}
+       margin: 0;}
    banner {
        margin: relative;}
 }
@@ -51,7 +52,6 @@ legend {
 
 .video {
   float: left;
-  position: absolute;
 }
 
 .banner {
@@ -141,7 +141,7 @@ body {
 #gallery-container {
    margin: 200px auto;
    height: 100px;
-   display: absolute;
+   position: absolute;
    justify-content: center;
    align-items: center;
    overflow: hidden;
@@ -166,8 +166,7 @@ See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
 /* Courtesy https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 
   .images:hover {
-    display: flex;
-    flex-grow: 0;
+    border-color: green;
   }
 
  img {
