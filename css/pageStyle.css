@@ -57,7 +57,7 @@ legend {
 .banner {
   width: 100%;
   height: 15%;
-  position: ;
+  position: relative;
 }
 
 body {    
@@ -70,7 +70,7 @@ body {
  
 #about-section {
    background-color: rgba(176, 224, 230, .5);
-   margin: .5px, .5px;   
+   margin: 0.5px 0.5px;   
 }
 
 .text {
@@ -265,6 +265,6 @@ See the Pen: ttps://codepen.io/iGadget/pen/jOEQKNN
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color:}
+.dropdown:hover .dropbtn {background-color: #04AA6D;}
 
 
