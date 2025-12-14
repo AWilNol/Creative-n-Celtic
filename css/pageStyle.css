@@ -137,6 +137,13 @@ body {
 
 .gallery:hover {
   border-color: white;}
+  
+/* Ensures all images inside the .gallery container fit perfectly within their parent div */
+.gallery img {
+  max-width: 100%; 
+  height: auto;   /* Maintains the image's aspect ratio */
+  display: block; /* Helps with general centering and spacing */
+}
 
 #gallery-container {
    margin: 200px auto;
