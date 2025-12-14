@@ -110,7 +110,8 @@ body {
   text-transform: uppercase;}
 
 .logo:hover {
-  border-color: purple;}
+  border-color: purple;
+  border-width: 5px;}
 
 .site-links {
   margin: .5em 1em;
