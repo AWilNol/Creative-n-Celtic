@@ -73,6 +73,12 @@ legend {
   float: left;
 }
 
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .banner {
   width: 100%;
   height: auto;

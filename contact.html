@@ -84,13 +84,14 @@
            </fieldset>
          </div>
        </form> <!-- The single form ends here -->
-       
+      
+	   <div class="clearfix">
        <!-- The video and text blocks are outside the form -->
-       <p>Want a bit of a tune while you work? Here you go:</p>
+         <p>Want a bit of a tune while you work? Here you go:</p>
 	   
        <!-- Removed extra <br> tags -->
-       <!-- Removed redundant class="container" here since you're using float: left -->
-       <div id="video" style="float: left;"><iframe width="560" height="315" src="https://www.youtube.com/embed/MOWDb2TBYDg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+       <!-- Added class="video" to use the CSS float rule, removed inline style/id -->
+         <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/MOWDb2TBYDg" title="YouTube video player" frameborder="0" allow="accelerator; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
          
          <div class="text">
           <p style="text-align: center;">Whether for an occasion, or just because, we'd love to help you light up someone's day! Our email contact is <a href="mailto:creativenceltic@gmail.com" class="button4"> creativenceltic@gmail.com.</a></p>
@@ -98,8 +99,8 @@
           <p style="text-align: center;">Thank you for stopping in!</p>
 
           <p>© 2025 Creative & Celtic</p>
-        </div>
+         </div>
+	    </div>	
        </div> <!-- Closes .main -->
-     </div> <!-- Closes body/html containers that were previously mismatching -->
     </body>
 </html>
