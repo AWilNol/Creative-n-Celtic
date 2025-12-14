@@ -311,16 +311,22 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
   position: absolute;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.6); /* White, semi-transparent */
-  transform: scale(0);
-  animation: ripple-effect 0.6s linear;
-  pointer-events: none; /* Allows clicks to pass through the ripple element */
-  z-index: 9999; /* Ensure it's above other content */
+  transform: scale(0.1);
+  animation: ripple-effect 0.6s linear forwards;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 9999999; /* Boosted z-index */
+  overflow: visible;
+  width: 100px;
+  height: 100px;
 }
 
 @keyframes ripple-effect {
+  from {
+    opacity: 0.8;
+  }
   to {
-    transform: scale(4); /* Adjust size as needed */
-    opacity: 0;
+    transform: scale(4);
+    opacity: 0;	  
   }
 }
 
