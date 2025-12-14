@@ -308,9 +308,9 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
 }
 
 .ripple {
-  position: absolute;
+  position: fixed;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6); /* White, semi-transparent */
+  background: var(--ripple-color, rgba(255, 255, 255, 0.6)); /* White, semi-transparent */
   transform: scale(0.1);
   animation: ripple-effect 0.6s linear forwards;
   pointer-events: none; /* Allows clicks to pass through */
@@ -318,6 +318,7 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
   overflow: visible;
   width: 100px;
   height: 100px;
+  will-change: transform, opacity;
 }
 
 @keyframes ripple-effect {
