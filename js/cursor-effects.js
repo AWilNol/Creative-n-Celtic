@@ -5,12 +5,10 @@ document.body.addEventListener('click', function(e) {
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
 
-    // Let's assume you want it to work regardless of scroll position:
-    const size = 100; // Match the CSS width/height
-    const x = e.clientX - (size / 2);
-    const y = e.clientY - (size / 2);
-// Use CSS transform for positioning too, rather than top/left properties, for slightly better performance.
-    ripple.style.transform = `translate(${x}px, ${y}px) scale(0.1)`;
+    // Position the ripple where the click occurred
+    ripple.style.left = `${e.clientX- 50}px`;
+    ripple.style.top = `${e.clientY - 50}px`;
+
     // Remove the element after the animation finishes to keep the code clean
     ripple.onanimationend = () => {
       ripple.remove();
