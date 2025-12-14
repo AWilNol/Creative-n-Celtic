@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -6,12 +7,19 @@
     <meta name="author" content="AWilNol">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Surprise</title>
+    <!-- Add an internal style or external link here -->
+    <style>
+      .fun-image {
+        max-width: 100%; /* Ensures the image never overflows its screen/container */
+        height: auto;    /* Maintains the aspect ratio */
+      }
+    </style>
   </head>
      <body>
      	<h2 style="text-align: center;">Hello! I hope this finds you very well, and thank you for visiting!!</h2>
         <hr>
-      <p style="text-align: center;"><a href="./about.html"><img src="./images/relax.jpg" alt="a bit of fun" width="600" height="370"></a></p>
+      <p style="text-align: center;"><a href="./about.html"><img src="./images/relax.jpg" alt="a bit of fun" class="fun-image"></a></p>
       <hr>
-	  <p style="text-align: center;">&#169; 2025, Creative & Celtic</p>
+	  <p style="text-align: center;">© 2025, Creative & Celtic</p>
      </body>
 </html>

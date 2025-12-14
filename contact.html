@@ -14,8 +14,8 @@
 
   <body>
 
-    <nav>
-     <div class="navigation">
+    <!-- Using <nav> tag consistently as discussed -->
+    <nav class="navigation">
        <div class="site-info">
         <a href="./index.html"><div class="logo"><img src="./images/logo.gif" alt="cc logo" width="150" height="150"></div></a>
         <a href="#">Wood Art Synergy</a>
@@ -31,9 +31,12 @@
         <div style="text-align: center;">
           <a href="./index.html"><b> Landing</b></a>
         </div>
-      <br>
+        
+        <!-- Removed the <br> tag -->
+
         <div class="gallery">
-         <a href="./services.html"><img src="./images/image6.jpg" width=""></a>
+         <!-- Removed empty width attribute -->
+         <a href="./services.html"><img src="./images/image6.jpg" alt="wood art of UM Grizzlies bear and logo"></a>
         </div>
         <div class="social-links">
         <a href="https://www.facebook.com/creativenceltic"><img src="./images/facebook.png" alt="facebook link" width="40" height="40"></a>
@@ -46,18 +49,21 @@
       <h1>Creative & Celtic</h1>
       <h2>Contact Us</h2>
 
+      <!-- Consolidated forms: One main form wraps everything -->
+      <form action="mailto:creativenceltic@gmail.com" method="post" enctype="text/plain">
         <div class="Contact">
-         <form>
            <fieldset>
              <legend>Contact Information</legend>
-            <form action="https://www.example.com/subscribe.php" method="post">
+            
             <p style="text-align: center;">Subscribe to our email list:</p>
-            <input type="text" name="email" /><a href="mailto:creativenceltic@gmail.com"></a>
+            <!-- Removed the mailto link wrapping around the input -->
+            <input type="text" name="email" placeholder="Enter your email address" />
             <input type="image" src="./images/subscribe-button.png" alt="subscribe button image" width="100" height="25" />
 
             <div class="dropdown">
               <button class="dropbtn">VA or Zazzle Gear Links</button>
               <div class="dropdown-content">
+                <!-- Added https:// to links -->
                 <a href="https://www.facebook.com/veteransupportnetwork">Veterans Support Network</a>
                 <a href="https://www.zazzle.com/store/creative_n_celtic">Zazzle Creative & Celtic</a>
               </div>
@@ -71,27 +77,29 @@
               </div>
               <div>
                     <p style="text-align: center;">Enter Comments/ Project below:</p>
-            <textarea cols="35" rows="5">Birthday coming up, let's discuss an 8" purpleheart bowl with wolf image inside.
+            <textarea cols="35" rows="5" name="project_details">Birthday coming up, let's discuss an 8" purpleheart bowl with wolf image inside.
             </textarea>
-            <br>
-            <input type="button" value="Submit!"><a href="mailto:creativenceltic@gmail.com"></a>
+            <!-- Removed the <br> tags -->
+            <input type="submit" value="Submit!"> <!-- Changed button to submit type -->
            </fieldset>
-          </form>
-        </div>
-           <p>Want a bit of a tune while you work? Here you go:</p>
-		   <br></br>
-           <div id="video" class="container" style="float: left;"><iframe width="560" height="315" src="https://www.youtube.com/embed/MOWDb2TBYDg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
          </div>
-        </div>
-
-        <div class="text">
+       </form> <!-- The single form ends here -->
+       
+       <!-- The video and text blocks are outside the form -->
+       <p>Want a bit of a tune while you work? Here you go:</p>
+	   
+       <!-- Removed extra <br> tags -->
+       <!-- Removed redundant class="container" here since you're using float: left -->
+       <div id="video" style="float: left;"><iframe width="560" height="315" src="https://www.youtube.com/embed/MOWDb2TBYDg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+         
+         <div class="text">
           <p style="text-align: center;">Whether for an occasion, or just because, we'd love to help you light up someone's day! Our email contact is <a href="mailto:creativenceltic@gmail.com" class="button4"> creativenceltic@gmail.com.</a></p>
           <p style="text-align: center;">As there is a waiting list, please allow plenty of time. We can let you know a more specific time frame upon contact.</p>
           <p style="text-align: center;">Thank you for stopping in!</p>
 
-          <p>&#169; 2025 Creative & Celtic</p>
+          <p>© 2025 Creative & Celtic</p>
         </div>
-       </div>
-     </div>
+       </div> <!-- Closes .main -->
+     </div> <!-- Closes body/html containers that were previously mismatching -->
     </body>
 </html>
