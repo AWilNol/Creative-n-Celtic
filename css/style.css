@@ -17,7 +17,15 @@ body {
 
 .container {
    height: auto;
-   text-align: center;}
+   text-align: center;
+   /* Add this line: */
+   flex-grow: 1; 
+   /* The display property should probably be flex here as well */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
    
  /* Center all content within the container vertically and horizontally */
 .content-wrapper {
