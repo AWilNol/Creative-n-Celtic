@@ -82,10 +82,9 @@ body {
 .navigation {
   background-image: url('./images/background.jpg');
   background-repeat: no-repeat;
-  width: 20%;
+  width: 25%;
   height: 100%;
   position: fixed;
-  float: left;
   top: 0;
   left: 0;}
 
@@ -116,8 +115,7 @@ body {
 .site-links {
   margin: .5em 1em;
   font-family: Lora;
-  font-size: 19px;
-  float: left;}
+  font-size: 19px;}
 
 .site-links a {
   display: block;
