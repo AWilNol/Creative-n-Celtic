@@ -104,6 +104,10 @@ html, body {
   padding: 10px;
 }
 
+.spacing-top {
+    margin-top: 2em; /* This adds vertical space equivalent to two lines of text */
+}
+
 nav.navigation {
   background-repeat: no-repeat;
   width: 20%;
@@ -307,11 +311,11 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
 }
 
 footer {
-    text-align: center; /* Centers the copyright text */
+    text-align: left; /* Aligns left the copyright text */
     margin-top: 2em;    /* Adds space above the footer */
     padding: 1em 0;     /* Adds padding top/bottom */
-    font-size: 0.8em;   /* Makes the text slightly smaller */
-    color: #555;        /* A subtle gray color */
+    font-size: 1em;   /* Makes the text slightly smaller */
+    color: #fffff;        /* A subtle gray color */
     clear: both;        /* Ensures it sits below any floated content */
     width: 100%;        /* Takes full width */
 }
