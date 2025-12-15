@@ -2,30 +2,44 @@
 <html lang="en-US">
   <head>
   	<meta charset="utf-8">
-    <meta name="description" content="Website04">
+    <meta name="description" content="A fun surprise from Creative & Celtic">
     <meta name="author" content="AWilNol">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Surprise</title>
-    <!-- Add an internal style or external link here -->
-    <style>
-      .fun-image {
-        max-width: 100%; /* Ensures the image never overflows its screen/container */
-        height: auto;    /* Maintains the aspect ratio */
-      }
-    </style>
-    <!-- FIX 1: You must link the external stylesheet (pageStyle.css) here -->
-    <link rel="stylesheet" type="text/css" href="./css/pageStyle.css">
-    <!-- FIX 2: You likely need these fonts for the 'pageStyle.css' rules to work correctly -->
+    <title>Creative & Celtic Surprise</title>
+    <!-- We are consolidating all CSS into the main style.css file -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    
+    <!-- Use the correct HTML font links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Lora&family=Tinos&display=swap" rel="stylesheet">
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    
+    <style>
+      /* Keeping this style here for this specific page's image sizing */
+      .fun-image {
+        max-width: 800px; /* Specific width for the image on this page */
+        width: 100%;
+        height: auto;    
+        border-radius: 5px; /* Added slight border radius */
+        opacity: 0.9;
+      }
+      .surprise-container {
+        padding: 2em;
+        text-align: center;
+      }
+    </style>
   </head>
      <body>
-     	<h2 style="text-align: center;">Hello! I hope this finds you very well, and thank you for visiting!!</h2>
-        <hr>
-      <p style="text-align: center;"><a href="./about.html"><img src="./images/relax.jpg" alt="a bit of fun" class="fun-image"></a></p>
-      <hr>
-	  <p style="text-align: center;">© 2025, Creative & Celtic</p>
+      <div class="surprise-container">
+     	<h2 class="about-subtitle">Hello! I hope this finds you very well, and thank you for visiting!!</h2>
+        <hr style="border-color: rgba(181, 154, 87, 0.5);"> <!-- Gold accented HR line -->
+      <p style="text-align: center;">
+          <!-- This image may need to be updated to match the dark aesthetic -->
+          <a href="./about.html"><img src="./images/relax.jpg" alt="a bit of fun" class="fun-image"></a>
+      </p>
+      <hr style="border-color: rgba(181, 154, 87, 0.5);">
+	  <p>© 2025, Creative & Celtic</p>
+    </div>
 	  <script src="./js/cursor-effects.js"></script>
      </body>
 </html>
