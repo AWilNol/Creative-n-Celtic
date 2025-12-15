@@ -39,7 +39,7 @@
     }
     
     /* Revert floats for mobile view so items stack vertically */
-    .gallery, .social-links, .video, .text, .clearfix {
+    .gallery, .social-links, .text, .clearfix, .site-info, nav.navigation, .logo {
         float: none;
         width: 100%;
         margin: 1em auto;
