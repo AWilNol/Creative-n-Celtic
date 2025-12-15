@@ -5,6 +5,7 @@
     <meta name="description" content="Creative & Celtic Wood Art Website">
     <meta name="author" content="AWilNol">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
     <title>Creative & Celtic Contact</title>
     <link rel="stylesheet" type="text/css" href="./css/pageStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,18 +32,14 @@
         <div style="text-align: center;">
           <a href="./index.html"><b> Landing</b></a>
         </div>
-        
-        <!-- Removed the <br> tag -->
-
         <div class="gallery">
-         <!-- Removed empty width attribute -->
-         <a href="./services.html"><img src="./images/image6.jpg" alt="wood art of UM Grizzlies bear and logo"></a>
+          <a href="./services.html"><img src="./images/image6.jpg" alt="wood art of UM Grizzlies bear and logo"></a>
         </div>
         <div class="social-links">
-        <a href="https://www.facebook.com/creativenceltic"><img src="./images/facebook.png" alt="facebook link" width="40" height="40"></a>
-        <a href="https://www.zazzle.com/store/creative_n_celtic"><img src="./images/zazzle-logo.png" alt="zazzle link" width="40" height="40"></a>
+          <a href="https://www.facebook.com/creativenceltic"><img src="./images/facebook.png" alt="facebook link" width="40" height="40"></a>
+          <a href="https://www.zazzle.com/store/creative_n_celtic"><img src="./images/zazzle-logo.png" alt="zazzle link" width="40" height="40"></a>
         </div>
-     </div>
+       </div>
     </nav>
 
      <div class="main">
@@ -57,7 +54,8 @@
             
             <p style="text-align: center;">Subscribe to our email list:</p>
             <!-- Removed the mailto link wrapping around the input -->
-            <input type="text" name="email" placeholder="Enter your email address" />
+            <label for="user_email">Your Email Address</label>
+             <input type="email" id="user_email" placeholder="e.g., name@example.com" required>
             <input type="image" src="./images/subscribe-button.png" alt="subscribe button image" width="100" height="25" />
 
             <div class="dropdown">
@@ -79,7 +77,6 @@
                     <p style="text-align: center;">Enter Comments/ Project below:</p>
             <textarea cols="35" rows="5" name="project_details">Birthday coming up, let's discuss an 8" purpleheart bowl with wolf image inside.
             </textarea>
-            <!-- Removed the <br> tags -->
             <input type="submit" value="Submit!"> <!-- Changed button to submit type -->
            </fieldset>
          </div>
@@ -89,10 +86,17 @@
        <!-- The video and text blocks are outside the form -->
          <p>Want a bit of a tune while you work? Here you go:</p>
 	   
-       <!-- Removed extra <br> tags -->
        <!-- Added class="video" to use the CSS float rule, removed inline style/id -->
-         <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/MOWDb2TBYDg" title="YouTube video player" frameborder="0" allow="accelerator; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-         
+         <div class="video">
+  <iframe width="853" height="480" 
+          src="https://www.youtube-nocookie.com/embed/g6aXBdrQE14?list=RDg6aXBdrQE14" 
+          title="HAPPY - PHARRELL WILLIAMS (Lyrics)" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+  </iframe>
+</div>
+
          <div class="text">
           <p style="text-align: center;">Whether for an occasion, or just because, we'd love to help you light up someone's day! Our email contact is <a href="mailto:creativenceltic@gmail.com" class="button4"> creativenceltic@gmail.com.</a></p>
           <p style="text-align: center;">As there is a waiting list, please allow plenty of time. We can let you know a more specific time frame upon contact.</p>
