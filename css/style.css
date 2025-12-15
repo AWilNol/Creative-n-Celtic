@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Lora&family=Tinos&display=swap');
-
-
 body {
-   background-image: url('../images/WOODGRAIN.jpg');
+   /* Update background to premium image you selected: */
+   background-image: url('../images/WOODGRAIN.jpg'); 
    background-size: cover;
    background-position: center center;
    background-repeat: no-repeat;      
@@ -13,57 +11,109 @@ body {
    display: flex;
    justify-content: center;
    align-items: center;
-   background-attachment:fixed;}
+   background-attachment:fixed;
+   /* Added a subtle overlay to make text readable and deepen the luxury feel */
+   background-color: rgba(10, 10, 10, 0.8); 
+   color: #e0e0e0; /* Default text color: Off-white */
+}
 
+/* Ensure the body overlay works */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+}
 
-.container {
+.luxury-container {
    height: auto;
    text-align: center;
-   /* Add this line: */
    flex-grow: 1; 
-   /* The display property should probably be flex here as well */
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-}
-   
- /* Center all content within the container vertically and horizontally */
-.content-wrapper {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
-    gap: 1em; /* Adds clean spacing between items automatically */
+   /* Add smooth transition for entry reveal */
+   opacity: 0; 
+   animation: fadeIn 1s ease-out forwards 0.5s; /* Fade in after half a second delay */
 }
 
-.tagline {
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+   
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em; /* Increased gap for cleaner spacing */
+}
+
+.logo-wrapper {
+    /* Add subtle hover effect for interaction */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-wrapper:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.tagline-main {
+   font-family: 'Cormorant Garamond', serif; /* New elegant font */
+   font-size: 48px; /* Larger size for impact */
+   font-weight: 300;
+   margin: 0;
+   color: #FFFFFF; /* Pure white for main title */
+   letter-spacing: 2px; /* Added spacing for luxury look */
+}
+
+.tagline-subtitle {
    font-family: Lora, serif;
-   font-size: 35px;
-   margin: 0; /* Remove default paragraph margins */
+   font-size: 20px;
+   margin: 0;
+   color: #B59A57; /* Subtle gold/brass accent color */
+   font-style: italic;
 }
 
 .social-links-home a img {
-    margin: 5px; /* Add some space between social icons */
+    margin: 10px; /* Increased space */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
+.social-links-home a img:hover {
+    opacity: 1; /* Fade in on hover */
+}
+
+
+/* Ripple effects should be toned down to match the luxury aesthetic */
 .ripple {
   position: fixed;
   border-radius: 50%;
-  background: var(--ripple-color, rgba(255, 255, 255, 0.6)); /* White, semi-transparent */
+  /* Changed ripple color from random bright colors to a subtle gold/white */
+  background: var(--ripple-color, rgba(181, 154, 87, 0.4)); /* Gold, semi-transparent */
   transform: scale(0.1);
   animation: ripple-effect 0.6s linear forwards;
-  pointer-events: none; /* Allows clicks to pass through */
-  z-index: 9999999; /* Boosted z-index */
+  pointer-events: none;
+  z-index: 9999999;
   overflow: visible;
-  width: 100px;
-  height: 100px;
+  width: 80px; /* Slightly smaller ripple */
+  height: 80px;
   will-change: transform, opacity;
 }
 
 @keyframes ripple-effect {
   from {
-    opacity: 0.8;
+    opacity: 0.6; /* Start with less opacity */
   }
   to {
     transform: scale(4);

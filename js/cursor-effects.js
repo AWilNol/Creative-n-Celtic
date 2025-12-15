@@ -1,39 +1,36 @@
 console.log("JavaScript file loaded!");
-console.log("Click detected!");
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+
+// Function getRandomColor is no longer needed
+/* function getRandomColor() { ... } */ 
+
 document.body.addEventListener('click', (e) => {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
 
-    ripple.style.setProperty('--ripple-color', getRandomColor());
+    // Set a fixed luxury color instead of a random one
+    // Using the same gold accent color as in the CSS
+    ripple.style.setProperty('--ripple-color', 'rgba(181, 154, 87, 0.5)'); 
 
     // Position the ripple where the click occurred
-    ripple.style.left = `${e.clientX- 50}px`;
-    ripple.style.top = `${e.clientY - 50}px`;
+    ripple.style.left = `${e.clientX- 40}px`; /* Adjusted for new width/height */
+    ripple.style.top = `${e.clientY - 40}px`; /* Adjusted for new width/height */
 
-    // Remove the element after the animation finishes to keep the code clean
+    // Remove the element after the animation finishes
     ripple.onanimationend = () => {
       ripple.remove();
     };
-  });
-  
-  // menu-toggle.js
+});
+
+// menu-toggle.js content (keep as is if used on other pages, just ensure variables exist)
 document.addEventListener('DOMContentLoaded', (event) => {
+    // These elements don't exist on the landing page HTML provided, 
+    // so this script won't run its main function here, which is fine.
     const menuToggle = document.getElementById('menu-toggle');
     const siteLinksMenu = document.getElementById('site-links-menu');
 
     if (menuToggle && siteLinksMenu) {
         menuToggle.addEventListener('click', () => {
-            // This toggles the 'active' class on the menu div, 
-            // which the CSS uses to show/hide the menu
             siteLinksMenu.classList.toggle('active');
         });
     }
