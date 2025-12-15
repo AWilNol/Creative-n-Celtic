@@ -275,12 +275,12 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
   float: none;}
 
 .social-links a {
+  transition: color 0.3s ease-out;	
   color: purple;
   margin: 5px;
   float: none;
   display: inline-block; /* Important: transform only works on block elements */
-  transition: transform 0.3s ease-out; /* Smooth transition for the transform property */
-  /* Add other default styles like color, padding, size here */}
+  }
 
 .social-links a:hover {
   transform: translateY(-5px); /* Moves the link up by 5 pixels smoothly */
