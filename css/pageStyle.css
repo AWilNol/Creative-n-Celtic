@@ -101,7 +101,6 @@ html, body {
 
 .text {
   background-color: rgba(255, 255, 255, .5);
-  text-indent: 290px;
   padding: 10px;
 }
 
@@ -305,6 +304,16 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
         float: none;
         margin: 1em auto;
     }
+}
+
+footer {
+    text-align: center; /* Centers the copyright text */
+    margin-top: 2em;    /* Adds space above the footer */
+    padding: 1em 0;     /* Adds padding top/bottom */
+    font-size: 0.8em;   /* Makes the text slightly smaller */
+    color: #555;        /* A subtle gray color */
+    clear: both;        /* Ensures it sits below any floated content */
+    width: 100%;        /* Takes full width */
 }
 
 .ripple {
