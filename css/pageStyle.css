@@ -8,11 +8,22 @@
 	   width: 20%;}
    .main {
        margin-left: 20%;
-	   padding-top: 300px;}
+	   padding-top: 0;}
    body {
        margin: 0;}
    banner {
-       margin: relative;}
+   margin: relative;}
+   .navigation .gallery {
+       /* Adjust this max-width until the image looks centered and fills the "box" nicely */
+       max-width: 170px; /* A good sweet spot example */
+       margin: 1em auto; /* Centers the gallery container */
+   }
+   
+   .navigation .gallery img {
+       max-width: 100%; /* Ensures image stays within the new gallery max-width */
+       display: block;
+       height: auto;
+   }
 }
 
 @media screen and (max-width: 767px) {
@@ -150,7 +161,7 @@ nav.navigation {
   text-align: center;}
 
 .site-info {
-  margin: .3em auto;
+  margin: 0.1em auto;
   text-align: center;
   font-size: 200%;}
 
@@ -158,10 +169,9 @@ nav.navigation {
   width: 100%; /* Use 90% of the available space in the 20% container */
   max-width: 150px; /* Optional: Stops it from getting too large on huge screens */
   height: auto; /* Change from fixed height: 150px; to auto to maintain aspect ratio */
-  margin: 0 auto .5em;
+  margin: 0 auto 0em;
   border-color: transparent;
   border-width: 5px;
-  line-height: 150px;
   color: black;
   text-transform: uppercase;}
 
@@ -197,7 +207,7 @@ nav.navigation {
   
 /* Ensures all images inside the .gallery container fit perfectly within their parent div */
 .gallery img {
-  max-width: 100%; 
+  max-width: 90%; 
   height: auto;   /* Maintains the image's aspect ratio */
   display: block; /* Helps with general centering and spacing */
 }
