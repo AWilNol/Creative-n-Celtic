@@ -51,8 +51,8 @@
   position: relative;
   overflow: auto;
   margin-top: 0;
-  margin-left: 20%;
-  padding: 1em;}
+  padding: 1em;
+  width: calc(100% - 20%);}
 
 h1 {
   margin: 0;
