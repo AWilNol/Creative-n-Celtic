@@ -24,3 +24,17 @@ document.body.addEventListener('click', (e) => {
       ripple.remove();
     };
   });
+  
+  // menu-toggle.js
+document.addEventListener('DOMContentLoaded', (event) => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const siteLinksMenu = document.getElementById('site-links-menu');
+
+    if (menuToggle && siteLinksMenu) {
+        menuToggle.addEventListener('click', () => {
+            // This toggles the 'active' class on the menu div, 
+            // which the CSS uses to show/hide the menu
+            siteLinksMenu.classList.toggle('active');
+        });
+    }
+});

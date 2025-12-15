@@ -17,12 +17,15 @@
 
     <!-- Using <nav> tag consistently as discussed -->
     <nav class="navigation">
+	   <!-- Add the menu toggle button here -->
+       <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+	   
        <div class="site-info">
         <a href="./index.html"><div class="logo"><img src="./images/logo.gif" alt="cc logo" width="150" height="150"></div></a>
         <a href="#">Wood Art Synergy</a>
        </div>
 
-       <div class="site-links">
+       <div class="site-links" id="site-links-menu">
         <div style="text-align: center;">
           <a href="./about.html"><b> Read All About Us</b></a>
         </div>
@@ -47,7 +50,7 @@
       <h2>Contact Us</h2>
 
       <!-- Consolidated forms: One main form wraps everything -->
-      <form action="mailto:creativenceltic@gmail.com" method="post" enctype="text/plain">
+      <form action="mailto:creativenceltic@gmail.com" method="post" enctype="text/plain" id="contact-form">
         <div class="Contact">
            <fieldset>
              <legend>Contact Information</legend>

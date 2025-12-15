@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&family=Tinos&display=swap');
-
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 @media screen and (min-width: 768px) {
    .navigation {
        position: fixed;
@@ -25,9 +27,22 @@
     }
     
     /* Revert floats for mobile view so items stack vertically */
-    .gallery, .social-links {
+    .gallery, .social-links, .video, .text, .clearfix {
         float: none;
+        width: 100%;
         margin: 1em auto;
+	    padding: 0; /* Remove excess padding on mobile */
+	}
+	
+	body {
+        font-size: 0.9em; 
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+      }
     }
 }
 
@@ -52,7 +67,8 @@ h2 {
   color: black;}
 
 fieldset {
-  width: 300px;
+  width: 90%;
+  max-width: 400px;
   border : 1px solid #00BFFF;
   border-radius: 10px;
   padding: 5px;
@@ -69,8 +85,12 @@ legend {
   text-transform: uppercase;
 }
 
-.video {
-  float: left;
+#contact-form {
+	margin-bottom: 2em;
+}
+
+.clearfix {
+	margin-top: 0;
 }
 
 .clearfix::after {
@@ -101,11 +121,12 @@ html, body {
 
 .text {
   background-color: rgba(255, 255, 255, .5);
-  padding: 10px;
+  text-indent: 0;
+  padding: 10px;    /* More space on top */  
 }
 
 .spacing-top {
-    margin-top: 2em; /* This adds vertical space equivalent to two lines of text */
+    margin-top: 1em; /* This adds vertical space equivalent to two lines of text */
 }
 
 nav.navigation {
@@ -114,7 +135,9 @@ nav.navigation {
   height: 100%;
   position: fixed;
   top: 0;
-  left: 0;}
+  left: 0;
+  overflow-y: auto;
+  padding: 10px;}
 
 .navigation a {
   text-decoration: none;
@@ -128,8 +151,9 @@ nav.navigation {
   font-size: 200%;}
 
 .logo {  
-  width: 150px;
-  height: 150px;
+  width: 100%; /* Use 90% of the available space in the 20% container */
+  max-width: 150px; /* Optional: Stops it from getting too large on huge screens */
+  height: auto; /* Change from fixed height: 150px; to auto to maintain aspect ratio */
   margin: 0 auto .5em;
   border-color: transparent;
   border-width: 5px;
@@ -141,7 +165,7 @@ nav.navigation {
   border-color: purple;}
 
 .site-links {
-  margin: .5em 1em;
+  margin: .5em 0;
   font-family: Lora;
   font-size: 19px;
   overflow: hidden;}
@@ -157,11 +181,11 @@ nav.navigation {
 
 .gallery {
   background-color: gray;
-  width: 150px;
-  height: 200px;  
+  width: 90%; /* Changed from 150px to percentage */
+  height: auto;
   margin: 1em auto 0;
   border: 2px solid gray;
-  float: left;
+  float: none; /* Changed from float: left; to none */
 }
 
 .gallery:hover {
@@ -201,8 +225,8 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
 
 /* Courtesy https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 
-  .images:hover {
-    border: 1px solid green;
+ .images:hover {
+   border: 1px solid green;
   }
 
  .images img {
@@ -232,13 +256,14 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
 .social-links {
   background-color: inherit;
   width: 40px;
-  height: 40px;
+  height: auto;
   margin: 1em auto 0;
-  float: right;}
+  float: none;}
 
 .social-links a {
   display: block;
-  margin: 5px;}
+  margin: 5px;
+  float: left;}
 
 .social-links a:hover {
   margin-left: 2em;
@@ -296,6 +321,7 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
         position: static; /* Navigation flows naturally back into the document flow */
         width: 100%;     /* Takes full width */
         height: auto;    /* Height adjusts to content */
+		overflow-y: visible; /* Revert overflow for mobile layout */
     }
 
     .main {
@@ -308,7 +334,31 @@ See the Pen: https://codepen.io/iGadget/pen/jOEQKNN
         float: none;
         margin: 1em auto;
     }
-}
+	.menu-toggle {
+        display: block;
+        background-color: #04AA6D;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        font-size: 1.1em;
+    }
+
+    #site-links-menu {
+        display: none; 
+    }
+
+    #site-links-menu.active {
+        display: block;
+    }
+	
+    .site-links a {
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+}	
 
 footer {
     text-align: left; /* Aligns left the copyright text */
@@ -344,3 +394,6 @@ footer {
   }
 }
 
+.menu-toggle {
+    display: none; 
+}
