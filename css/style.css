@@ -1,122 +1,192 @@
-body {
-   /* Update background to premium image you selected: */
-   background-image: url('../images/WOODGRAIN.jpg'); 
+html, body {    
+   position: relative;
+   background-image: url('../images/WOODGRAIN.jpg');
    background-size: cover;
-   background-position: center center;
-   background-repeat: no-repeat;      
-   width: 100vw;
-   height: 100vh;
+   background-attachment: fixed;
    margin: 0;
-   padding:0;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-attachment:fixed;
-   /* Added a subtle overlay to make text readable and deepen the luxury feel */
-   background-color: rgba(10, 10, 10, 0.8); 
-   color: #e0e0e0; /* Default text color: Off-white */
+   font-family: Lora, serif; /* Default font for all text */
+   font-size: 1em;
+   height: 100%;
+   color: #e0e0e0; /* Default text color */
 }
 
-/* Ensure the body overlay works */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    z-index: -1;
+
+/* --- NAVIGATION / SIDEBAR STYLES --- */
+
+@media screen and (min-width: 768px) {
+   .navigation {
+       position: fixed;
+	   width: 20%;
+       background-color: rgba(10, 10, 10, 0.9); /* Dark, luxurious sidebar background */
+       height: 100%;
+       overflow-y: auto;
+       padding: 10px;
+   }
+   .main {
+       margin-left: 20%; /* Pushes main content right */
+	   padding-top: 0;
+       background-color: rgba(0, 0, 0, 0.4); /* Subtle overlay on main content area */
+   }
+   body { margin: 0; }
 }
 
-.luxury-container {
-   height: auto;
-   text-align: center;
-   flex-grow: 1; 
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   /* Add smooth transition for entry reveal */
-   opacity: 0; 
-   animation: fadeIn 1s ease-out forwards 0.5s; /* Fade in after half a second delay */
+.main {
+  position: relative;
+  overflow: auto;
+  margin-top: 0;
+  padding: 2em; /* More padding for cleaner look */
+  width: calc(100% - 20%);
+  min-height: 100vh;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-   
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5em; /* Increased gap for cleaner spacing */
+.navigation a {
+  text-decoration: none;
+  color: #e0e0e0; /* Light text for dark background */
+  font-size: 1.1em;
+  text-align: center;
+  font-family: Lora, serif;
 }
 
-.logo-wrapper {
-    /* Add subtle hover effect for interaction */
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
+.navigation a:hover {
+    color: #B59A57; /* Gold hover color */
 }
 
-.logo-wrapper:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+.site-info {
+  margin: 1em auto;
+  text-align: center;
+  font-size: 150%; /* Slightly smaller than original 200% for elegance */
+  color: #FFFFFF;
 }
 
-.tagline-main {
-   font-family: 'Cormorant Garamond', serif; /* New elegant font */
-   font-size: 48px; /* Larger size for impact */
-   font-weight: 300;
-   margin: 0;
-   color: #FFFFFF; /* Pure white for main title */
-   letter-spacing: 2px; /* Added spacing for luxury look */
+.logo img {  
+  width: 100%; 
+  max-width: 150px; 
+  height: auto; 
+  margin: 0 auto 0em;
+  border: 2px solid transparent; /* Subtle border that we can change on hover */
+  display: block;
 }
 
-.tagline-subtitle {
-   font-family: Lora, serif;
-   font-size: 35px;
-   margin: 0;
-   color: #B59A57; /* Subtle gold/brass accent color */
-   font-style: italic;
+.logo:hover img {
+  border-color: #B59A57; /* Gold border on hover */
 }
 
-.social-links-home a img {
-    margin: 10px; /* Increased space */
+.site-links {
+  margin: 1em 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  overflow: hidden;
+}
+
+.site-links a {
+  display: block;
+  margin: 0.5em 0;
+  padding: 5px;
+}
+
+.site-links a:hover {
+  margin-left: 0; /* Removed the slide effect for a more subtle look */
+  font-style: normal;
+  box-shadow: none;
+  background-color: rgba(181, 154, 87, 0.1); /* Subtle gold background hover */
+}
+
+.social-links {
+  margin: 1em auto;
+  text-align: center;
+}
+
+.social-links a img {
+    margin: 5px;
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
 
-.social-links-home a img:hover {
-    opacity: 1; /* Fade in on hover */
+.social-links a img:hover {
+    opacity: 1;
+}
+
+/* --- MAIN CONTENT STYLES --- */
+
+h1.about-title {
+  margin: 0;
+  background-color: transparent; /* No more light blue background */
+  font-family: 'Cormorant Garamond', serif;
+  color: #FFFFFF;
+  font-size: 4em;
+  letter-spacing: 2px;
+}
+
+h2.about-subtitle {
+  background-color: transparent;
+  font-family: Lora, serif;
+  font-size: 1.5em;
+  color: #B59A57; /* Gold accent */
+  font-style: italic;
+  margin-bottom: 1em;
+}
+
+p {
+    font-family: Lora, serif;
+    font-size: 1em;
+    line-height: 1.6em;
+    color: #e0e0e0;
+}
+
+#about-section {
+   background-color: transparent; /* Remove background here too */
+   margin: 0;   
+}
+
+.original-banner-img {
+    width: 100%;
+    height: auto; 
+    /* This banner image must be updated to match the dark theme */
+    opacity: 0.9; 
+    border-radius: 5px;
+    margin-bottom: 1.5em;
 }
 
 
-/* Ripple effects should be toned down to match the luxury aesthetic */
-.ripple {
-  position: fixed;
-  border-radius: 50%;
-  /* Changed ripple color from random bright colors to a subtle gold/white */
-  background: var(--ripple-color, rgba(181, 154, 87, 0.4)); /* Gold, semi-transparent */
-  transform: scale(0.1);
-  animation: ripple-effect 0.6s linear forwards;
-  pointer-events: none;
-  z-index: 9999999;
-  overflow: visible;
-  width: 80px; /* Slightly smaller ripple */
-  height: 80px;
-  will-change: transform, opacity;
-}
+/* --- GENERAL MOBILE STYLES (Ensure these rules are outside the other media query block) --- */
+@media screen and (max-width: 767px) {
+    .navigation {
+        position: static; 
+        width: 100%;     
+        height: auto;    
+		overflow-y: visible; 
+    }
 
-@keyframes ripple-effect {
-  from {
-    opacity: 0.6; /* Start with less opacity */
-  }
-  to {
-    transform: scale(4);
-    opacity: 0;	  
-  }
+    .main {
+        margin-left: 0;  
+        width: 100%;     
+    }
+    
+    .gallery, .social-links, .text, .clearfix, .site-info, nav.navigation, .logo {
+        float: none;
+        width: 100%;
+        margin: 1em auto;
+	    padding: 0;
+	}
+	
+	body {
+        font-size: 0.9em; 
+    }
+    h1.about-title {
+        font-size: 2.5em;
+    }
+    h2.about-subtitle {
+        font-size: 1.2em;
+    }
+    .menu-toggle {
+        /* You still need HTML/JS for this menu toggle to function on mobile */
+        display: block; 
+        background-color: #B59A57;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
 }
