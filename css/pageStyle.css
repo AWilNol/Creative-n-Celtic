@@ -7,7 +7,8 @@
        position: fixed;
 	   width: 20%;}
    .main {
-       margin-left: 20%;}
+       margin-left: 20%;
+	   padding-top: 300px;}
    body {
        margin: 0;}
    banner {
@@ -100,10 +101,11 @@ legend {
   clear: both;
 }
 
-.banner {
-  width: 100%;
-  height: auto;
-  position: relative;
+
+.original-banner-img {
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 1258 / 300;
 }
 
 html, body {    
