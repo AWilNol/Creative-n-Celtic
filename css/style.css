@@ -305,10 +305,20 @@ h3.gallery-title {
     animation: none !important; 
 }
 
-.disappear {
+}.disappear {
     opacity: 0 !important; /* Make it fade out */
-    transform: scale(0.1) !important; /* Make it shrink */
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Add a smooth transition */
+    /* REMOVED: transform: scale(0.1) !important; to keep it the same size */
+    transition: opacity 1s ease-in-out; /* Smooth fade duration */
+}
+
+/* Add this new animation and class to the bottom of style.css */
+@keyframes unlockTurnAndSlide {
+    0% { transform: rotate(0deg) translateX(0px); }
+    100% { transform: rotate(180deg) translateX(30px); } /* Rotate to 6 o'clock & slide right by 30px */
+}
+
+.is-unlocking {
+    animation: unlockTurnAndSlide 1s ease-in-out forwards; /* Animation lasts 1 second */
 }
 
 /* ==========================================================================
