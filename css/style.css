@@ -509,6 +509,17 @@ input[type="submit"]:hover {
   }
 }
 
+@keyframes unlockMotion {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(20px) rotate(10deg); opacity: 1; } /* Drop slightly and tilt */
+    100% { transform: translateY(100vh) rotate(90deg); opacity: 0; } /* Drop off screen and fade out */
+}
+
+/* A class to apply this specific animation */
+.unlocking {
+    animation: unlockMotion 1s ease-in-out forwards;
+}
+
 /* Class to activate the spinning animation via JavaScript */
 .is-spinning {
     animation: spin 1s linear infinite; /* A slightly faster spin on click */

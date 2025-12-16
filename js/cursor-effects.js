@@ -67,27 +67,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
     // This targets the link on the landing page
     const entryLink = document.querySelector('.logo-link'); 
-    // This targets the sawblade image specifically
-    const sawbladeImg = document.querySelector('.logo-sawblade');
+    // This targets the entire logo wrapper container
+    const logoWrapper = document.querySelector('.logo-wrapper');
 
-    // Only run this logic on the landing page where these elements exist
-    if (entryLink && sawbladeImg) {
+    if (entryLink && logoWrapper) {
         entryLink.addEventListener('click', function(e) {
             e.preventDefault(); // Stop the link from redirecting immediately
-
             const destination = this.href;
             
-            // 1. Start the spinning animation immediately
-            sawbladeImg.classList.add('is-spinning');
-            
-            // 2. Make the whole wrapper fade out during the spin (the cool touch you liked!)
-            const logoWrapper = document.querySelector('.logo-wrapper');
-            if (logoWrapper) {
-                logoWrapper.style.opacity = '0';
-                logoWrapper.style.transition = 'opacity 0.5s ease-in';
-            }
+            // 1. Start the unlocking animation immediately on the whole wrapper
+            logoWrapper.classList.add('unlocking');
 
-            // 3. Wait for the animation/fade before navigating
+            // 2. Wait for the animation to finish (1 second) before navigating
             setTimeout(() => {
                 window.location.href = destination;
             }, 1000); // 1000ms delay 
