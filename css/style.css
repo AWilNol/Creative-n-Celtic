@@ -1,3 +1,7 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {    
    position: relative;
    background-image: url('../images/WOODGRAIN.jpg');
@@ -10,8 +14,76 @@ html, body {
    color: #e0e0e0; /* Default text color */
 }
 
+/* Ensure the body overlay works for the landing page */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+    /* This rule will only apply to the index.html page because of its specific HTML structure */
+}
 
-/* --- NAVIGATION / SIDEBAR STYLES --- */
+
+.luxury-container {
+   height: auto;
+   text-align: center;
+   flex-grow: 1; 
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   /* Add smooth transition for entry reveal */
+   opacity: 0; 
+   animation: fadeIn 1s ease-out forwards 0.5s; /* Fade in after half a second delay */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+   
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em; /* Increased gap for cleaner spacing */
+}
+
+.logo-wrapper {
+    /* Add subtle hover effect for interaction */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-wrapper:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.tagline-main {
+   font-family: 'Cormorant Garamond', serif; /* New elegant font */
+   font-size: 48px; /* Larger size for impact */
+   font-weight: 300;
+   margin: 0;
+   color: #FFFFFF; /* Pure white for main title */
+   letter-spacing: 2px; /* Added spacing for luxury look */
+}
+
+.tagline-subtitle {
+   font-family: Lora, serif;
+   font-size: 20px;
+   margin: 0;
+   color: #B59A57; /* Subtle gold/brass accent color */
+   font-style: italic;
+}
+
+/* --- NAVIGATION / SIDEBAR STYLES (for about, services, contact pages) --- */
 
 @media screen and (min-width: 768px) {
    .navigation {
@@ -54,7 +126,7 @@ html, body {
 .site-info {
   margin: 1em auto;
   text-align: center;
-  font-size: 150%; /* Slightly smaller than original 200% for elegance */
+  font-size: 150%; 
   color: #FFFFFF;
 }
 
@@ -63,7 +135,7 @@ html, body {
   max-width: 150px; 
   height: auto; 
   margin: 0 auto 0em;
-  border: 2px solid transparent; /* Subtle border that we can change on hover */
+  border: 2px solid transparent; 
   display: block;
 }
 
@@ -85,7 +157,7 @@ html, body {
 }
 
 .site-links a:hover {
-  margin-left: 0; /* Removed the slide effect for a more subtle look */
+  margin-left: 0; 
   font-style: normal;
   box-shadow: none;
   background-color: rgba(181, 154, 87, 0.1); /* Subtle gold background hover */
@@ -106,11 +178,11 @@ html, body {
     opacity: 1;
 }
 
-/* --- MAIN CONTENT STYLES --- */
+/* --- MAIN CONTENT STYLES (about, services, contact pages) --- */
 
 h1.about-title {
   margin: 0;
-  background-color: transparent; /* No more light blue background */
+  background-color: transparent; 
   font-family: 'Cormorant Garamond', serif;
   color: #FFFFFF;
   font-size: 4em;
@@ -126,6 +198,15 @@ h2.about-subtitle {
   margin-bottom: 1em;
 }
 
+h3.gallery-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    color: #B59A57; /* Gold accent color */
+    margin-top: 2em;
+    border-bottom: 1px solid rgba(181, 154, 87, 0.3);
+    padding-bottom: 0.5em;
+}
+
 p {
     font-family: Lora, serif;
     font-size: 1em;
@@ -134,21 +215,175 @@ p {
 }
 
 #about-section {
-   background-color: transparent; /* Remove background here too */
+   background-color: transparent;
    margin: 0;   
 }
 
 .original-banner-img {
     width: 100%;
     height: auto; 
-    /* This banner image must be updated to match the dark theme */
     opacity: 0.9; 
     border-radius: 5px;
     margin-bottom: 1.5em;
 }
 
+/* --- GALLERY STYLES (services page) --- */
 
-/* --- GENERAL MOBILE STYLES (Ensure these rules are outside the other media query block) --- */
+.luxury-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 10px; /* Space between images */
+    margin-top: 1em;
+}
+
+.luxury-images-grid img {
+    width: 100%;
+    height: 200px; /* Uniform height for clean look */
+    object-fit: cover; /* Ensures images cover the space without stretching */
+    border-radius: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border: 2px solid transparent; /* Subtle border */
+}
+
+.luxury-images-grid img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    opacity: 0.9;
+    border-color: #B59A57; /* Gold border on hover */
+}
+
+
+/* --- FORM & CONTACT PAGE STYLES --- */
+
+fieldset {
+  width: 90%;
+  max-width: 500px;
+  border : 1px solid #B59A57; /* Gold border */
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left; /* Aligned left for better readability */
+  background-color: rgba(10, 10, 10, 0.7); /* Dark background */
+  margin: 1em auto;
+}
+
+legend {
+  background-color: #000000; /* Black background */
+  border: 1px solid #B59A57; /* Gold border */
+  border-radius: 5px;
+  padding: 5px 15px;
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #e0e0e0;
+}
+
+input[type="email"], textarea {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #B59A57; /* Gold border */
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    font-family: Lora, serif;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #FFFFFF;
+}
+
+label {
+    font-family: Lora, serif;
+    color: #e0e0e0;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Form Submit Button */
+input[type="submit"] {
+    background-color: #B59A57; /* Gold button */
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Lora, serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #FFFFFF;
+}
+
+
+/* Dropdown Button (Luxury Styling) */
+.dropbtn {
+  background-color: #B59A57; /* Gold button */
+  color: #000000;
+  padding: 10px 15px;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  font-family: Lora, serif;
+  border-radius: 5px;
+}
+
+/* The container <div> */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 15px 0;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1a1a1a; /* Dark gray background */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 1px solid #B59A57; /* Gold border */
+  border-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #e0e0e0;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: Lora, serif;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #B59A57; color: #000000;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #FFFFFF;}
+
+/* Styling for inline links in the text */
+.button4 {
+    color: #B59A57;
+    text-decoration: none;
+    border-bottom: 1px solid #B59A57;
+    transition: color 0.3s ease;
+}
+
+.button4:hover {
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+/* --- GENERAL MOBILE STYLES (applies to all pages) --- */
+
 @media screen and (max-width: 767px) {
     .navigation {
         position: static; 
@@ -162,12 +397,7 @@ p {
         width: 100%;     
     }
     
-    .gallery, .social-links, .text, .clearfix, .site-info, nav.navigation, .logo {
-        float: none;
-        width: 100%;
-        margin: 1em auto;
-	    padding: 0;
-	}
+    /* Removed redundant rules */
 	
 	body {
         font-size: 0.9em; 
@@ -189,4 +419,12 @@ p {
         width: 100%;
         text-align: left;
     }
+}
+
+/* --- FOOTER STYLES --- */
+footer p {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 0.8em;
+    color: rgba(224, 224, 224, 0.6);
 }
