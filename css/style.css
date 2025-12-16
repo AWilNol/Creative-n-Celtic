@@ -292,6 +292,14 @@ h3.gallery-title {
    font-style: italic;
 }
 
+.logo-wrapper img {
+    /* Adjust this value to set the size of your logo */
+    width: 250px; 
+    height: auto; 
+    max-width: 100%; 
+    vertical-align: middle; /* <-- Add this line */
+}
+
 .has-overlay .logo-wrapper .logo-sawblade {
     animation: none !important; 
 }
