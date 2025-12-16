@@ -621,3 +621,10 @@ footer p {
         display: block; 
     }
 }
+
+.logo-wrapper img {
+    /* Adjust this value to set the size of your logo */
+    width: 250px; /* Change 250px to your desired size (e.g., 350px for larger) */
+    height: auto; /* Keeps the logo proportional */
+    max-width: 100%; /* Ensures it scales down nicely on mobile screens */
+}
