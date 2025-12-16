@@ -411,7 +411,6 @@ input[type="submit"]:hover {
         font-size: 1.2em;
     }
     .menu-toggle {
-        /* You still need HTML/JS for this menu toggle to function on mobile */
         display: block; 
         background-color: #B59A57;
         color: white;
@@ -422,14 +421,19 @@ input[type="submit"]:hover {
         text-align: left;
     }
 	.site-links {
-        display: none; /* Hide the menu by default on mobile */
-        /* You might need to change your navigation structure slightly if .site-links is the menu wrapper */
+        display: none; 
+        width: 100%;
+        padding-bottom: 1em; /* Add some padding below links */
     }
 
+    /* Show the menu links ONLY when the JavaScript adds the .active class */
     .site-links.active {
-        display: block; /* Show the menu when the 'active' class is added by JS */
-        /* Or perhaps use display: flex; or position: absolute; depending on your layout goals */
+        display: block; /* Makes the links visible */
     }
+}
+
+.site-links > div {
+    text-align: center;
 }
 
 /* --- FOOTER STYLES --- */
