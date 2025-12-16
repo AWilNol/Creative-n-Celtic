@@ -143,6 +143,41 @@ h3.gallery-title {
   border-color: #B59A57; /* Gold border on hover */
 }
 
+/* Define the rotation animation (can go in 'Utility' section if preferred, but here is fine) */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ensure the main logo div is positioned correctly to contain the absolute positioned sawblade */
+.@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ensure the main logo div is positioned correctly to contain the absolute positioned sawblade */
+.logo {
+    position: relative; 
+}
+
+.logo-sawblade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* REMOVED the initial animation here, JS adds it on click */
+    width: 100%;
+    height: auto;
+}
+
+
 .site-links {
   margin: 1em 0;
   font-family: 'Cormorant Garamond', serif;
@@ -472,6 +507,11 @@ input[type="submit"]:hover {
     transform: scale(10); /* Controls how large the wave grows */
     opacity: 0;
   }
+}
+
+/* Class to activate the spinning animation via JavaScript */
+.is-spinning {
+    animation: spin 1s linear infinite; /* A slightly faster spin on click */
 }
 
 /* Footer Styles */

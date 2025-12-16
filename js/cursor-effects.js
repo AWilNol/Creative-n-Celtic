@@ -63,3 +63,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setInterval(changeImage, 4000); // Change every 4 seconds
     }
 })();
+
+document.addEventListener('DOMContentLoaded', () => {
+    // This targets the link on the landing page
+    const entryLink = document.querySelector('.logo-link'); 
+    // This targets the sawblade image specifically
+    const sawbladeImg = document.querySelector('.logo-sawblade');
+
+    // Only run this logic on the landing page where these elements exist
+    if (entryLink && sawbladeImg) {
+        entryLink.addEventListener('click', function(e) {
+            e.preventDefault(); // Stop the link from redirecting immediately
+
+            const destination = this.href;
+            
+            // 1. Start the spinning animation immediately
+            sawbladeImg.classList.add('is-spinning');
+            
+            // Optional: Make the whole wrapper fade out during the spin
+            const logoWrapper = document.querySelector('.logo-wrapper');
+            if (logoWrapper) {
+                logoWrapper.style.opacity = '0';
+                logoWrapper.style.transition = 'opacity 0.5s ease-in';
+            }
+
+            // 2. Wait for the animation to happen (approx 1 second) before navigating
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 1000); // 1000ms delay gives time for a full spin + fade
+        });
+    }
+});
