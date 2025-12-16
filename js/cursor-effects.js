@@ -1,37 +1,35 @@
 console.log("JavaScript file loaded!");
 function handleLogoAnimation() {
-    // Select the SAWBLADE image specifically for the spin animation
     const sawblade = document.querySelector('.logo-sawblade'); 
-    // Select the entire logo WRAPPER div to make it disappear
     const logoWrapper = document.querySelector('.logo-wrapper');
     const entryLink = document.querySelector('.logo-link'); 
     
-    if (!sawblade || !entryLink || !logoWrapper) return; // Exit if elements not found
+    if (!sawblade || !entryLink || !logoWrapper) return; 
 
-    // Check if the current page is the index.html (landing page)
     const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.includes('/Creative-n-Celtic/');
 
     if (isIndexPage) {
-        // Landing page: "open" and disappear on click
         entryLink.addEventListener('click', function(e) {
             e.preventDefault(); 
             const destination = this.href;
             
-            // 1. Add the spinning class from the CSS file
-            sawblade.classList.add('is-spinning');
+            // 1. Start the 'unlocking' animation on the sawblade (1 second duration)
+            sawblade.classList.add('is-unlocking'); 
 
-            // 2. Add a class to the whole wrapper to make it disappear
-            // We need to define a CSS transition for this 'disappear' class in style.css
-            logoWrapper.classList.add('disappear'); 
-
-            // Wait for the animation (1s defined by 'is-spinning' animation duration) to finish before navigating
+            // 2. Wait 1 second for the slide/rotate to finish
             setTimeout(() => {
-                window.location.href = destination;
-            }, 1000); // 1000ms = 1 second
+                // 3. Start the 'disappear' animation on the entire logo wrapper
+                logoWrapper.classList.add('disappear'); 
+                
+                // 4. Wait another 1 second for the fade-out to finish
+                setTimeout(() => {
+                    window.location.href = destination; // Navigate to the next page
+                }, 1000); // Match this to the 'disappear' CSS transition time
+                
+            }, 1000); // Match this to the 'is-unlocking' CSS animation time
         });
     } else {
         // Other pages: continuous rotation using the CSS media query
-        // This part should work if your media query in style.css is active
     }
 }
 
