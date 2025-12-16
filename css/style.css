@@ -268,6 +268,10 @@ h3.gallery-title {
 .logo-wrapper {
     transition: transform 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
+    position: relative; /* <-- Make the wrapper the positioning context */
+    /* Add your desired width here as well for consistency */
+    width: 250px; 
+    height: auto;
 }
 
 .logo-wrapper:hover {
