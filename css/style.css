@@ -29,7 +29,7 @@ body::before {
 
 
 .luxury-container {
-   height: auto;
+   min-height: 100vh;
    text-align: center;
    flex-grow: 1; 
    display: flex;
@@ -141,6 +141,22 @@ body::before {
 
 .logo:hover img {
   border-color: #B59A57; /* Gold border on hover */
+}
+
+.gallery img {
+    /* Set a specific size for this image in the nav */
+    max-width: 150px; 
+    width: 100%; /* Ensures it scales down on mobile */
+    height: auto;
+    /* Center it using display block and margin auto */
+    display: block;
+    margin: 1em auto; 
+    border-radius: 5px; /* Optional: adds a subtle rounded corner */
+	transition: transform 0.3s ease; 
+}
+
+.gallery:hover img {
+	transform: scale(1.05);
 }
 
 .site-links {
