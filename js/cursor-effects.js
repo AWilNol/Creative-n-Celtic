@@ -1,4 +1,3 @@
-console.log("JavaScript file loaded!");
 console.log("Creative & Celtic Effects Loaded!");
 
 // --- 1. Cursor Sparkles (MOUSEMOVE) ---
@@ -21,18 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoLinks = document.querySelectorAll('.logo-link');
 
     logoLinks.forEach(link => {
-        // We use mousedown for quick feedback/ripple animation
         link.addEventListener('mousedown', function(e) {
             const ripple = document.createElement('span');
             ripple.className = 'ripple';
             const rect = this.getBoundingClientRect();
             ripple.style.left = `${e.clientX - rect.left}px`;
             ripple.style.top = `${e.clientY - rect.top}px`;
-            // Calculate ripple size dynamically
             ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
             this.appendChild(ripple);
             setTimeout(() => ripple.remove(), 600);
-            // The browser handles navigation naturally on the subsequent 'click' event
         });
     });
 
