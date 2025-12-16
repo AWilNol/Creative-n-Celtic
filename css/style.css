@@ -432,25 +432,67 @@ footer p {
     color: rgba(224, 224, 224, 0.6);
 }
 
+.featured-widget {
+    /* Center the entire widget horizontally */
+    width: 90%; 
+    max-width: 500px; /* The specific size you chose */
+    margin: 2em auto; /* Centers horizontally, adds margin top/bottom */
+    text-align: center; /* Centers the text inside the widget */
+    background-color: rgba(10, 10, 10, 0.8); /* Subtle background */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #B59A57; 
+}
+
+/* Styles for the image inside the widget */
+.featured-widget img {
+    /* Force the image to a fixed, larger size */
+    width: 400px; /* Fixed width */
+    height: 300px; /* Fixed height */
+    
+    /* This is the key: it covers the area while maintaining aspect ratio, cropping overflow */
+    object-fit: cover; 
+    
+    /* Ensure the image itself is centered within its link container */
+    display: block;
+    margin: 0.5em auto; 
+    
+    transition: transform 0.3s ease;
+}
+
+.featured-widget img:hover {
+    transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+
 /* CSS for the click wave effect */
 .ripple {
   position: fixed;
   border-radius: 50%;
+  background: var(--ripple-color, rgba(255, 255, 255, 0.6)); /* White, semi-transparent */
   /* Changed ripple color from random bright colors to a subtle gold/white */
   background: var(--ripple-color, rgba(181, 154, 87, 0.4)); /* Gold, semi-transparent */
   transform: scale(0.1);
   animation: ripple-effect 0.6s linear forwards;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 9999999; /* Boosted z-index */
   pointer-events: none;
   z-index: 9999999;
   overflow: visible;
+  width: 100px;
+  height: 100px;
   width: 80px; /* Slightly smaller ripple */
   height: 80px;
   will-change: transform, opacity;
 }
 
-@keyframes ripple-effect {
+@keyframes ripple-effect  {
+  from {
+	 opacity: 0.6; /* Start with less opacity */
+	}
   to {
     transform: scale(10); /* Controls how large the wave grows */
     opacity: 0;
   }
 }
+
