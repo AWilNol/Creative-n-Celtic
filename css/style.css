@@ -481,30 +481,31 @@ input[type="submit"]:hover {
    ========================================================================== */
 
 /* CSS for the click wave effect */
+/* CSS for the improved click wave effect */
 .ripple {
   position: fixed;
   border-radius: 50%;
-  background: var(--ripple-color, rgba(181, 154, 87, 0.4)); /* Gold, semi-transparent */
-  /* REMOVED: transform: scale(0.1); */ 
-  animation: ripple-effect 0.6s linear forwards;
+  /* Use a subtle gold color, dynamically sized by JS */
+  background: var(--ripple-color, rgba(181, 154, 87, 0.3)); 
+  animation: ripple-effect 0.8s ease-out forwards; /* Smoother ease-out timing */
   pointer-events: none; 
   z-index: 9999999; 
   overflow: visible;
-  width: 80px; 
-  height: 80px;
+  /* Removed fixed width/height here; managed by JS now */
   will-change: transform, opacity;
 }
 
 /* Update the Keyframes to use a complete starting state */
 @keyframes ripple-effect  {
   from {
-    opacity: 0.6; 
-    transform: scale(0.1); /* ADDED: Explicit starting scale */
+    opacity: 0.8; /* Start slightly more opaque */
+    transform: scale(0.1); 
 	}
   to {
-    transform: scale(10); 
+    transform: scale(3); /* Slightly less dramatic scale */
     opacity: 0;
   }
+} 
 
 @keyframes unlockMotion {
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }

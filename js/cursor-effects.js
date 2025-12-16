@@ -1,17 +1,53 @@
-// JavaScript file: cursor-effects.js
-
 console.log("JavaScript file loaded!");
+// --- NEW CODE FOR LOGO ANIMATION BEHAVIOR ---
+function handleLogoAnimation() {
+    const spinElement = document.getElementById('logo-spin');
+    const entryLink = document.querySelector('.logo-link'); 
+    
+    if (!spinElement || !entryLink) return;
+
+    // Check if the current page is the index.html (landing page)
+    const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '/Creative-n-Celtic/';
+
+    if (isIndexPage) {
+        // Landing page: "open" and disappear on click
+        entryLink.addEventListener('click', function(e) {
+            e.preventDefault(); 
+            const destination = this.href;
+
+            spinElement.style.transform = 'rotate(180deg) scale(0.1)'; // Rotates and starts shrinking
+            spinElement.style.opacity = '0'; // Fades out
+
+            // Wait for the animation (1.5s as set in CSS transition) to finish before navigating
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 1500); 
+        });
+    } else {
+        // Other pages: continuous rotation with a pause
+        spinElement.classList.add('rotate-continuously');
+    }
+}
+// END OF NEW CODE
 
 // --- 1. Ripple Effect Code (Click Wave) ---
-// ... (Menu Toggle and Image Rotator code remains the same as before) ...
 document.addEventListener('click', function(e) {
+    // Only apply ripple to body clicks, not specific elements if possible
+    if (e.target.closest('a') || e.target.closest('button') || e.target.tagName === 'INPUT') {
+        // We can add specific logic here if we want ripples on links/buttons
+    }
+    
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
 
-    // Position the TOP-LEFT corner of the 80px ripple div at the click point
-    ripple.style.left = `${e.clientX}px`;
-    ripple.style.top = `${e.clientY}px`;
+    // Calculate the size: use the larger of the window width/height to ensure it covers the whole screen
+    const size = Math.max(window.innerWidth, window.innerHeight);
+    ripple.style.width = ripple.style.height = `${size}px`;
+
+    // Position the center of the ripple div at the click point
+    ripple.style.left = `${e.clientX - size / 2}px`;
+    ripple.style.top = `${e.clientY - size / 2}px`;
 
     // Remove the element after the animation finishes
     ripple.onanimationend = () => {
@@ -22,6 +58,9 @@ document.addEventListener('click', function(e) {
 
 // --- 2. Menu Toggle Script for Mobile ---
 document.addEventListener('DOMContentLoaded', (event) => {
+    // Call the new logo function here on DOMContentLoaded
+    handleLogoAnimation(); 
+
     const menuToggle = document.getElementById('menu-toggle');
     const siteLinksMenu = document.getElementById('site-links-menu');
 
@@ -63,23 +102,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setInterval(changeImage, 4000); // Change every 4 seconds
     }
 })();
-
-document.addEventListener('DOMContentLoaded', () => {
-    const entryLink = document.querySelector('.logo-link'); 
-    const logoWrapper = document.querySelector('.logo-wrapper'); // Target the wrapper for the animation
-
-    if (entryLink && logoWrapper) {
-        entryLink.addEventListener('click', function(e) {
-            e.preventDefault(); 
-            const destination = this.href;
-            
-            // Start the unlocking animation immediately on the whole wrapper
-            logoWrapper.classList.add('unlocking');
-
-            // Wait for the animation to finish (1 second) before navigating
-            setTimeout(() => {
-                window.location.href = destination;
-            }, 1000);
-        });
-    }
-});
