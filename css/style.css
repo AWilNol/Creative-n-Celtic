@@ -305,10 +305,10 @@ h3.gallery-title {
     animation: none !important; 
 }
 
-}.disappear {
-    opacity: 0 !important; /* Make it fade out */
-    /* REMOVED: transform: scale(0.1) !important; to keep it the same size */
-    transition: opacity 1s ease-in-out; /* Smooth fade duration */
+.disappear {
+    opacity: 0 !important; 
+    transform: scale(1) !important; /* Explicitly reset scale to normal size */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Smooth fade duration */
 }
 
 /* Add this new animation and class to the bottom of style.css */
