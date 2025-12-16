@@ -80,17 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Start the spinning animation immediately
             sawbladeImg.classList.add('is-spinning');
             
-            // Optional: Make the whole wrapper fade out during the spin
+            // 2. Make the whole wrapper fade out during the spin (the cool touch you liked!)
             const logoWrapper = document.querySelector('.logo-wrapper');
             if (logoWrapper) {
                 logoWrapper.style.opacity = '0';
                 logoWrapper.style.transition = 'opacity 0.5s ease-in';
             }
 
-            // 2. Wait for the animation to happen (approx 1 second) before navigating
+            // 3. Wait for the animation/fade before navigating
             setTimeout(() => {
                 window.location.href = destination;
-            }, 1000); // 1000ms delay gives time for a full spin + fade
+            }, 1000); // 1000ms delay 
         });
     }
 });
