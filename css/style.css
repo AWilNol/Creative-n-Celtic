@@ -15,7 +15,7 @@ html, body {
 }
 
 /* Ensure the body overlay works for the landing page */
-body::before {
+.has-overlay::before {
     content: "";
     position: fixed;
     top: 0;
@@ -24,7 +24,6 @@ body::before {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
     z-index: -1;
-    /* This rule will only apply to the index.html page because of its specific HTML structure */
 }
 
 
@@ -422,6 +421,15 @@ input[type="submit"]:hover {
         width: 100%;
         text-align: left;
     }
+	.site-links {
+        display: none; /* Hide the menu by default on mobile */
+        /* You might need to change your navigation structure slightly if .site-links is the menu wrapper */
+    }
+
+    .site-links.active {
+        display: block; /* Show the menu when the 'active' class is added by JS */
+        /* Or perhaps use display: flex; or position: absolute; depending on your layout goals */
+    }
 }
 
 /* --- FOOTER STYLES --- */
@@ -447,16 +455,13 @@ footer p {
 /* Styles for the image inside the widget */
 .featured-widget img {
     /* Force the image to a fixed, larger size */
-    width: 400px; /* Fixed width */
-    height: 300px; /* Fixed height */
-    
-    /* This is the key: it covers the area while maintaining aspect ratio, cropping overflow */
-    object-fit: cover; 
-    
+    max-width: 400px; /* Add max-width */
+    width: 100%; /* Ensure it shrinks on mobile */
+    height: 300px; 
+    object-fit: cover;     
     /* Ensure the image itself is centered within its link container */
     display: block;
-    margin: 0.5em auto; 
-    
+    margin: 0.5em auto;     
     transition: transform 0.3s ease;
 }
 
@@ -476,8 +481,6 @@ footer p {
   animation: ripple-effect 0.6s linear forwards;
   pointer-events: none; /* Allows clicks to pass through */
   z-index: 9999999; /* Boosted z-index */
-  pointer-events: none;
-  z-index: 9999999;
   overflow: visible;
   width: 80px; /* Slightly smaller ripple */
   height: 80px;
