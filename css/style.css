@@ -158,12 +158,6 @@ h3.gallery-title {
     position: relative; 
 }
 
-/* Style the static logo part */
-.logo-static {
-    position: relative; /* Give it a position context */
-    z-index: 1;         /* Place the 'C' behind the blade */
-}
-
 /* Style the sawblade image */
 .logo-sawblade {
     position: absolute;
@@ -173,6 +167,12 @@ h3.gallery-title {
     width: 100%;
     height: auto;
 }
+
+.logo-static {
+    position: relative; /* Give it a position context */
+    z-index: 1;         /* Place the 'C' behind the blade */
+}
+
 
 .site-links {
   margin: 1em 0;
