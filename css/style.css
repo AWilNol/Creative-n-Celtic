@@ -305,6 +305,12 @@ h3.gallery-title {
     animation: none !important; 
 }
 
+.disappear {
+    opacity: 0 !important; /* Make it fade out */
+    transform: scale(0.1) !important; /* Make it shrink */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Add a smooth transition */
+}
+
 /* ==========================================================================
    Gallery & Widget Components
    ========================================================================== */
