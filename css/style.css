@@ -295,7 +295,7 @@ h3.gallery-title {
 
 .logo-wrapper img {
     /* Adjust this value to set the size of your logo */
-    width: 250px; 
+    width: 350px; 
     height: auto; 
     max-width: 100%; 
     vertical-align: middle; /* <-- Add this line */
