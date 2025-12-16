@@ -1,3 +1,5 @@
+// JavaScript file: cursor-effects.js
+
 console.log("JavaScript file loaded!");
 
 // --- 1. Ripple Effect Code (Click Wave) ---
@@ -33,7 +35,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 // --- 3. Automatic Image Rotator Code ---
-// We wrap this in an IIFE function wrapper to keep it clean
 (function() {
     var images = [
         './images/image1.jpg',
