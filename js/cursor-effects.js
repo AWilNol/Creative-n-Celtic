@@ -1,40 +1,42 @@
+// JavaScript file: cursor-effects.js
+
 console.log("JavaScript file loaded!");
 
-// --- Ripple Effect Code ---
+// --- 1. Ripple Effect Code (Click Wave) ---
 document.addEventListener('click', function(e) {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
 
     // Position the ripple where the click occurred. 
-    // The CSS will handle the gold color and animation.
-    const size = 1; // Start small; CSS scales it
-    ripple.style.left = `${e.clientX - size}px`;
-    ripple.style.top = `${e.clientY - size}px`;
+    // The CSS animation handles the scaling and gold color.
+    // Adjust slightly so the *center* of the wave starts at the click point.
+    const startSize = 10; 
+    ripple.style.left = `${e.clientX - startSize / 2}px`;
+    ripple.style.top = `${e.clientY - startSize / 2}px`;
 
     // Remove the element after the animation finishes
     ripple.onanimationend = () => {
-      ripple.remove();
+        ripple.remove();
     };
 });
-// ----------------------------
 
 
-// --- Menu Toggle Script for Interior Pages ---
+// --- 2. Menu Toggle Script for Mobile ---
 document.addEventListener('DOMContentLoaded', (event) => {
     const menuToggle = document.getElementById('menu-toggle');
     const siteLinksMenu = document.getElementById('site-links-menu');
 
     if (menuToggle && siteLinksMenu) {
         menuToggle.addEventListener('click', () => {
-            siteLinksMenu.classList.toggle('active');
+            // This adds/removes the 'active' class, which you need to style in CSS
+            siteLinksMenu.classList.toggle('active'); 
         });
     }
 });
-// ----------------------------
 
 
-// --- Automatic Image Rotator Code ---
+// --- 3. Automatic Image Rotator Code ---
 (function() {
     var images = [
         './images/image1.jpg',
@@ -59,9 +61,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         imageIndex = (imageIndex + 1) % images.length; 
         featureImgElement.src = images[imageIndex];
     }
-
+    
+    // Only start the rotator if the 'rotating-feature-img' element is found on the page
     if (featureImgElement) {
-        setInterval(changeImage, 4000);
+        setInterval(changeImage, 4000); // Change every 4 seconds
     }
 })();
-// ----------------------------
