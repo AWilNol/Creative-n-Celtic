@@ -3,16 +3,15 @@
 console.log("JavaScript file loaded!");
 
 // --- 1. Ripple Effect Code (Click Wave) ---
+// ... (Menu Toggle and Image Rotator code remains the same as before) ...
 document.addEventListener('click', function(e) {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
 
-    // Position the ripple where the click occurred. 
-    // The CSS animation handles the scaling and gold color.
-    const startSize = 10; 
-    ripple.style.left = `${e.clientX - startSize / 2}px`;
-    ripple.style.top = `${e.clientY - startSize / 2}px`;
+    // Position the TOP-LEFT corner of the 80px ripple div at the click point
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
 
     // Remove the element after the animation finishes
     ripple.onanimationend = () => {
