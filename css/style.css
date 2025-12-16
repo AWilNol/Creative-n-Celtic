@@ -450,21 +450,21 @@ footer p {
 /* Styles for the container div we added to your HTML */
 .featured-widget {
     /* Center the entire widget horizontally */
-    width: 90%; 
-    max-width: 500px; /* Increased from 400px */
+    width: 90%; /* Adjust width as needed */
+    max-width: 400px; /* Prevents it from getting too large on big screens */
     margin: 2em auto; /* Centers horizontally, adds margin top/bottom */
     text-align: center; /* Centers the text inside the widget */
-    background-color: rgba(10, 10, 10, 0.8); 
+    background-color: rgba(10, 10, 10, 0.8); /* Optional: subtle background */
     padding: 15px;
     border-radius: 5px;
-    border: 1px solid #B59A57; 
+    border: 1px solid #B59A57; /* Optional: adds a border */
 }
 
 /* Styles for the image inside the widget */
 .featured-widget img {
-    /* Force the image to a fixed, larger size */
-    width: 400px; /* Increased from 300px */
-    height: 300px; /* Increased from 200px */
+    /* Force the image to a fixed size */
+    width: 300px; /* Fixed width */
+    height: 200px; /* Fixed height */
     
     /* This is the key: it covers the area while maintaining aspect ratio, cropping overflow */
     object-fit: cover; 
