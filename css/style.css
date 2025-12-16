@@ -486,18 +486,19 @@ footer p {
     transform: scale(1.03); /* Subtle zoom on hover */
 }
 
-/* CSS for the click wave effect */
+//* CSS for the click wave effect */
 .ripple {
     position: absolute;
     border-radius: 50%;
     transform: scale(0);
     animation: ripple-effect 0.4s linear;
-    background-color: rgba(181, 154, 87, 0.7); /* Your gold color with transparency */
-    pointer-events: none; /* Allows clicks to pass through the ripple div */
+    background-color: rgba(181, 154, 87, 0.7); /* This is the gold color */
+    pointer-events: none;
 }
 
 @keyframes ripple-effect {
     to {
-        transform: scale(10); /* Controls how large the wave grows */
+        transform: scale(10); 
         opacity: 0;
     }
+}

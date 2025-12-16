@@ -6,11 +6,11 @@ document.addEventListener('click', function(e) {
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
 
-    // Position the ripple where the click occurred relative to the BODY/Viewport
-    // We adjust for half the initial size (which is defined in the CSS animation start as 'scale(0)', but let's assume a small starting point or default)
-    // The CSS handles the scaling now.
-    ripple.style.left = `${e.clientX}px`;
-    ripple.style.top = `${e.clientY}px`;
+    // Position the ripple where the click occurred. 
+    // The CSS will handle the gold color and animation.
+    const size = 1; // Start small; CSS scales it
+    ripple.style.left = `${e.clientX - size}px`;
+    ripple.style.top = `${e.clientY - size}px`;
 
     // Remove the element after the animation finishes
     ripple.onanimationend = () => {
@@ -31,10 +31,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 });
+// ----------------------------
+
 
 // --- Automatic Image Rotator Code ---
 (function() {
-    // 1. List all your gallery images here in order
     var images = [
         './images/image1.jpg',
         './images/image2.jpg',
@@ -63,3 +64,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setInterval(changeImage, 4000);
     }
 })();
+// ----------------------------
