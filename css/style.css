@@ -479,8 +479,6 @@ footer p {
   pointer-events: none;
   z-index: 9999999;
   overflow: visible;
-  width: 100px;
-  height: 100px;
   width: 80px; /* Slightly smaller ripple */
   height: 80px;
   will-change: transform, opacity;
