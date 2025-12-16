@@ -66,3 +66,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setInterval(changeImage, 4000);
     }
 })();
+
+document.addEventListener('click', function(e) {
+    // Create the ripple element
+    const ripple = document.createElement('div');
+    ripple.classList.add('ripple');
+    document.body.appendChild(ripple);
+
+    // Position the ripple where the click occurred
+    // We adjust for half the size of the initial ripple to center it on the cursor
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+
+    // Remove the ripple element after the animation finishes
+    ripple.onanimationend = () => {
+        document.body.removeChild(ripple);
+    };
+});
