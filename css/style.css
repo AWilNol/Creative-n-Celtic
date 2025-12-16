@@ -242,16 +242,19 @@ h3.gallery-title {
    ========================================================================== */
 
 .luxury-container {
-   background-color: rgba(10, 10, 10, 0.5); /* Dark background */
+   background-color: rgba(10, 10, 10, 0.5);
    height: 100vh;
    text-align: center;
-   flex-grow: 1; 
+   flex-grow: 1;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   opacity: 0; 
-   animation: fadeIn .5s ease-out forwards 0.2s; /* Fade in after delay */
+   opacity: 0;
+   animation: fadeIn .5s ease-out forwards;
+   /* Add these two lines to fix movement: */
+   position: fixed;
+   width: 100%;
 }
 
 @keyframes fadeIn {
