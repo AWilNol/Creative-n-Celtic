@@ -12,6 +12,10 @@ function handleLogoAnimation() {
         entryLink.addEventListener('click', function(e) {
             e.preventDefault(); 
             const destination = this.href;
+
+            // Immediately disable hover effects and interaction
+            logoWrapper.style.pointerEvents = 'none';
+            logoWrapper.style.cursor = 'default';
             
             // 1. Start the 'unlocking' animation on the sawblade (1 second duration)
             sawblade.classList.add('is-unlocking'); 
