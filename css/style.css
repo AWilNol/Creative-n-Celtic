@@ -242,7 +242,7 @@ h3.gallery-title {
    ========================================================================== */
 
 .luxury-container {
-   background-color: rgba(10, 10, 10, 0.4); /* Dark background */
+   background-color: rgba(10, 10, 10, 0.5); /* Dark background */
    height: 100vh;
    text-align: center;
    flex-grow: 1; 
