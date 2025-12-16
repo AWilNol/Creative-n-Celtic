@@ -485,9 +485,9 @@ input[type="submit"]:hover {
   position: fixed;
   border-radius: 50%;
   background: var(--ripple-color, rgba(181, 154, 87, 0.4)); /* Gold, semi-transparent */
-  transform: scale(0.1);
+  /* REMOVED: transform: scale(0.1); */ 
   animation: ripple-effect 0.6s linear forwards;
-  pointer-events: none; /* Allows clicks to pass through */
+  pointer-events: none; 
   z-index: 9999999; 
   overflow: visible;
   width: 80px; 
@@ -495,15 +495,16 @@ input[type="submit"]:hover {
   will-change: transform, opacity;
 }
 
+/* Update the Keyframes to use a complete starting state */
 @keyframes ripple-effect  {
   from {
-	 opacity: 0.6; /* Start with less opacity */
+    opacity: 0.6; 
+    transform: scale(0.1); /* ADDED: Explicit starting scale */
 	}
   to {
-    transform: scale(10); /* Controls how large the wave grows */
+    transform: scale(10); 
     opacity: 0;
   }
-}
 
 @keyframes unlockMotion {
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
