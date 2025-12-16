@@ -1,25 +1,26 @@
 console.log("JavaScript file loaded!");
 
-document.body.addEventListener('click', (e) => {
+// --- Ripple Effect Code ---
+document.addEventListener('click', function(e) {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
 
-    // Set a fixed luxury color instead of a random one
-    // Using the same gold accent color as in the CSS
-    ripple.style.setProperty('--ripple-color', 'rgba(181, 154, 87, 0.5)'); 
-
-    // Position the ripple where the click occurred
-    ripple.style.left = `${e.clientX- 40}px`; 
-    ripple.style.top = `${e.clientY - 40}px`; 
+    // Position the ripple where the click occurred relative to the BODY/Viewport
+    // We adjust for half the initial size (which is defined in the CSS animation start as 'scale(0)', but let's assume a small starting point or default)
+    // The CSS handles the scaling now.
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
 
     // Remove the element after the animation finishes
     ripple.onanimationend = () => {
       ripple.remove();
     };
 });
-  
-// menu-toggle script for interior pages
+// ----------------------------
+
+
+// --- Menu Toggle Script for Interior Pages ---
 document.addEventListener('DOMContentLoaded', (event) => {
     const menuToggle = document.getElementById('menu-toggle');
     const siteLinksMenu = document.getElementById('site-links-menu');
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
+// --- Automatic Image Rotator Code ---
 (function() {
     // 1. List all your gallery images here in order
     var images = [
@@ -50,36 +52,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ];
 
     var imageIndex = 0;
-    // Get the HTML element where the image will rotate (from Step 1)
     var featureImgElement = document.getElementById('rotating-feature-img');
 
     function changeImage() {
-        // Increment the index to the next image, wrapping around to 0 when it reaches the end
         imageIndex = (imageIndex + 1) % images.length; 
-        
-        // Update the source attribute of the HTML image tag
         featureImgElement.src = images[imageIndex];
     }
 
-    // Set the image to change every 4000 milliseconds (4 seconds) if the element exists
     if (featureImgElement) {
         setInterval(changeImage, 4000);
     }
 })();
-
-document.addEventListener('click', function(e) {
-    // Create the ripple element
-    const ripple = document.createElement('div');
-    ripple.classList.add('ripple');
-    document.body.appendChild(ripple);
-
-    // Position the ripple where the click occurred
-    // We adjust for half the size of the initial ripple to center it on the cursor
-    ripple.style.left = `${e.clientX}px`;
-    ripple.style.top = `${e.clientY}px`;
-
-    // Remove the ripple element after the animation finishes
-    ripple.onanimationend = () => {
-        document.body.removeChild(ripple);
-    };
-});
