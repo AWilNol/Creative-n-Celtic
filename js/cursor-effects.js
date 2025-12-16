@@ -65,23 +65,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    // This targets the link on the landing page
     const entryLink = document.querySelector('.logo-link'); 
-    // This targets the entire logo wrapper container
-    const logoWrapper = document.querySelector('.logo-wrapper');
+    const logoWrapper = document.querySelector('.logo-wrapper'); // Target the wrapper for the animation
 
     if (entryLink && logoWrapper) {
         entryLink.addEventListener('click', function(e) {
-            e.preventDefault(); // Stop the link from redirecting immediately
+            e.preventDefault(); 
             const destination = this.href;
             
-            // 1. Start the unlocking animation immediately on the whole wrapper
+            // Start the unlocking animation immediately on the whole wrapper
             logoWrapper.classList.add('unlocking');
 
-            // 2. Wait for the animation to finish (1 second) before navigating
+            // Wait for the animation to finish (1 second) before navigating
             setTimeout(() => {
                 window.location.href = destination;
-            }, 1000); // 1000ms delay 
+            }, 1000);
         });
     }
 });
