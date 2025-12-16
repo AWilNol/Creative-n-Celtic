@@ -278,10 +278,6 @@ h3.gallery-title {
     opacity: 0.9;
 }
 
-.logo-wrapper .logo-sawblade {
-    animation: none !important; 
-}
-
 .tagline-main {
    font-family: 'Cormorant Garamond', serif; 
    font-size: 48px;
