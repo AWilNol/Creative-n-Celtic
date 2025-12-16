@@ -155,15 +155,21 @@ h3.gallery-title {
 
 /* Ensure the main logo div is positioned correctly to contain the absolute positioned sawblade */
 .logo {
-    position: relative; /* THIS FIXES THE SIDE-BY-SIDE ISSUE */
+    position: relative; 
 }
 
+/* Style the static logo part */
+.logo-static {
+    position: relative; /* Give it a position context */
+    z-index: 1;         /* Place the 'C' behind the blade */
+}
+
+/* Style the sawblade image */
 .logo-sawblade {
     position: absolute;
     top: 0;
     left: 0;
-    /* We add the animation via JS click on the landing page, 
-       but we still need a rule in the mobile override section to make it spin constantly on other pages */
+    z-index: 2;         /* Place the sawblade in front of the 'C' */
     width: 100%;
     height: auto;
 }
