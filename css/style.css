@@ -143,7 +143,7 @@ h3.gallery-title {
   border-color: #B59A57; /* Gold border on hover */
 }
 
-/* Define the rotation animation (can go in 'Utility' section if preferred, but here is fine) */
+/* Define the rotation animation */
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -154,29 +154,19 @@ h3.gallery-title {
 }
 
 /* Ensure the main logo div is positioned correctly to contain the absolute positioned sawblade */
-.@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Ensure the main logo div is positioned correctly to contain the absolute positioned sawblade */
 .logo {
-    position: relative; 
+    position: relative; /* THIS FIXES THE SIDE-BY-SIDE ISSUE */
 }
 
 .logo-sawblade {
     position: absolute;
     top: 0;
     left: 0;
-    /* REMOVED the initial animation here, JS adds it on click */
+    /* We add the animation via JS click on the landing page, 
+       but we still need a rule in the mobile override section to make it spin constantly on other pages */
     width: 100%;
     height: auto;
 }
-
 
 .site-links {
   margin: 1em 0;
@@ -550,6 +540,13 @@ footer p {
 /* ==========================================================================
    Mobile Overrides (max-width 767px)
    ========================================================================== */
+
+	/* Make the sawblade spin constantly on non-landing pages/views */
+@media screen and (min-width: 768px) {
+    .logo-sawblade {
+        animation: spin 3s linear infinite; 
+    }
+}
 
 @media screen and (max-width: 767px) {
     .navigation {
