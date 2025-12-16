@@ -7,25 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
     <title>Creative & Celtic Contact</title>
-    <!-- We are consolidating all CSS into the main style.css file -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     
-    <!-- Use the correct HTML font links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com" rel="stylesheet"> <!-- Fixed font link -->
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
   </head>
 
   <body>
-    <!-- ... (Navigation and Header elements omitted for brevity) ... -->
+
+    <!-- PASTE NAVIGATION CODE HERE -->
+    <nav class="navigation">
+       <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+	   
+       <div class="site-info">
+        <a href="./index.html"><div class="logo"><img src="./images/logo.png" alt="cc logo" width="200" height="200"></div></a>
+        <a href="#">Wood Art Synergy</a>
+       </div>
+
+       <div class="site-links" id="site-links-menu">
+        <div style="text-align: center;">
+          <a href="./about.html"><b> Read All About Us</b></a>
+        </div>
+        <div style="text-align: center;">
+          <a href="./services.html"><b> Services</b></a>
+        </div>
+        <div style="text-align: center;">
+          <a href="./index.html"><b> Landing</b></a>
+        </div>
+        <div class="gallery">
+          <a href="./services.html"><img src="./images/image9.jpg" alt="wood art of UM Grizzlies bear and logo"></a>
+        </div>
+        <div class="social-links">
+          <a href="www.facebook.com"><img src="./images/facebook-gold.png" alt="facebook link" width="30" height="30"></a>
+          <a href="https://www.zazzle.com/store/creative_n_celtic"><img src="./images/zazzle-logo.png" alt="zazzle link" width="30" height="30"></a>
+        </div>
+       </div>
+    </nav>
+    <!-- END NAVIGATION CODE -->
+
 
      <div class="main">
       <h1 class="about-title">Creative & Celtic</h1>
       <h2 class="about-subtitle">Contact Us</h2>
 
-      <!-- UPDATED FORM ACTION -->
-      <!-- The action attribute now points to Formspree's service URL -->
-      <!-- Make sure you replace 'YOUR_FORMSPREE_ENDPOINT_URL' with your actual endpoint URL -->
+      <!-- Your working form is below -->
       <form action="https://formspree.io/f/xldqkoyr" method="POST" id="contact-form">
         <div class="Contact">
            <fieldset>
@@ -33,9 +59,7 @@
             
             <p style="text-align: center;">Subscribe to our email list:</p>
             <label for="user_email">Your Email Address</label>
-             <!-- Added 'name="email"' for the form service to capture the data -->
              <input type="email" id="user_email" name="email" placeholder="e.g., name@example.com" required>
-            <!-- Changed image input to a regular submit button for reliability and styling -->
             <input type="submit" value="Subscribe" /> 
 
             <div class="dropdown">
@@ -47,10 +71,8 @@
              </div>
             <div>
               <span class="title" style="float: left;">Comment or Project:</span>
-              <!-- Added 'name="type"' to group radio buttons -->
               <input type="radio" name="type" id="comment" value="Comment" /> 
               <label for="comment">Comment</label>
-               <!-- Added 'name="type"' to group radio buttons -->
               <input type="radio" name="type" id="project" value="Project" /> 
               <label for="project">Project</label>
               </div>
