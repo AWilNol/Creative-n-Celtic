@@ -212,7 +212,7 @@ h3.gallery-title {
    ========================================================================== */
 
 .luxury-container {
-   height: auto;
+   height: 100vh;
    text-align: center;
    flex-grow: 1; 
    display: flex;
