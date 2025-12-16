@@ -1,5 +1,3 @@
-// JavaScript file: cursor-effects.js
-
 console.log("JavaScript file loaded!");
 
 // --- 1. Ripple Effect Code (Click Wave) ---
@@ -10,14 +8,13 @@ document.addEventListener('click', function(e) {
 
     // Position the ripple where the click occurred. 
     // The CSS animation handles the scaling and gold color.
-    // Adjust slightly so the *center* of the wave starts at the click point.
     const startSize = 10; 
     ripple.style.left = `${e.clientX - startSize / 2}px`;
     ripple.style.top = `${e.clientY - startSize / 2}px`;
 
     // Remove the element after the animation finishes
     ripple.onanimationend = () => {
-        ripple.remove();
+      ripple.remove();
     };
 });
 
@@ -29,7 +26,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     if (menuToggle && siteLinksMenu) {
         menuToggle.addEventListener('click', () => {
-            // This adds/removes the 'active' class, which you need to style in CSS
             siteLinksMenu.classList.toggle('active'); 
         });
     }
@@ -37,6 +33,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 // --- 3. Automatic Image Rotator Code ---
+// We wrap this in an IIFE function wrapper to keep it clean
 (function() {
     var images = [
         './images/image1.jpg',
@@ -62,7 +59,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         featureImgElement.src = images[imageIndex];
     }
     
-    // Only start the rotator if the 'rotating-feature-img' element is found on the page
     if (featureImgElement) {
         setInterval(changeImage, 4000); // Change every 4 seconds
     }
