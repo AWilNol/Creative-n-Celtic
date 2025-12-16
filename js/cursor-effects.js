@@ -1,6 +1,22 @@
 console.log("JavaScript file loaded!");
+const logoLink = document.querySelector('.logo-link');
+if (logoLink) {
+  logoLink.addEventListener('mousedown', function(e) { // Triggers faster on mousedown
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    
+    const rect = this.getBoundingClientRect();
+    ripple.style.left = `${e.clientX - rect.left}px`;
+    ripple.style.top = `${e.clientY - rect.top}px`;
+    ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
+    
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+    // Link navigation will now occur naturally on 'click'
+  });
+}
 
-console.log("JavaScript file loaded!");
+
 
 // Reusable function for the Gold Dust Effect (called by both index/inner pages)
 function triggerGoldDustEffect(logoLink) {
