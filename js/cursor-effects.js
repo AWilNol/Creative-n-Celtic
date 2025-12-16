@@ -3,7 +3,7 @@ console.log("Creative & Celtic Effects Loaded!");
 // --- 1. Cursor Sparkles (MOUSEMOVE) ---
 document.addEventListener('mousemove', (e) => {
   const container = document.getElementById('sparkle-container');
-  if (!container) return; // Exit if the container isn't found on a page
+  if (!container) return; 
   const sparkle = document.createElement('div');
   sparkle.className = 'sparkle';
   sparkle.style.left = `${e.clientX}px`;
@@ -15,22 +15,54 @@ document.addEventListener('mousemove', (e) => {
 });
 
 
-// --- 2. Logo Ripple (MOUSEDOWN - Fixes the double-click bug and disappearing logo) ---
-document.addEventListener('DOMContentLoaded', () => {
-    const logoLinks = document.querySelectorAll('.logo-link');
+// --- 2. Logo Gold Dust Transition (The "Disappearing" Effect for Index Page ONLY) ---
+function triggerGoldDustEffect(logoLink) {
+    event.preventDefault(); 
+    const logoStatic = logoLink.querySelector('.logo-static');
+    if (logoStatic) logoStatic.style.opacity = '0';
+    const particleContainer = document.createElement('div');
+    particleContainer.id = 'logo-particles';
+    particleContainer.style.position = 'absolute';
+    particleContainer.style.top = '0';
+    particleContainer.style.left = '0';
+    particleContainer.style.width = '100%';
+    particleContainer.style.height = '100%';
+    logoLink.appendChild(particleContainer);
 
-    logoLinks.forEach(link => {
-        link.addEventListener('mousedown', function(e) {
-            const ripple = document.createElement('span');
-            ripple.className = 'ripple';
-            const rect = this.getBoundingClientRect();
-            ripple.style.left = `${e.clientX - rect.left}px`;
-            ripple.style.top = `${e.clientY - rect.top}px`;
-            ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
-            this.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
-        });
+    // Initialize Particles.js
+    particlesJS('logo-particles', {
+      "particles": { "number": { "value": 150 }, "color": { "value": ["#FFD700", "#DAA520"] }, "opacity": { "value": 0.8, "random": true }, "size": { "value": 4, "random": true }, "move": { "enable": true, "speed": 2, "direction": "top", "random": true, "out_mode": "out" } },
+      "interactivity": { "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } }, "retina_detect": true
     });
+
+    // Navigate after animation plays out (3 seconds)
+    setTimeout(() => { window.location.href = logoLink.href; }, 3000); 
+}
+
+// --- 3. Setup Logo Interactions on Load ---
+document.addEventListener('DOMContentLoaded', () => {
+    const logoLink = document.querySelector('.logo-link'); 
+    if (logoLink) {
+        // Check if this is the index page by checking the URL path
+        const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname === '/';
+        
+        if (isIndexPage) {
+            // ONLY the Index page logo disappears in a cloud of sparkles
+            logoLink.addEventListener('click', () => triggerGoldDustEffect(logoLink));
+        } else {
+            // All other pages use a simple, single-click gold ripple
+            logoLink.addEventListener('mousedown', function(e) {
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                const rect = this.getBoundingClientRect();
+                ripple.style.left = `${e.clientX - rect.left}px`;
+                ripple.style.top = `${e.clientY - rect.top}px`;
+                ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        }
+    }
 
     // --- 3. Menu Toggle Script for Mobile (Kept from your original file) ---
     const menuToggle = document.getElementById('menu-toggle');
