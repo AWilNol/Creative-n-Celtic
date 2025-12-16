@@ -169,7 +169,9 @@ h3.gallery-title {
     width: 100%;
     height: auto;
 }
-
+.site-info p {
+	font-size: 2em;
+}
 
 .site-links {
   margin: 1em 0;
