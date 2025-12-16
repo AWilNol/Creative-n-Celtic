@@ -1,20 +1,25 @@
+/* ==========================================================================
+   Base Styles & Resets
+   ========================================================================== */
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+/* Add robust font fallbacks for better cross-browser compatibility */
 html, body {    
    position: relative;
    background-image: url('../images/WOODGRAIN.jpg');
    background-size: cover;
    background-attachment: fixed;
    margin: 0;
-   font-family: Lora, serif; /* Default font for all text */
+   font-family: Lora, Georgia, "Times New Roman", Times, serif; /* Default font for all text */
    font-size: 1em;
    height: 100%;
    color: #e0e0e0; /* Default text color */
 }
 
-/* Ensure the body overlay works for the landing page */
+/* Ensure the body overlay works ONLY for pages with the .has-overlay class */
 .has-overlay::before {
     content: "";
     position: fixed;
@@ -27,63 +32,50 @@ html, body {
 }
 
 
-.luxury-container {
-   height: auto;
-   text-align: center;
-   flex-grow: 1; 
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   /* Add smooth transition for entry reveal */
-   opacity: 0; 
-   animation: fadeIn 1s ease-out forwards 0.5s; /* Fade in after half a second delay */
+/* ==========================================================================
+   Typography & Shared Text Styles
+   ========================================================================== */
+
+p {
+    font-family: Lora, serif;
+    font-size: 1em;
+    line-height: 1.6em;
+    color: #e0e0e0;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-   
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5em; /* Increased gap for cleaner spacing */
+h1.about-title {
+  margin: 0;
+  background-color: transparent; 
+  font-family: 'Cormorant Garamond', serif;
+  color: #FFFFFF;
+  font-size: 4em;
+  letter-spacing: 2px;
 }
 
-.logo-wrapper {
-    /* Add subtle hover effect for interaction */
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    cursor: pointer;
+h2.about-subtitle {
+  background-color: transparent;
+  font-family: Lora, serif;
+  font-size: 1.5em;
+  color: #B59A57; /* Gold accent */
+  font-style: italic;
+  margin-bottom: 1em;
 }
 
-.logo-wrapper:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+h3.gallery-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    color: #B59A57; /* Gold accent color */
+    margin-top: 2em;
+    border-bottom: 1px solid rgba(181, 154, 87, 0.3);
+    padding-bottom: 0.5em;
 }
 
-.tagline-main {
-   font-family: 'Cormorant Garamond', serif; /* New elegant font */
-   font-size: 48px; /* Larger size for impact */
-   font-weight: 300;
-   margin: 0;
-   color: #FFFFFF; /* Pure white for main title */
-   letter-spacing: 2px; /* Added spacing for luxury look */
-}
 
-.tagline-subtitle {
-   font-family: Lora, serif;
-   font-size: 20px;
-   margin: 0;
-   color: #B59A57; /* Subtle gold/brass accent color */
-   font-style: italic;
-}
+/* ==========================================================================
+   Layout - Main Content & Navigation (Desktop First)
+   ========================================================================== */
 
-/* --- NAVIGATION / SIDEBAR STYLES (for about, services, contact pages) --- */
-
+/* Desktop Styles (min-width 768px) */
 @media screen and (min-width: 768px) {
    .navigation {
        position: fixed;
@@ -93,11 +85,13 @@ html, body {
        overflow-y: auto;
        padding: 10px;
    }
+   
    .main {
        margin-left: 20%; /* Pushes main content right */
 	   padding-top: 0;
        background-color: rgba(0, 0, 0, 0.4); /* Subtle overlay on main content area */
    }
+   
    body { margin: 0; }
 }
 
@@ -106,12 +100,16 @@ html, body {
   overflow: auto;
   margin-top: 0;
   padding: 2em;
-  /* width: calc(100% - 20%); */ /* Ensure this line is present in your file */
   min-height: 100vh;
   /* Add the consistent shadow/fade effect to the bottom */
   background-color: rgba(0, 0, 0, 0.4); 
   box-shadow: inset 0 -50px 30px -30px rgba(0, 0, 0, 0.7); 
 }
+
+
+/* ==========================================================================
+   Navigation & Sidebar Components
+   ========================================================================== */
 
 .navigation a {
   text-decoration: none;
@@ -152,6 +150,11 @@ html, body {
   overflow: hidden;
 }
 
+/* Centers text within links using the cleaner child selector */
+.site-links > div {
+    text-align: center;
+}
+
 .site-links a {
   display: block;
   margin: 0.5em 0;
@@ -163,6 +166,16 @@ html, body {
   font-style: normal;
   box-shadow: none;
   background-color: rgba(181, 154, 87, 0.1); /* Subtle gold background hover */
+}
+
+/* Controls the size of the image within the navigation gallery link */
+.gallery img {
+  max-width: 100%; 
+  height: auto;    
+  max-height: 250px; /* Adjust this value to set your desired maximum vertical size */
+  width: auto;     
+  display: block;  
+  margin: 1em auto; 
 }
 
 .social-links {
@@ -180,46 +193,81 @@ html, body {
     opacity: 1;
 }
 
-/* --- MAIN CONTENT STYLES (about, services, contact pages) --- */
-
-h1.about-title {
-  margin: 0;
-  background-color: transparent; 
-  font-family: 'Cormorant Garamond', serif;
-  color: #FFFFFF;
-  font-size: 4em;
-  letter-spacing: 2px;
+/* Styling for inline links in the text (e.g., mailto link) */
+.button4 {
+    color: #B59A57;
+    text-decoration: none;
+    border-bottom: 1px solid #B59A57;
+    transition: color 0.3s ease;
 }
 
-h2.about-subtitle {
-  background-color: transparent;
-  font-family: Lora, serif;
-  font-size: 1.5em;
-  color: #B59A57; /* Gold accent */
-  font-style: italic;
-  margin-bottom: 1em;
+.button4:hover {
+    color: #FFFFFF;
+    border-color: #FFFFFF;
 }
 
-h3.gallery-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    color: #B59A57; /* Gold accent color */
-    margin-top: 2em;
-    border-bottom: 1px solid rgba(181, 154, 87, 0.3);
-    padding-bottom: 0.5em;
+
+/* ==========================================================================
+   Landing Page Specific Styles
+   ========================================================================== */
+
+.luxury-container {
+   height: auto;
+   text-align: center;
+   flex-grow: 1; 
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   opacity: 0; 
+   animation: fadeIn 1s ease-out forwards 0.5s; /* Fade in after half a second delay */
 }
 
-p {
-    font-family: Lora, serif;
-    font-size: 1em;
-    line-height: 1.6em;
-    color: #e0e0e0;
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+   
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em; /* Increased gap for cleaner spacing */
 }
 
-#about-section {
-   background-color: transparent;
-   margin: 0;   
+.logo-wrapper {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
 }
+
+.logo-wrapper:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.tagline-main {
+   font-family: 'Cormorant Garamond', serif; 
+   font-size: 48px;
+   font-weight: 300;
+   margin: 0;
+   color: #FFFFFF;
+   letter-spacing: 2px; 
+}
+
+.tagline-subtitle {
+   font-family: Lora, serif;
+   font-size: 20px;
+   margin: 0;
+   color: #B59A57; 
+   font-style: italic;
+}
+
+
+/* ==========================================================================
+   Gallery & Widget Components
+   ========================================================================== */
 
 .original-banner-img {
     width: 100%;
@@ -228,8 +276,6 @@ p {
     border-radius: 5px;
     margin-bottom: 1.5em;
 }
-
-/* --- GALLERY STYLES (services page) --- */
 
 .luxury-images-grid {
     display: grid;
@@ -253,8 +299,35 @@ p {
     border-color: #B59A57; /* Gold border on hover */
 }
 
+.featured-widget {
+    width: 90%; 
+    max-width: 500px; 
+    margin: 2em auto; 
+    text-align: center; 
+    background-color: rgba(10, 10, 10, 0.8);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #B59A57; 
+}
 
-/* --- FORM & CONTACT PAGE STYLES --- */
+.featured-widget img {
+    max-width: 400px; 
+    width: 100%; 
+    height: 300px; 
+    object-fit: cover;     
+    display: block;
+    margin: 0.5em auto;     
+    transition: transform 0.3s ease;
+}
+
+.featured-widget img:hover {
+    transform: scale(1.03); 
+}
+
+
+/* ==========================================================================
+   Forms & Dropdowns
+   ========================================================================== */
 
 fieldset {
   width: 90%;
@@ -311,7 +384,7 @@ input[type="submit"] {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: pointer; 
     font-family: Lora, serif;
     font-weight: bold;
     transition: background-color 0.3s ease;
@@ -371,122 +444,22 @@ input[type="submit"]:hover {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #FFFFFF;}
 
-/* Styling for inline links in the text */
-.button4 {
-    color: #B59A57;
-    text-decoration: none;
-    border-bottom: 1px solid #B59A57;
-    transition: color 0.3s ease;
-}
 
-.button4:hover {
-    color: #FFFFFF;
-    border-color: #FFFFFF;
-}
-
-/* --- GENERAL MOBILE STYLES (applies to all pages) --- */
-
-@media screen and (max-width: 767px) {
-    .navigation {
-        position: static; 
-        width: 100%;     
-        height: auto;    
-		overflow-y: visible; 
-    }
-
-    .main {
-        margin-left: 0;  
-        width: 100%;     
-    }
-    
-    /* Removed redundant rules */
-	
-	body {
-        font-size: 0.9em; 
-    }
-    h1.about-title {
-        font-size: 2.5em;
-    }
-    h2.about-subtitle {
-        font-size: 1.2em;
-    }
-    .menu-toggle {
-        display: block; 
-        background-color: #B59A57;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        text-align: left;
-    }
-	.site-links {
-        display: none; 
-        width: 100%;
-        padding-bottom: 1em; /* Add some padding below links */
-    }
-
-    /* Show the menu links ONLY when the JavaScript adds the .active class */
-    .site-links.active {
-        display: block; /* Makes the links visible */
-    }
-}
-
-.site-links > div {
-    text-align: center;
-}
-
-/* --- FOOTER STYLES --- */
-footer p {
-    text-align: center;
-    margin-top: 2em;
-    font-size: 0.8em;
-    color: rgba(224, 224, 224, 0.6);
-}
-
-.featured-widget {
-    /* Center the entire widget horizontally */
-    width: 90%; 
-    max-width: 500px; /* The specific size you chose */
-    margin: 2em auto; /* Centers horizontally, adds margin top/bottom */
-    text-align: center; /* Centers the text inside the widget */
-    background-color: rgba(10, 10, 10, 0.8); /* Subtle background */
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #B59A57; 
-}
-
-/* Styles for the image inside the widget */
-.featured-widget img {
-    /* Force the image to a fixed, larger size */
-    max-width: 400px; /* Add max-width */
-    width: 100%; /* Ensure it shrinks on mobile */
-    height: 300px; 
-    object-fit: cover;     
-    /* Ensure the image itself is centered within its link container */
-    display: block;
-    margin: 0.5em auto;     
-    transition: transform 0.3s ease;
-}
-
-.featured-widget img:hover {
-    transform: scale(1.03); /* Subtle zoom on hover */
-}
-
+/* ==========================================================================
+   Utility/Helper Classes & Animations
+   ========================================================================== */
 
 /* CSS for the click wave effect */
 .ripple {
   position: fixed;
   border-radius: 50%;
-  background: var(--ripple-color, rgba(255, 255, 255, 0.6)); /* White, semi-transparent */
-  /* Changed ripple color from random bright colors to a subtle gold/white */
   background: var(--ripple-color, rgba(181, 154, 87, 0.4)); /* Gold, semi-transparent */
   transform: scale(0.1);
   animation: ripple-effect 0.6s linear forwards;
   pointer-events: none; /* Allows clicks to pass through */
-  z-index: 9999999; /* Boosted z-index */
+  z-index: 9999999; 
   overflow: visible;
-  width: 80px; /* Slightly smaller ripple */
+  width: 80px; 
   height: 80px;
   will-change: transform, opacity;
 }
@@ -501,3 +474,65 @@ footer p {
   }
 }
 
+/* Footer Styles */
+footer p {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 0.8em;
+    color: rgba(224, 224, 224, 0.6);
+}
+
+
+/* ==========================================================================
+   Mobile Overrides (max-width 767px)
+   ========================================================================== */
+
+@media screen and (max-width: 767px) {
+    .navigation {
+        position: static; 
+        width: 100%;     
+        height: auto;    
+		overflow-y: visible; 
+    }
+
+    .main {
+        margin-left: 0;  
+        width: 100%;     
+    }
+    
+    body {
+        font-size: 0.9em; 
+    }
+    
+    h1.about-title {
+        font-size: 2.5em;
+    }
+    
+    h2.about-subtitle {
+        font-size: 1.2em;
+    }
+    
+    /* Styles for the hamburger menu button added via HTML/JS */
+    .menu-toggle {
+        display: block; 
+        background-color: #B59A57;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+	
+    /* Hide the menu links by default on mobile devices */
+	.site-links {
+        display: none; 
+        width: 100%;
+        padding-bottom: 1em; 
+    }
+
+    /* Show the menu links ONLY when the JavaScript adds the .active class */
+    .site-links.active {
+        display: block; 
+    }
+}
