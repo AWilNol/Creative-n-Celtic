@@ -22,8 +22,9 @@
        <div class="site-info">
         <a href="./index.html">
          <div class="logo" id="logo-wrap">
-            <!-- Added IDs for JS functionality -->
-            <img src="./images/logo.png" alt="cc logo static" class="logo-static" id="logo-base" width="200" height="200">            
+            <a href="./index.html" class="logo-link" aria-label="Creative & Celtic Home">
+             <img src="./images/logo.png" alt="Creative & Celtic Logo" class="logo-static" width="200" height="200">
+            </a>        
          </div>
         </a>
         <p>Wood Art Synergy</p>
@@ -111,5 +112,35 @@
       </div>     
     </div>
 	<script src="./js/cursor-effects.js?v=1.1"></script>
+	<script>
+  // 1. Cursor Sparkles (MOUSEMOVE)
+  document.addEventListener('mousemove', (e) => {
+    const container = document.getElementById('sparkle-container');
+    if (!container) return;
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = `${e.clientX}px`;
+    sparkle.style.top = `${e.clientY}px`;
+    const size = Math.random() * 5 + 2;
+    sparkle.style.width = sparkle.style.height = `${size}px`;
+    container.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 800);
+  });
+
+  // 2. Logo Ripple (MOUSEDOWN - Fixes the double-click bug)
+  const logoLinks = document.querySelectorAll('.logo-link');
+  logoLinks.forEach(link => {
+    link.addEventListener('mousedown', function(e) {
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const rect = this.getBoundingClientRect();
+      ripple.style.left = `${e.clientX - rect.left}px`;
+      ripple.style.top = `${e.clientY - rect.top}px`;
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+      // link will navigate naturally on the subsequent 'click' event
+    });
+  });
+</script>
   </body>
 </html>
