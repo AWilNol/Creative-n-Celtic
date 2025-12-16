@@ -1,34 +1,39 @@
 console.log("JavaScript file loaded!");
-// --- NEW CODE FOR LOGO ANIMATION BEHAVIOR ---
 function handleLogoAnimation() {
-    const spinElement = document.getElementById('logo-spin');
+    // Select the SAWBLADE image specifically for the spin animation
+    const sawblade = document.querySelector('.logo-sawblade'); 
+    // Select the entire logo WRAPPER div to make it disappear
+    const logoWrapper = document.querySelector('.logo-wrapper');
     const entryLink = document.querySelector('.logo-link'); 
     
-    if (!spinElement || !entryLink) return;
+    if (!sawblade || !entryLink || !logoWrapper) return; // Exit if elements not found
 
     // Check if the current page is the index.html (landing page)
-    const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '/Creative-n-Celtic/';
+    const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.includes('/Creative-n-Celtic/');
 
     if (isIndexPage) {
         // Landing page: "open" and disappear on click
         entryLink.addEventListener('click', function(e) {
             e.preventDefault(); 
             const destination = this.href;
+            
+            // 1. Add the spinning class from the CSS file
+            sawblade.classList.add('is-spinning');
 
-            spinElement.style.transform = 'rotate(180deg) scale(0.1)'; // Rotates and starts shrinking
-            spinElement.style.opacity = '0'; // Fades out
+            // 2. Add a class to the whole wrapper to make it disappear
+            // We need to define a CSS transition for this 'disappear' class in style.css
+            logoWrapper.classList.add('disappear'); 
 
-            // Wait for the animation (1.5s as set in CSS transition) to finish before navigating
+            // Wait for the animation (1s defined by 'is-spinning' animation duration) to finish before navigating
             setTimeout(() => {
                 window.location.href = destination;
-            }, 1500); 
+            }, 1000); // 1000ms = 1 second
         });
     } else {
-        // Other pages: continuous rotation with a pause
-        spinElement.classList.add('rotate-continuously');
+        // Other pages: continuous rotation using the CSS media query
+        // This part should work if your media query in style.css is active
     }
 }
-// END OF NEW CODE
 
 // --- 1. Ripple Effect Code (Click Wave) ---
 document.addEventListener('click', function(e) {
