@@ -31,8 +31,8 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 99;
 }
@@ -43,11 +43,9 @@ html, body {
   left: var(--x);
   top: var(--y);
   width: var(--size);
-  height: var(--size);
-  
+  height: var(--size);  
   /* IMPLEMENT LUXURY GOLD HERE */
-  background: radial-gradient(circle, #D4AF37 30%, #B59A57 60%, transparent 80%);
-  
+  background: radial-gradient(circle, #D4AF37 30%, #B59A57 60%, transparent 80%);  
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
