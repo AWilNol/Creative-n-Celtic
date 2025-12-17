@@ -7,18 +7,23 @@
 }
 
 /* 1. STABILIZE & RESTORE BACKGROUND */
+/* 1. STABILIZE & RESTORE LUXURY BACKGROUND */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  /* Layering a 60% black tint OVER the woodgrain image */
+  overflow-x: hidden;
+  
+  /* DARK OVERLAY + WOODGRAIN: Adjust 0.6 to 0.8 to make it darker */
   background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), 
               url('../images/WOODGRAIN.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  color: #FFFFFF; /* Pure white for high readability */
+  
+  position: relative;
+  color: #FFFFFF; /* Global White Text */
 }
 
 /* 2. THE SPARKLE CONTAINER */
@@ -39,14 +44,16 @@ html, body {
   top: var(--y);
   width: var(--size);
   height: var(--size);
-  will-change: transform, opacity;
-  pointer-events: none;
-  background: radial-gradient(circle, #FFD700 20%, transparent 80%);
+  
+  /* IMPLEMENT LUXURY GOLD HERE */
+  background: radial-gradient(circle, #D4AF37 30%, #B59A57 60%, transparent 80%);
+  
   border-radius: 50%;
+  pointer-events: none;
   transform: translate(-50%, -50%);
+  will-change: transform, opacity;
   animation: sparkleFade 0.8s ease-out forwards;
 }
-
 @keyframes sparkleFade {
   to { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
 }
@@ -144,16 +151,25 @@ h3.gallery-title {
    Navigation & Sidebar Components
    ========================================================================== */
 
+* 1. UNIFIED NAVIGATION LINKS */
 .navigation a {
+  display: block;             /* Ensures the whole area is clickable */
   text-decoration: none;
-  color: #e0e0e0; /* Light text for dark background */
+  font-family: Lora, serif;
   font-size: 1.1em;
   text-align: center;
-  font-family: Lora, serif;
+  padding: 8px 0;             /* Adds consistent spacing */
+  
+  /* Luxury White Aesthetic */
+  color: #FFFFFF;             /* Pure white for maximum contrast */
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
+/* 2. UNIFIED HOVER STATE */
 .navigation a:hover {
-    color: #B59A57; /* Gold hover color */
+  /* High-End Gold Shift */
+  color: #D4AF37;             /* Bright Metallic Gold */
+  transform: translateX(5px); /* Subtle luxury movement without jitter */
 }
 
 .site-info {

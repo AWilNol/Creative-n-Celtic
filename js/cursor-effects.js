@@ -38,23 +38,42 @@ function triggerLogoDisintegrate(e) {
     const link = e.currentTarget;
     const logo = link.querySelector('.logo-static');
 
-    // 1. Instantly hide the logo with a fade
+    // 1. Instantly hide the logo with a smooth fade
     logo.style.opacity = '0';
     logo.style.pointerEvents = 'none';
 
-    // 2. Spawn the "Cloud" in the logo's exact position
-    // (Ensure you have your sparkle container ready)
+    // 2. Create a dynamic container for the Particles.js dust
+    const dustContainer = document.createElement('div');
+    dustContainer.id = 'logo-particles';
+    // Position it exactly over where the logo was
+    dustContainer.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:100; pointer-events:none;";
+    document.body.appendChild(dustContainer);
+
+    // 3. Spawn initial dense cloud using your custom sparkles
     const rect = logo.getBoundingClientRect();
-    for (let i = 0; i < 40; i++) {
-        createSparkle(rect.left + rect.width / 2, rect.top + rect.height / 2, true);
+    for (let i = 0; i < 30; i++) {
+        createSparkle(rect.left + rect.width / 2, rect.top + rect.height / 2);
     }
 
-    // 3. Delay the transport to the About page
+    // 4. Trigger the flowing gold dust (Particles.js)
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('logo-particles', {
+            "particles": {
+                "number": { "value": 150 },
+                "color": { "value": "#D4AF37" }, // Your luxury gold
+                "opacity": { "value": 0.8, "random": true },
+                "size": { "value": 3, "random": true },
+                "move": { "enable": true, "speed": 4, "direction": "top", "out_mode": "out" }
+            },
+            "interactivity": { "events": { "onhover": { "enable": false } } }
+        });
+    }
+
+    // 5. Navigate to the next page after the animation plays out
     setTimeout(() => {
         window.location.href = link.href;
-    }, 1200); 
+    }, 1500); 
 }
-
     // --- 3. Menu Toggle Script for Mobile (Kept from your original file) ---
     const menuToggle = document.getElementById('menu-toggle');
     const siteLinksMenu = document.getElementById('site-links-menu');
