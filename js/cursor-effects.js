@@ -10,7 +10,7 @@ function createSparkle(x, y) {
   sparkle.className = 'sparkle';
   
   // Random size between 4px and 12px
-  const randomSize = Math.random() * 9 + 4; 
+  const randomSize = Math.random() * 11 + 8; 
   
   sparkle.style.setProperty('--x', `${x}px`);
   sparkle.style.setProperty('--y', `${y}px`);
@@ -83,5 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
             imageIndex = (imageIndex + 1) % images.length;
             featureImgElement.src = images[imageIndex];
         }, 4000);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // 1. Select the button that will be clicked (the hamburger icon)
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    // 2. Select the container holding your navigation links
+    const siteLinks = document.querySelector('.site-links');
+    
+    // 3. Add an event listener to the button
+    if (menuToggle && siteLinks) {
+        menuToggle.addEventListener('click', function() {
+            // Toggle the 'active' class on the links container
+            // This switches it between 'display: none' and 'display: block'
+            siteLinks.classList.toggle('active');
+        });
     }
 });
