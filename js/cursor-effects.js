@@ -9,13 +9,14 @@ function createSparkle(x, y) {
   const sparkle = document.createElement('div');
   sparkle.className = 'sparkle';
   
-  // Sets the position and size via CSS variables (which are styled with gold in style.css)
+  // Random size between 4px and 12px
+  const randomSize = Math.random() * 8 + 4; 
+  
   sparkle.style.setProperty('--x', `${x}px`);
   sparkle.style.setProperty('--y', `${y}px`);
-  sparkle.style.setProperty('--size', `${Math.random() * 8 + 4}px`);
+  sparkle.style.setProperty('--size', `${randomSize}px`);
   
   container.appendChild(sparkle);
-  // Removes the sparkle after its animation finishes
   setTimeout(() => sparkle.remove(), 800);
 }
 
