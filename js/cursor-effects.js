@@ -10,7 +10,7 @@ function createSparkle(x, y) {
   sparkle.className = 'sparkle';
   
   // Random size between 4px and 12px
-  const randomSize = Math.random() * 8 + 4; 
+  const randomSize = Math.random() * 9 + 4; 
   
   sparkle.style.setProperty('--x', `${x}px`);
   sparkle.style.setProperty('--y', `${y}px`);
