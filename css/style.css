@@ -181,17 +181,22 @@ h3.gallery-title {
     position: relative; 
 }
 .logo-static {
-    position: relative; 
-    z-index: 1;         
-}
-.logo-sawblade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2; 
-    width: 100%;
+    /* 1. Reserve the exact shape of your 1184x864 image */
+    aspect-ratio: 1184 / 864; 
+    
+    /* 2. Set the display width for desktop */
+    width: 350px; 
+    
+    /* 3. Responsive essentials */
     height: auto;
+    display: block;
+    max-width: 100%;
+    
+    /* 4. Optional: Add 'contain' to ensure no pixel bleeding */
+    object-fit: contain;
 }
+
+
 .site-info p {
 	font-size: 1.5em;
 }
@@ -600,8 +605,8 @@ footer p {
 
 	/* Make the sawblade spin constantly on non-landing pages/views */
 @media screen and (min-width: 768px) {
-    .logo-sawblade {
-        animation: spin 3s linear infinite; 
+    .logo-static {
+        width: 250px; 
     }
 }
 
