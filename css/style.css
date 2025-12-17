@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 
-/* Add robust font fallbacks for better cross-browser compatibility */
 /* 1. STABILIZE THE VIEWPORT */
 html, body {
   margin: 0;
@@ -30,17 +29,27 @@ html, body {
 /* 3. THE SPARKLES */
 .sparkle {
   position: fixed;
+  /* Use variables passed from JS */
+  left: var(--x);
+  top: var(--y);
+  
+  /* Lock dimensions to prevent layout shifts */
+  width: var(--size);
+  height: var(--size);
+  
+  /* Optimization for 2025: Tell browser to prep for movement */
+  will-change: transform, opacity;
+  pointer-events: none;
   background: radial-gradient(circle, #FFD700 20%, transparent 80%);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: sparkleFade 0.8s ease-out forwards;
-  pointer-events: none;
 }
 
 @keyframes sparkleFade {
-  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
 }
+
 
 /* Ensure the body overlay works ONLY for pages with the .has-overlay class */
 .has-overlay::before {
@@ -596,7 +605,6 @@ footer p {
     font-size: 0.8em;
     color: rgba(224, 224, 224, 0.6);
 }
-
 
 
 /* ==========================================================================

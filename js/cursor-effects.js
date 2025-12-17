@@ -1,37 +1,38 @@
 console.log("Creative & Celtic Effects Loaded!");
-/* 1. STABILIZE THE VIEWPORT */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Stops horizontal shaking */
-  width: 100%;
-  height: 100%;
+function createSparkle(x, y) {
+  const sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  
+  // Set variables instead of direct styles
+  sparkle.style.setProperty('--x', `${x}px`);
+  sparkle.style.setProperty('--y', `${y}px`);
+  sparkle.style.setProperty('--size', `${Math.random() * 8 + 4}px`);
+  
+  document.getElementById('sparkle-container').appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 800);
 }
 
-/* 2. THE SPARKLE CONTAINER (Crucial Fix) */
-#sparkle-container {
-  position: fixed; /* Fixes it to the screen, not the page content */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none; /* Mouse clicks go THROUGH the sparkles */
-  z-index: 99999;
-}
+// This function cleans up the logo and triggers your "About" navigation
+function triggerLogoDisintegrate(e) {
+    e.preventDefault();
+    const link = e.currentTarget;
+    const logo = link.querySelector('.logo-static');
 
-/* 3. THE SPARKLES */
-.sparkle {
-  position: fixed;
-  background: radial-gradient(circle, #FFD700 20%, transparent 80%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: sparkleFade 0.8s ease-out forwards;
-  pointer-events: none;
-}
+    // 1. Instantly hide the logo with a fade
+    logo.style.opacity = '0';
+    logo.style.pointerEvents = 'none';
 
-@keyframes sparkleFade {
-  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+    // 2. Spawn the "Cloud" in the logo's exact position
+    // (Ensure you have your sparkle container ready)
+    const rect = logo.getBoundingClientRect();
+    for (let i = 0; i < 40; i++) {
+        createSparkle(rect.left + rect.width / 2, rect.top + rect.height / 2, true);
+    }
+
+    // 3. Delay the transport to the About page
+    setTimeout(() => {
+        window.location.href = link.href;
+    }, 1200); 
 }
 
     // --- 3. Menu Toggle Script for Mobile (Kept from your original file) ---
