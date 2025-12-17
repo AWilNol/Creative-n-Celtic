@@ -34,7 +34,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 99999;
+  z-index: 99;
 }
 
 /* 3. THE SPARKLE ELEMENTS */
@@ -54,6 +54,7 @@ html, body {
   will-change: transform, opacity;
   animation: sparkleFade 0.8s ease-out forwards;
 }
+
 @keyframes sparkleFade {
   to { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
 }
@@ -153,6 +154,9 @@ h3.gallery-title {
    ========================================================================== */
 
 * 1. UNIFIED NAVIGATION LINKS */
+.navigation {
+	z-index:1000;
+}
 .navigation a {
   display: block;             /* Ensures the whole area is clickable */
   text-decoration: none;
@@ -233,6 +237,7 @@ h3.gallery-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
   overflow: hidden;
+  z-index: 800;
 }
 
 /* Centers text within links using the cleaner child selector */
