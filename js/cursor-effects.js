@@ -1,4 +1,24 @@
 console.log("Creative & Celtic Effects Loaded!");
+
+// Optimized 2025 Cursor Trail
+document.addEventListener('mousemove', (e) => {
+  const container = document.getElementById('sparkle-container');
+  if (!container) return;
+
+  const sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  
+  // Set the CSS variables
+  sparkle.style.setProperty('--x', `${e.clientX}px`);
+  sparkle.style.setProperty('--y', `${e.clientY}px`);
+  sparkle.style.setProperty('--size', `${Math.random() * 8 + 4}px`);
+  
+  container.appendChild(sparkle);
+  
+  // Clean up to prevent memory leaks
+  setTimeout(() => sparkle.remove(), 800);
+});
+
 function createSparkle(x, y) {
   const sparkle = document.createElement('div');
   sparkle.className = 'sparkle';

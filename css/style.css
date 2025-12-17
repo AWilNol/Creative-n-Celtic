@@ -10,15 +10,15 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   width: 100%;
   height: 100%;
-  /* Added the link back with the correct pathing for 2025 */
-  background-image: url('../images/WOODGRAIN.jpg');
+  /* Layering a 60% black tint OVER the woodgrain image */
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), 
+              url('../images/WOODGRAIN.jpg');
   background-size: cover;
-  background-position: center;
   background-attachment: fixed;
-  position: relative;
+  background-position: center;
+  color: #FFFFFF; /* Pure white for high readability */
 }
 
 /* 2. THE SPARKLE CONTAINER */
@@ -319,14 +319,22 @@ h3.gallery-title {
     transform: scale(1.05);
     opacity: 0.9;
 }
-
 .tagline-main {
+   /* Typography */
    font-family: 'Cormorant Garamond', serif; 
    font-size: 38px;
    font-weight: 300;
+   letter-spacing: 2px;
    margin: 0;
-   color: #FFFFFF;
-   letter-spacing: 2px; 
+
+   /* Luxury Gold Aesthetic */
+   color: #D4AF37; /* Metallic Gold */
+   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6); /* Deeper shadow for better contrast */
+   
+   /* Stability Fix */
+   display: block;
+   width: 100%;
+   text-rendering: optimizeLegibility;
 }
 
 .tagline-subtitle {
@@ -615,17 +623,22 @@ footer p {
 	/* Make the sawblade spin constantly on non-landing pages/views */
 @media screen and (min-width: 768px) {
     .logo-static {
-        width: 250px; 
+        width: 350px; /* Restored from 250px */
     }
 }
 
+/* MOBILE: Scale down for smaller screens */
 @media screen and (max-width: 767px) {
+    .logo-static {
+        width: 200px; 
+    }
     .navigation {
         position: static; 
         width: 100%;     
-        height: auto;    
-		overflow-y: visible; 
+        height: auto;
     }
+    /* ... rest of your mobile styles ... */
+}
 
     .main {
         margin-left: 0;  
