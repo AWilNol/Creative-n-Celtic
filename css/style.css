@@ -6,38 +6,39 @@
   box-sizing: border-box;
 }
 
-/* 1. STABILIZE THE VIEWPORT */
+/* 1. STABILIZE & RESTORE BACKGROUND */
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Stops horizontal shaking */
+  overflow-x: hidden;
   width: 100%;
   height: 100%;
+  /* Added the link back with the correct pathing for 2025 */
+  background-image: url('../images/WOODGRAIN.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
 }
 
-/* 2. THE SPARKLE CONTAINER (Crucial Fix) */
+/* 2. THE SPARKLE CONTAINER */
 #sparkle-container {
-  position: fixed; /* Fixes it to the screen, not the page content */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none; /* Mouse clicks go THROUGH the sparkles */
+  pointer-events: none;
   z-index: 99999;
 }
 
-/* 3. THE SPARKLES */
+/* 3. THE SPARKLE ELEMENTS */
 .sparkle {
   position: fixed;
-  /* Use variables passed from JS */
   left: var(--x);
   top: var(--y);
-  
-  /* Lock dimensions to prevent layout shifts */
   width: var(--size);
   height: var(--size);
-  
-  /* Optimization for 2025: Tell browser to prep for movement */
   will-change: transform, opacity;
   pointer-events: none;
   background: radial-gradient(circle, #FFD700 20%, transparent 80%);
