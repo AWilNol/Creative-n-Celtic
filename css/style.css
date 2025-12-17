@@ -156,7 +156,6 @@ h3.gallery-title {
    position: fixed; /* Essential for z-index to work reliably */
    z-index: 99999;  /* Make this extremely high */
    background-color: #000000; 
-   z-index:1000;
 }
 .navigation a {
   display: block;             /* Ensures the whole area is clickable */
@@ -658,7 +657,8 @@ footer p {
 
     .main {
         margin-left: 0;  
-        width: 100%;     
+        width: 100%; 
+        margin-top:60px; /* Add an appropriate top margin for your mobile nav height */		
     }
     
     body {
