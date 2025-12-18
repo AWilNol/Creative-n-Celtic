@@ -57,21 +57,29 @@ html, body {
 /* 3. THE SPARKLE ELEMENTS */
 /* Ensure the trail is visible and follows the CSS variables */
 .sparkle {
-  position: fixed;
+  position: fixed; /* CRITICAL: Keeps sparkles relative to your screen, not the page length */
   background: radial-gradient(circle, #fff 20%, #facc15 60%, transparent 80%);
   box-shadow: 0 0 8px #facc15;
   border-radius: 50%;
   pointer-events: none;
   z-index: 100001;
-  /* Animates relative to where the mouse is */
+  /* GPU acceleration for smooth 2025 performance */
+  will-change: transform, opacity;
+  /* Start visible and shrink away */
   animation: trail-fade 0.8s ease-out forwards;
 }
 
 @keyframes trail-fade {
-  0% { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); }
+  0% { 
+    opacity: 1; 
+    transform: translate(0, 0) scale(1); 
+  }
+  100% { 
+    opacity: 0; 
+    /* var(--x) and var(--y) are the 'drift' coordinates from your JS */
+    transform: translate(var(--x), var(--y)) scale(0); 
+  }
 }
-
 /* Explosion Particles - Extra Brightness */
 .sparkle, .sparkle-particle {
   /* 2025 FIX: GPU acceleration for mobile shimmer */

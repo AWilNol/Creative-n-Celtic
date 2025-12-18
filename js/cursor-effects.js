@@ -30,17 +30,22 @@ function createSparkle(x, y, isTrail) {
     p.className = isTrail ? 'sparkle' : 'sparkle-particle';
     document.body.appendChild(p);
     
+    // Size and Drift range
     const size = (Math.random() * (isTrail ? 6 : 12) + 4) + 'px';
-    const range = isTrail ? 40 : 500;
+    const range = isTrail ? 20 : 500; // Trail stays tight, Explosion flies wide
+    
     const destX = (Math.random() - 0.5) * range + 'px';
     const destY = (Math.random() - 0.5) * range + 'px';
 
-    p.style.cssText = `position:fixed; width:${size}; height:${size}; left:${x}px; top:${y}px; z-index:100001; pointer-events:none;`;
+    // Apply the coordinates
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    p.style.width = size;
+    p.style.height = size;
+    
+    // Set the drift variables for the CSS animation
     p.style.setProperty('--x', destX);
     p.style.setProperty('--y', destY);
-    
-    const duration = Math.random() * (isTrail ? 0.8 : 1.5) + 0.5;
-    p.style.animation = `sparkle-burst ${duration}s ease-out forwards`;
     
     p.addEventListener('animationend', () => p.remove());
 }
