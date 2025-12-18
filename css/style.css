@@ -330,6 +330,7 @@ h3.gallery-title {
    /* Add these two lines to fix movement: */
    position: fixed;
    width: 100%;
+   z-index: 1;
 }
 
 @keyframes fadeIn {
