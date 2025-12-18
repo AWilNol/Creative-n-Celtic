@@ -1,17 +1,14 @@
 console.log("Creative & Celtic Effects Loaded!");
-
-/* --- 1. Cursor & Cloud Sparkles Function --- */
-// This function creates the sparkle element and sets its CSS variables
-function createSparkle(x, y) {
+/* --- 1. MOUSE TRAIL (Always Active) --- */
+// This function creates the shimmer that follows your cursor
+function createSparkleTrail(x, y) {
   const container = document.getElementById('sparkle-container');
   if (!container) return;
 
   const sparkle = document.createElement('div');
   sparkle.className = 'sparkle';
   
-  // Random size between 4px and 12px
   const randomSize = Math.random() * 8 + 4; 
-  
   sparkle.style.setProperty('--x', `${x}px`);
   sparkle.style.setProperty('--y', `${y}px`);
   sparkle.style.setProperty('--size', `${randomSize}px`);
@@ -20,49 +17,118 @@ function createSparkle(x, y) {
   setTimeout(() => sparkle.remove(), 800);
 }
 
-/* --- 2. Live Mousemove Listener (Always Active) --- */
-// This calls the createSparkle function every time the mouse moves
 document.addEventListener('mousemove', (e) => {
-  createSparkle(e.clientX, e.clientY);
+  createSparkleTrail(e.clientX, e.clientY);
 });
 
-/* --- 3. Logo Cloud Transition (Index Page Only) --- */
-function triggerLogoDisintegrate(e) {
+/* --- 2. LOGO EXPLOSION (Index Page Only) --- */
+const logoLink = document.querySelector('.logo-link');
+const mainLogo = document.getElementById('main-logo');
+
+function triggerLogoExplosion(e) {
+    // Only respond to left clicks or Enter/Space keys
+    if (e.type === 'pointerdown' && e.button !== 0) return;
+    if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+    
     e.preventDefault();
-    const link = e.currentTarget;
-    const logo = link.querySelector('.logo-static');
 
-    // 1. Instantly hide the logo with a smooth fade
-    logo.style.opacity = '0';
-    logo.style.pointerEvents = 'none';
+    // 1. Make the logo dissolve into the background
+    if (mainLogo) {
+        mainLogo.classList.add('logo-dissolve');
+        mainLogo.style.pointerEvents = 'none';
+    }
 
-    // 2. Create a temporary container for the gold dust library
-    const dustContainer = document.createElement('div');
-    dustContainer.id = 'logo-particles';
-    dustContainer.style.cssText = "position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:100; pointer-events:none;";
-    document.body.appendChild(dustContainer);
+    // 2. Get click/touch location (or logo center if using keyboard)
+    const rect = mainLogo ? mainLogo.getBoundingClientRect() : { left: 0, top: 0, width: 0, height: 0 };
+    const x = e.clientX || rect.left + rect.width / 2;
+    const y = e.clientY || rect.top + rect.height / 2;
 
-    // 3. Trigger the flowing gold dust (Particles.js) - Uses your #D4AF37 gold
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('logo-particles', {
-            "particles": { "number": { "value": 150 }, "color": { "value": "#D4AF37" }, "opacity": { "value": 0.8, "random": true }, "move": { "enable": true, "speed": 4, "direction": "top", "out_mode": "out" } },
-            "interactivity": { "events": { "onhover": { "enable": false } } }
+    // 3. Create the 60-particle shimmer burst
+    for (let i = 0; i < 60; i++) {
+        createExplosionParticle(x, y);
+    }
+
+    // 4. Transport to About page after the "mesmerizing moment"
+    setTimeout(() => {
+        window.location.href = logoLink.href || '/about';
+    }, 1500);
+}
+
+// Sparkle Particle Engine for the explosion
+function createExplosionParticle(x, y) {
+  const particle = document.createElement('div');
+  particle.className = 'sparkle-particle';
+  document.body.appendChild(particle);
+
+  // Style and randomize the "dance" directions
+  const size = Math.random() * 8 + 4 + 'px';
+  const destinationX = (Math.random() - 0.5) * 400 + 'px';
+  const destinationY = (Math.random() - 0.5) * 400 + 'px';
+
+  particle.style.cssText = `
+    position: fixed;
+    width: ${size};
+    height: ${size};
+    left: ${x}px;
+    top: ${y}px;
+    z-index: 9999;
+    pointer-events: none;
+  `;
+  
+  particle.style.setProperty('--x', destinationX);
+  particle.style.setProperty('--y', destinationY);
+  particle.style.animation = `sparkle-burst ${Math.random() * 1 + 0.5}s ease-out forwards`;
+
+  particle.addEventListener('animationend', () => particle.remove());
+}
+
+// Attach the events only if we are on the page with the logo link
+if (logoLink) {
+    logoLink.addEventListener('pointerdown', triggerLogoExplosion);
+    logoLink.addEventListener('keydown', triggerLogoExplosion);
+}
+
+/* --- 3. UNIFIED PAGE INITIALIZERS (Runs once on load) --- */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // A. Logo Transition (Index Page Only)
+    const logoLink = document.querySelector('.logo-link');
+    // Ensure this only runs on your homepage to avoid errors on other pages
+    const isHomePage = window.location.pathname.includes('index.html') || window.location.pathname === '/';
+    
+    if (logoLink && isHomePage) {
+        // We use the consolidated trigger function we built earlier
+        logoLink.addEventListener('pointerdown', triggerLogoExplosion);
+        logoLink.addEventListener('keydown', triggerLogoExplosion);
+    }
+
+    // B. Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteLinks = document.querySelector('.site-links');
+    if (menuToggle && siteLinks) {
+        menuToggle.addEventListener('click', () => {
+            siteLinks.classList.toggle('active');
         });
     }
 
-    // 4. Navigate after 1.5 seconds of sparkles
-    setTimeout(() => {
-        window.location.href = link.href;
-    }, 1500); 
-}
+    // C. Automatic Image Rotator
+    const featureImg = document.getElementById('rotating-feature-img');
+    const images = [
+        './images/image1.jpg', './images/image2.jpg', './images/image3.jpg', 
+        './images/image4.jpg', './images/image5.jpg', './images/image6.jpg', 
+        './images/image7.jpg', './images/image8.jpg', './images/image9.jpg', 
+        './images/image10.jpg', './images/image11.jpg', './images/image12.jpg', 
+        './images/image13.jpg'
+    ];
+    let imageIndex = 0;
 
-/* --- 4. Event Initializers & Image Rotator (Runs once on page load) --- */
-document.addEventListener('DOMContentLoaded', () => {
-    // Logo Click for Landing Page
-    const logoLink = document.querySelector('.logo-link');
-    if (logoLink && (window.location.pathname.includes('index.html') || window.location.pathname === '/')) {
-        logoLink.addEventListener('click', triggerLogoDisintegrate);
+    if (featureImg && images.length > 0) {
+        setInterval(() => {
+            imageIndex = (imageIndex + 1) % images.length;
+            featureImg.src = images[imageIndex];
+        }, 4000);
     }
+});
 
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
