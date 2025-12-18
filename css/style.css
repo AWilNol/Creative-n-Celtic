@@ -47,54 +47,36 @@ html, body {
 /* 2. THE SPARKLE CONTAINER */
 /* 3. THE SPARKLE ELEMENTS (Trail & Explosion) */
 
-/* Shared properties for both Trail and Explosion */
+* --- SHARED BASE PROPERTIES --- */
 .sparkle, .sparkle-particle {
   position: fixed; 
   pointer-events: none;
   border-radius: 50%;
   z-index: 100001;
   will-change: transform, opacity;
-  transform: translateZ(0); /* GPU acceleration for 2025 mobile performance */
-  /* Remove the tap highlight "gold spot" so your custom dissolve handles it */
+  transform: translateZ(0);
   -webkit-tap-highlight-color: transparent; 
 }
 
-/* Individual Trail Styles */
+/* --- THE MOUSE TRAIL --- */
 .sparkle {
-  position: fixed;
   background: radial-gradient(circle, #fff 20%, #facc15 60%, transparent 80%);
   box-shadow: 0 0 8px #facc15;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 100001;
-  /* Ensure this animation name matches exactly */
   animation: trail-fade 0.8s ease-out forwards;
 }
 
-/* Individual Explosion Particle Styles */
-
-
-.logo-dissolve {
-    pointer-events: none;
-    animation: dissolve 1.5s ease-in forwards !important;
-    opacity: 0; /* Ensures it stays gone if the animation finishes early */
+/* --- THE LOGO EXPLOSION GEMS --- */
+.sparkle-particle {
+  mix-blend-mode: screen;
+  filter: brightness(1.5);
+  /* Uses the burst animation for a firework feel */
+  animation: sparkle-burst 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
-/* Clean, Luxury Sparkle Style */
-.sparkle-particle {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 100001;
-  mix-blend-mode: screen; /* Glows against luxury wood backgrounds */
-  filter: brightness(1.5);
-  will-change: transform, opacity;
-  
-  /* Fallback signature gold */
-  background: radial-gradient(circle, #fff 30%, #facc15 70%, transparent 90%);
-  box-shadow: 0 0 15px #facc15;
-  
-  animation: sparkle-burst 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+/* --- ANIMATIONS --- */
+@keyframes trail-fade {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); }
 }
 
 @keyframes sparkle-burst {
@@ -106,6 +88,11 @@ html, body {
     0% { transform: scale(1); opacity: 1; filter: brightness(1) blur(0); }
     30% { transform: scale(1.2); opacity: 0.8; filter: brightness(3) blur(5px); }
     100% { transform: scale(1.8); opacity: 0; filter: brightness(5) blur(20px); }
+}
+
+.logo-dissolve {
+    pointer-events: none;
+    animation: dissolve 1.5s ease-in forwards !important;
 }
 
 /* THE ANIMATIONS */
