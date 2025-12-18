@@ -35,19 +35,64 @@ function triggerLogoExplosion(e) {
     const logoImg = link.querySelector('.logo-static');
 
     if (logoImg) {
-        // Add the class to the image
+        // 1. Existing white dissolve logic
         logoImg.classList.add('logo-dissolve');
-        
-        // THE DAZZLING FIX: This line forces the browser to play the animation immediately
-        void logoImg.offsetWidth; 
-    }
+        void logoImg.offsetWidth; // Force re-flow
 
-    // Trigger the 1050-particle flourish
-    for (let i = 0; i < 1050; i++) {
-        const x = e.clientX || window.innerWidth / 2;
-        const y = e.clientY || window.innerHeight / 2;
-        createSparkle(x, y, false);
+        // 2. NEW: Trigger rainbow sparkles
+        const rect = logoImg.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Create 20–30 rainbow sparkles
+        for (let i = 0; i < 30; i++) {
+            createRainbowSparkle(centerX, centerY);
+        }
     }
+}
+
+// Helper function to create individual rainbow sparkles
+function createRainbowSparkle(x, y) {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("rainbow-sparkle");
+    
+    // Randomize rainbow color using HSL
+    const hue = Math.floor(Math.random() * 360);
+    const size = Math.random() * 8 + 4; // Sparkle size 4px-12px
+    
+    // Initial styles
+    Object.assign(sparkle.style, {
+        position: "fixed",
+        left: `${x}px`,
+        top: `${y}px`,
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundColor: `hsl(${hue}, 100%, 75%)`, // Bright luxury rainbow tones
+        borderRadius: "50%",
+        boxShadow: `0 0 10px hsl(${hue}, 100%, 80%)`,
+        pointerEvents: "none",
+        zIndex: "9999"
+    });
+
+    document.body.appendChild(sparkle);
+
+    // Animate outward in a random direction
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 100 + 50;
+    
+    const animation = sparkle.animate([
+        { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+        { transform: `translate(calc(-50% + ${Math.cos(angle) * distance}px), 
+                      calc(-50% + ${Math.sin(angle) * distance}px)) scale(0)`, 
+          opacity: 0 }
+    ], {
+        duration: 1000 + Math.random() * 500, // Vary speed for "pizazz"
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+    });
+
+    // Clean up after animation finishes
+    animation.onfinish = () => sparkle.remove();
+}
 
     setTimeout(() => { 
         window.location.href = link.href; 
