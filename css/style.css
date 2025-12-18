@@ -48,60 +48,57 @@ html, body {
 /* 3. THE SPARKLE ELEMENTS (Trail & Explosion) */
 
 * --- SHARED BASE PROPERTIES --- */
+/* 1. SHARED BASE PROPERTIES */
 .sparkle, .sparkle-particle {
   position: fixed; 
   pointer-events: none;
   border-radius: 50%;
   z-index: 100001;
-  will-change: transform, opacity;
-  transform: translateZ(0);
+  will-change: transform, opacity, filter;
+  transform: translateZ(0); /* Hardware acceleration for 2025 performance */
   -webkit-tap-highlight-color: transparent; 
 }
 
-/* --- THE MOUSE TRAIL --- */
+/* 2. THE MOUSE TRAIL (Gold/White Twinkle) */
 .sparkle {
   background: radial-gradient(circle, #fff 20%, #facc15 60%, transparent 80%);
-  box-shadow: 0 0 8px #facc15;
-  animation: trail-fade 0.8s ease-out forwards;
+  box-shadow: 0 0 12px #facc15;
+  animation: trail-fade 0.6s ease-out forwards; /* Faster, snappier trail */
 }
 
-/* --- THE LOGO EXPLOSION GEMS --- */
+/* 3. THE LOGO EXPLOSION GEMS (Rainbow & Gold) */
 .sparkle-particle {
-  mix-blend-mode: screen;
-  filter: brightness(1.5);
-  /* Uses the burst animation for a firework feel */
-  animation: sparkle-burst 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  mix-blend-mode: screen; /* Allows colors to "glow" together */
+  filter: brightness(2);
+  animation: sparkle-burst 0.9s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
-/* --- ANIMATIONS --- */
+/* 4. THE LOGO DISSOLVE (White-Hot Flash) */
+.logo-dissolve {
+    pointer-events: none;
+    /* Faster 0.6s duration makes it feel like an actual explosion */
+    animation: dissolve 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+/* --- ANIMATIONS (Cleaned & Optimized) --- */
+
 @keyframes trail-fade {
-  0% { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); }
+  0% { opacity: 1; transform: scale(1); filter: brightness(2); }
+  100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); filter: brightness(1); }
 }
 
 @keyframes sparkle-burst {
-  0% { transform: translate(0, 0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+  0% { transform: translate(0, 0) scale(1); opacity: 1; filter: brightness(4); }
+  50% { filter: brightness(1.5); } /* Shimmer/Twinkle effect */
+  100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; filter: brightness(5); }
 }
 
 @keyframes dissolve {
     0% { transform: scale(1); opacity: 1; filter: brightness(1) blur(0); }
-    30% { transform: scale(1.2); opacity: 0.8; filter: brightness(3) blur(5px); }
-    100% { transform: scale(1.8); opacity: 0; filter: brightness(5) blur(20px); }
+    /* The Flash: Brightens significantly before vanishing */
+    70% { transform: scale(1.2); opacity: 0.9; filter: brightness(20) blur(10px); } 
+    100% { transform: scale(1.6); opacity: 0; filter: brightness(40) blur(30px); }
 }
-
-.logo-dissolve {
-    pointer-events: none;
-    animation: dissolve 1.5s ease-in forwards !important;
-}
-
-/* THE ANIMATIONS */
-@keyframes trail-fade {
-  0% { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); }
-}
-
-
 
 /* Ensure the body overlay works ONLY for pages with the .has-overlay class */
 .has-overlay::before {
