@@ -64,13 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('site-links-menu');
-    if (menuToggle && menu) {
-        menuToggle.addEventListener('pointerdown', (e) => {
-            e.stopPropagation(); 
-            menu.classList.toggle('active');
-        });
-    }
+    const siteLinksMenu = document.getElementById('site-links-menu');
+    if (menuToggle && siteLinksMenu) {
+    // Add BOTH click and touchstart to ensure it unlocks on all phones
+    ['click', 'touchstart'].forEach(type => {
+        menuToggle.addEventListener(type, (e) => {
+            e.stopPropagation(); // Prevents sparkles from stealing the tap
+            siteLinksMenu.classList.toggle('active');
+        }, { passive: true });
+    });
+}
 
     // Image Rotator (13 Images)
     const featureImg = document.getElementById('rotating-feature-img');
