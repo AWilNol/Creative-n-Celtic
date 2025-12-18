@@ -163,8 +163,7 @@ h3.gallery-title {
   font-family: Lora, serif;
   font-size: 1.1em;
   text-align: center;
-  padding: 8px 0;             /* Adds consistent spacing */
-  
+  padding: 8px 0;             /* Adds consistent spacing */  
   /* Luxury White Aesthetic */
   color: #FFFFFF;             /* Pure white for maximum contrast */
   transition: color 0.3s ease, transform 0.2s ease;
