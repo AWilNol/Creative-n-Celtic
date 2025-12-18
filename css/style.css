@@ -26,18 +26,32 @@ html, body {
   color: #FFFFFF; /* Global White Text */
 }
 
+/* A. BOX STABILITY: Prevents pages from going off-screen */
+.section-box, .featured-widget, fieldset {
+  width: 95%;            /* Slightly wider for mobile comfort */
+  max-width: 800px; 
+  margin: 0 auto; 
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
 
+/* B. IMAGE RESPONSIVENESS: Keeps art perfectly framed */
+.section-box img, .featured-widget img, .original-banner-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 /* 2. THE SPARKLE CONTAINER */
 #sparkle-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 100000;
   pointer-events: none;
-  z-index: 899; /* Higher z-index to ensure it is above everything */
-  overflow: hidden;
+  /* 2025 FIX: Prevents mobile "touch trapping" */
+  touch-action: none; 
 }
 
 /* 3. THE SPARKLE ELEMENTS */
@@ -59,12 +73,10 @@ html, body {
 }
 
 /* Explosion Particles - Extra Brightness */
-.sparkle-particle {
-  position: fixed;
-  background: radial-gradient(circle, #fff 30%, #facc15 70%, transparent 90%);
-  box-shadow: 0 0 20px #facc15, 0 0 10px #fff;
-  mix-blend-mode: screen;
-  filter: brightness(1.5); /* Boost the "shimmer" */
+.sparkle, .sparkle-particle {
+  /* 2025 FIX: GPU acceleration for mobile shimmer */
+  will-change: transform, opacity;
+  transform: translateZ(0); 
 }
 
 /* Logo fading effect - Dissolves into the sparkle cloud */
@@ -501,6 +513,11 @@ legend {
   color: #e0e0e0;
 }
 
+input, textarea, p {
+  max-width: 100%;       /* Never wider than the parent box */
+  overflow-wrap: break-word; /* Breaks long strings to prevent horizontal scroll */
+}
+
 input[type="email"], textarea {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid #B59A57; /* Gold border */
@@ -518,6 +535,7 @@ input:focus, textarea:focus {
     outline: none;
     border-color: #FFFFFF;
 }
+
 
 label {
     font-family: Lora, serif;
@@ -658,7 +676,6 @@ footer p {
     color: rgba(224, 224, 224, 0.6);
 }
 
-
 /* ==========================================================================
    Mobile Overrides (max-width 767px)
    ========================================================================== */
@@ -686,7 +703,7 @@ footer p {
     }
     
     h1.about-title {
-        font-size: .9em;
+		font-size: clamp(24px, 5vw, 48px);
     }
     
     h2.about-subtitle {

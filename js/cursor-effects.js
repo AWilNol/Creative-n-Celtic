@@ -59,11 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const siteLinksMenu = document.getElementById('site-links-menu');
     if (menuToggle && siteLinksMenu) {
-        menuToggle.addEventListener('click', () => {
-            siteLinksMenu.classList.toggle('active');
-        });
-    }
-
+    // Listen for 'pointerdown' for instant mobile response
+    menuToggle.addEventListener('pointerdown', (e) => {
+        e.stopPropagation(); // Prevents the sparkle container from interfering
+        siteLinksMenu.classList.toggle('active');
+    });
+}
     // C. Automatic Image Rotator (Restored with all 13 images)
     const featureImg = document.getElementById('rotating-feature-img');
     const images = [
