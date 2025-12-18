@@ -5,8 +5,6 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
-
-
 /* 1. STABILIZE & RESTORE LUXURY BACKGROUND */
 html, body {
   margin: 0;
@@ -19,32 +17,54 @@ html, body {
               url('../images/WOODGRAIN.jpg');
   background-size: cover;
   background-attachment: fixed;
-  background-position: center;
-  
+  background-position: center;  
   position: relative;
   color: #FFFFFF; /* Global White Text */
 }
 
-/* A. BOX STABILITY: Prevents pages from going off-screen */
-.section-box, .featured-widget, fieldset {
-  width: 95%;            /* Slightly wider for mobile comfort */
-  max-width: 800px; 
-  margin: 0 auto; 
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-wrap: break-word;
-}
-
-/* B. IMAGE RESPONSIVENESS: Keeps art perfectly framed */
-.section-box img, .featured-widget img, .original-banner-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-
 /* 3. THE SPARKLE ELEMENTS (Trail & Explosion) */
+
+#sparkle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 899; /* Higher z-index to ensure it is above everything */
+  overflow: hidden;
+}
+
+/* 2. THE MOUSE TRAIL (Gold/White Twinkle) */
+.sparkle {
+  background: radial-gradient(circle, #fff 20%, #facc15 60%, transparent 80%);
+  box-shadow: 0 0 12px #facc15;
+  animation: trail-fade 0.6s ease-out forwards; /* Faster, snappier trail */
+  opacity: 0;
+  mix-blend-mode: screen; /* This makes them glow/shimmer more intensely */
+  z-index: 10000;}
+}
+/* The "Dance" animation - added a slight rotation for the "swirl" */
+@keyframes sparkle-burst {
+  0% { 
+    transform: translate(0, 0) scale(1) rotate(0deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translate(var(--x), var(--y)) scale(0) rotate(180deg); 
+    opacity: 0; 
+  }
+}
+
+/* 3. THE LOGO EXPLOSION GEMS (Rainbow & Gold) */
+.sparkle-particle {
+  position: fixed; /* Keep it fixed so it doesn't move if page scrolls */
+  pointer-events: none;
+  border-radius: 50%;
+  /* Using your gold #facc15 with a white core for brightness */
+  background: radial-gradient(circle, #fff 20%, #facc15 50%, transparent 80%);
+  box-shadow: 0 0 15px #facc15, 0 0 5px #fff;
+}
 
 
 /* 1. SHARED BASE PROPERTIES */
@@ -56,20 +76,6 @@ html, body {
   will-change: transform, opacity, filter;
   transform: translateZ(0); /* Hardware acceleration for 2025 performance */
   -webkit-tap-highlight-color: transparent; 
-}
-
-/* 2. THE MOUSE TRAIL (Gold/White Twinkle) */
-.sparkle {
-  background: radial-gradient(circle, #fff 20%, #facc15 60%, transparent 80%);
-  box-shadow: 0 0 12px #facc15;
-  animation: trail-fade 0.6s ease-out forwards; /* Faster, snappier trail */
-}
-
-/* 3. THE LOGO EXPLOSION GEMS (Rainbow & Gold) */
-.sparkle-particle {
-  mix-blend-mode: screen; /* Allows colors to "glow" together */
-  filter: brightness(2);
-  animation: sparkle-burst 0.9s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
 /* 4. THE LOGO DISSOLVE (White-Hot Flash) */
