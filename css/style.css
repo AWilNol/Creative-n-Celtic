@@ -129,10 +129,10 @@ h3.gallery-title {
        margin-left: 20%; /* Pushes content right, creating the necessary gap */
 	   padding-top: 0;
        /* CRITICAL FIX: Ensure the main content uses the remaining 80% of the screen */
-       width: 80%; 
+       width: 75%; 
    }
    
-   body { margin: 0; }
+   body { margin: 0; } /* do I need this here and what purpose might it serve? */
 }
 
 .main {
