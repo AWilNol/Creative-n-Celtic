@@ -60,28 +60,46 @@ document.addEventListener('DOMContentLoaded', () => {
         logoLink.addEventListener('click', triggerLogoExplosion);
     }
 
-    // B. Mobile Menu Toggle (About, Services, Contact)
+    // B. Mobile Menu Toggle - Fixed Brackets
     const menuToggle = document.getElementById('menu-toggle');
     const siteLinksMenu = document.getElementById('site-links-menu');
     if (menuToggle && siteLinksMenu) {
-    // Listen for 'pointerdown' for instant mobile response
-    menuToggle.addEventListener('pointerdown', (e) => {
-        e.stopPropagation(); // Prevents the sparkle container from interfering
-        siteLinksMenu.classList.toggle('active');
-    });
-}
-    // C. Automatic Image Rotator (Restored with all 13 images)
-    const featureImg = document.getElementById('rotating-feature-img');
-    const images = [
-        './images/image1.jpg', './images/image2.jpg', './images/image3.jpg', 
-        './images/image4.jpg', './images/image5.jpg', './images/image6.jpg', 
-        './images/image7.jpg', './images/image8.jpg', './images/image9.jpg', 
-        './images/image10.jpg', './images/image11.jpg', './images/image12.jpg', 
-        './images/image13.jpg'
-    ];
-    let imageIndex = 0;
+        menuToggle.addEventListener('pointerdown', (e) => {
+            e.stopPropagation(); 
+            siteLinksMenu.classList.toggle('active');
+        });
+    }
 
-    if (featureImg && images.length > 0) {
+    // C. Mobile Dissolving Touch Spots - Now correctly placed
+    document.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        const x = touch.clientX;
+        const y = touch.clientY;
+
+        const spot = document.createElement('div');
+        spot.className = 'touch-spot';
+        spot.style.left = (x - 30) + 'px'; 
+        spot.style.top = (y - 30) + 'px';
+        document.body.appendChild(spot);
+
+        for (let i = 0; i < 5; i++) {
+            createSparkle(x, y, false); 
+        }
+
+        spot.addEventListener('animationend', () => spot.remove());
+    }, { passive: true });
+
+    // D. Automatic Image Rotator (Restored)
+    const featureImg = document.getElementById('rotating-feature-img');
+    if (featureImg) {
+        const images = [
+            './images/image1.jpg', './images/image2.jpg', './images/image3.jpg', 
+            './images/image4.jpg', './images/image5.jpg', './images/image6.jpg', 
+            './images/image7.jpg', './images/image8.jpg', './images/image9.jpg', 
+            './images/image10.jpg', './images/image11.jpg', './images/image12.jpg', 
+            './images/image13.jpg'
+        ];
+        let imageIndex = 0;
         setInterval(() => {
             imageIndex = (imageIndex + 1) % images.length;
             featureImg.src = images[imageIndex];
