@@ -1,53 +1,40 @@
-/* --- 1. THE TRAIL: Fixed Mousemove --- */
+/* --- 1. THE TRAIL: Mouse Movement --- */
 document.addEventListener('pointermove', (e) => {
-    // Pointermove covers mouse and touch; creating 2 sparkles for a smooth trail
     for (let i = 0; i < 2; i++) {
         createSparkle(e.clientX, e.clientY, true);
     }
 });
 
-/* --- 2. THE ENGINE: Improved with Safety Removal --- */
-/* --- 2. THE ENGINE: Firework Streaks (Gold & Rainbow) --- */
-function createSparkle(x, y, isTrail) {
-    const p = document.createElement('div');
-    // Using a specific class for the firework effect
-    p.className = isTrail ? 'sparkle' : 'sparkle-streak';
-    document.body.appendChild(p);
-    
-    // Randomize Colors: Gold vs Rainbow
-    /* --- 2. THE ENGINE: Firework Sparkles (Gold & Rainbow dots) --- */
+/* --- 2. THE ENGINE: Create Sparkle (Gold Trail & Mixed Explosion) --- */
 function createSparkle(x, y, isTrail) {
     const p = document.createElement('div');
     p.className = isTrail ? 'sparkle' : 'sparkle-particle';
     document.body.appendChild(p);
     
-    // 1. Size and range logic
     const size = (Math.random() * (isTrail ? 6 : 12) + 4) + 'px';
     const range = isTrail ? 30 : 500;
     
-    // 2. Firework Math: Calculate radial direction
     const angle = Math.random() * Math.PI * 2;
     const distance = Math.random() * range;
     const destX = Math.cos(angle) * distance;
     const destY = Math.sin(angle) * distance;
 
-    // 3. THE COLOR MIX: Only for the Logo Explosion
+    // Apply specific colors only if it's the logo explosion
     if (!isTrail) {
         if (Math.random() > 0.5) {
-            // RAINBOW: Pick a random hue
+            // Rainbow Sparkle
             const hue = Math.floor(Math.random() * 360);
             const color = `hsl(${hue}, 100%, 75%)`;
             p.style.background = color;
             p.style.boxShadow = `0 0 15px ${color}`;
         } else {
-            // GOLD: Use your signature luxury gold
+            // Gold Sparkle
             const goldColor = '#facc15';
             p.style.background = `radial-gradient(circle, #fff 30%, ${goldColor} 70%, transparent 90%)`;
             p.style.boxShadow = `0 0 20px ${goldColor}`;
         }
     }
 
-    // 4. Set final properties
     p.style.width = size;
     p.style.height = size;
     p.style.left = `${x}px`;
@@ -56,8 +43,8 @@ function createSparkle(x, y, isTrail) {
     p.style.setProperty('--x', `${destX}px`);
     p.style.setProperty('--y', `${destY}px`);
     
-    // 5. High-Performance Safety Removal
-    setTimeout(() => { if(p.parentElement) p.remove(); }, 1300);
+    // Safety cleanup
+    setTimeout(() => { if(p.parentElement) p.remove(); }, 1500);
     p.addEventListener('animationend', () => p.remove());
 }
 
@@ -70,21 +57,20 @@ function triggerLogoExplosion(e) {
     if (logoImg) {
         logoImg.classList.add('logo-dissolve');
         void logoImg.offsetWidth; 
+        
+        const rect = logoImg.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Create the 800-particle explosion mix
+        for (let i = 0; i < 800; i++) {
+            createSparkle(centerX, centerY, false);
+        }
+
+        setTimeout(() => { 
+            window.location.href = link.href; 
+        }, 1600);
     }
-
-    // Capture the center of the logo for the firework launch point
-    const rect = logoImg.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    // Trigger 800 particles in a burst
-    for (let i = 0; i < 800; i++) {
-        createSparkle(centerX, centerY, false);
-    }
-
-    setTimeout(() => { 
-        window.location.href = link.href; 
-    }, 1600);
 }
 
 /* --- 4. ALL INITIALIZERS --- */
