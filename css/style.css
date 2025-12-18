@@ -61,8 +61,13 @@ html, body {
 
 /* Individual Trail Styles */
 .sparkle {
+  position: fixed;
   background: radial-gradient(circle, #fff 20%, #facc15 60%, transparent 80%);
   box-shadow: 0 0 8px #facc15;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100001;
+  /* Ensure this animation name matches exactly */
   animation: trail-fade 0.8s ease-out forwards;
 }
 
