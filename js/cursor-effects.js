@@ -1,27 +1,12 @@
-
-/* --- 1. SHARED MOUSE TRAIL (All Pages) --- */
-function createSparkleTrail(x, y) {
-    const container = document.getElementById('sparkle-container');
-    if (!container) return;
-
-    const sparkle = document.createElement('div');
-    sparkle.className = 'sparkle';
-    const randomSize = Math.random() * 8 + 4; 
-    
-    sparkle.style.setProperty('--x', `${x}px`);
-    sparkle.style.setProperty('--y', `${y}px`);
-    sparkle.style.setProperty('--size', `${randomSize}px`);
-    
-    container.appendChild(sparkle);
-    // Remove sparkle after animation
-    setTimeout(() => sparkle.remove(), 800);
-}
-
+/* --- 1. THE TRAIL: Shimmering Mousemove Logic --- */
 document.addEventListener('mousemove', (e) => {
-    createSparkleTrail(e.clientX, e.clientY);
+    // Creates a consistent golden trail behind the cursor
+    for (let i = 0; i < 2; i++) {
+        createSparkle(e.clientX, e.clientY, true);
+    }
 });
 
-/* --- 2. LOGO EXPLOSION ENGINE (Landing Page Only) --- */
+/* --- 2. THE FLOURISH: 150-Particle Logo Explosion --- */
 function triggerLogoExplosion(e) {
     e.preventDefault();
     const link = e.currentTarget;
@@ -29,68 +14,71 @@ function triggerLogoExplosion(e) {
 
     if (logoImg) logoImg.classList.add('logo-dissolve');
 
-    // Generate concentrated burst at click point
-    for (let i = 0; i < 80; i++) {
-        const x = e.clientX || window.innerWidth / 2;
-        const y = e.clientY || window.innerHeight / 2;
-        createExplosionParticle(x, y);
+    // That "66,229 glitter" flourish you requested
+    for (let i = 0; i < 150; i++) {
+        createSparkle(e.clientX, e.clientY, false);
     }
 
-    // Transport after 1.5 seconds of shimmering
     setTimeout(() => { 
         window.location.href = link.href; 
-    }, 1500);
+    }, 1600);
 }
 
-function createExplosionParticle(x, y) {
+/* --- 3. THE ENGINE: Dynamic Sparkle Generator --- */
+function createSparkle(x, y, isTrail) {
     const p = document.createElement('div');
-    p.className = 'sparkle-particle';
+    p.className = isTrail ? 'sparkle' : 'sparkle-particle';
     document.body.appendChild(p);
     
-    const size = Math.random() * 8 + 4 + 'px';
-    const destX = (Math.random() - 0.5) * 450 + 'px';
-    const destY = (Math.random() - 0.5) * 450 + 'px';
+    const size = (Math.random() * (isTrail ? 6 : 12) + 4) + 'px';
+    const range = isTrail ? 40 : 500;
+    const destX = (Math.random() - 0.5) * range + 'px';
+    const destY = (Math.random() - 0.5) * range + 'px';
 
-    p.style.cssText = `position:fixed; width:${size}; height:${size}; left:${x}px; top:${y}px; z-index:9999; pointer-events:none;`;
+    p.style.cssText = `position:fixed; width:${size}; height:${size}; left:${x}px; top:${y}px; z-index:100001; pointer-events:none;`;
     p.style.setProperty('--x', destX);
     p.style.setProperty('--y', destY);
-    p.style.animation = `sparkle-burst ${Math.random() * 1 + 0.5}s ease-out forwards`;
+    
+    const duration = Math.random() * (isTrail ? 0.8 : 1.5) + 0.5;
+    p.style.animation = `sparkle-burst ${duration}s ease-out forwards`;
     
     p.addEventListener('animationend', () => p.remove());
 }
 
-/* --- 3. PAGE INITIALIZERS (Detection Logic) --- */
+/* --- 4. ALL INITIALIZERS: Menu, Rotator, & Logo Switch --- */
 document.addEventListener('DOMContentLoaded', () => {
-    // A. Detect Landing Page vs Interior Pages
+    
+    // A. Logo Transition Switch (Landing Page Only)
     const isLanding = document.body.classList.contains('has-overlay');
     const logoLink = document.querySelector('.logo-link');
-
-    // B. Enable Explosion only on Landing Page
     if (isLanding && logoLink) {
         logoLink.addEventListener('click', triggerLogoExplosion);
     }
 
-    // C. Mobile Menu (About, Services, Contact)
+    // B. Mobile Menu Toggle (About, Services, Contact)
     const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('site-links-menu');
-    if (menuToggle && menu) {
-        menuToggle.addEventListener('click', () => menu.classList.toggle('active'));
+    const siteLinksMenu = document.getElementById('site-links-menu');
+    if (menuToggle && siteLinksMenu) {
+        menuToggle.addEventListener('click', () => {
+            siteLinksMenu.classList.toggle('active');
+        });
     }
 
-    // D. Image Rotator (About Page)
+    // C. Automatic Image Rotator (Restored with all 13 images)
     const featureImg = document.getElementById('rotating-feature-img');
-    if (featureImg) {
-        const images = [
-            './images/image1.jpg', './images/image2.jpg', './images/image3.jpg',
-            './images/image4.jpg', './images/image5.jpg', './images/image6.jpg',
-            './images/image7.jpg', './images/image8.jpg', './images/image9.jpg',
-            './images/image10.jpg', './images/image11.jpg', './images/image12.jpg',
-            './images/image13.jpg'
-        ];
-        let idx = 0;
+    const images = [
+        './images/image1.jpg', './images/image2.jpg', './images/image3.jpg', 
+        './images/image4.jpg', './images/image5.jpg', './images/image6.jpg', 
+        './images/image7.jpg', './images/image8.jpg', './images/image9.jpg', 
+        './images/image10.jpg', './images/image11.jpg', './images/image12.jpg', 
+        './images/image13.jpg'
+    ];
+    let imageIndex = 0;
+
+    if (featureImg && images.length > 0) {
         setInterval(() => {
-            idx = (idx + 1) % images.length;
-            featureImg.src = images[idx];
+            imageIndex = (imageIndex + 1) % images.length;
+            featureImg.src = images[imageIndex];
         }, 4000);
     }
 });

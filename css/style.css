@@ -26,6 +26,8 @@ html, body {
   color: #FFFFFF; /* Global White Text */
 }
 
+
+
 /* 2. THE SPARKLE CONTAINER */
 #sparkle-container {
   position: fixed;
@@ -39,28 +41,30 @@ html, body {
 }
 
 /* 3. THE SPARKLE ELEMENTS */
-.sparkle-particle {
-  position: fixed; /* Keep it fixed so it doesn't move if page scrolls */
-  pointer-events: none;
+/* Ensure the trail is visible and follows the CSS variables */
+.sparkle {
+  position: fixed;
+  background: radial-gradient(circle, #fff 20%, #facc15 60%, transparent 80%);
+  box-shadow: 0 0 8px #facc15;
   border-radius: 50%;
-  /* Using your gold #facc15 with a white core for brightness */
-  background: radial-gradient(circle, #fff 20%, #facc15 50%, transparent 80%);
-  box-shadow: 0 0 15px #facc15, 0 0 5px #fff;
-  opacity: 0;
-  mix-blend-mode: screen; /* This makes them glow/shimmer more intensely */
-  z-index: 10000;
+  pointer-events: none;
+  z-index: 100001;
+  /* Animates relative to where the mouse is */
+  animation: trail-fade 0.8s ease-out forwards;
 }
 
-/* The "Dance" animation - added a slight rotation for the "swirl" */
-@keyframes sparkle-burst {
-  0% { 
-    transform: translate(0, 0) scale(1) rotate(0deg); 
-    opacity: 1; 
-  }
-  100% { 
-    transform: translate(var(--x), var(--y)) scale(0) rotate(180deg); 
-    opacity: 0; 
-  }
+@keyframes trail-fade {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); }
+}
+
+/* Explosion Particles - Extra Brightness */
+.sparkle-particle {
+  position: fixed;
+  background: radial-gradient(circle, #fff 30%, #facc15 70%, transparent 90%);
+  box-shadow: 0 0 20px #facc15, 0 0 10px #fff;
+  mix-blend-mode: screen;
+  filter: brightness(1.5); /* Boost the "shimmer" */
 }
 
 /* Logo fading effect - Dissolves into the sparkle cloud */
