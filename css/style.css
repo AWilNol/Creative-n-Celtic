@@ -34,7 +34,8 @@ html, body {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 9999; /* Higher z-index to ensure it is above everything */
+  z-index: 899; /* Higher z-index to ensure it is above everything */
+  overflow: hidden;
 }
 
 /* 3. THE SPARKLE ELEMENTS */
@@ -47,6 +48,7 @@ html, body {
   box-shadow: 0 0 15px #facc15, 0 0 5px #fff;
   opacity: 0;
   mix-blend-mode: screen; /* This makes them glow/shimmer more intensely */
+  z-index: 10000;
 }
 
 /* The "Dance" animation - added a slight rotation for the "swirl" */
