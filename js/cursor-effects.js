@@ -42,8 +42,8 @@ function triggerLogoExplosion(e) {
         void logoImg.offsetWidth; 
     }
 
-    // Trigger the 150-particle flourish
-    for (let i = 0; i < 150; i++) {
+    // Trigger the 1050-particle flourish
+    for (let i = 0; i < 1050; i++) {
         const x = e.clientX || window.innerWidth / 2;
         const y = e.clientY || window.innerHeight / 2;
         createSparkle(x, y, false);
