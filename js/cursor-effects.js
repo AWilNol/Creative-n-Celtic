@@ -33,14 +33,25 @@ function triggerLogoExplosion(e) {
     e.preventDefault();
     const link = e.currentTarget;
     const logoImg = link.querySelector('.logo-static');
-    if (logoImg) logoImg.classList.add('logo-dissolve');
 
+    if (logoImg) {
+        // Add the class to the image
+        logoImg.classList.add('logo-dissolve');
+        
+        // THE DAZZLING FIX: This line forces the browser to play the animation immediately
+        void logoImg.offsetWidth; 
+    }
+
+    // Trigger the 150-particle flourish
     for (let i = 0; i < 150; i++) {
         const x = e.clientX || window.innerWidth / 2;
         const y = e.clientY || window.innerHeight / 2;
         createSparkle(x, y, false);
     }
-    setTimeout(() => { window.location.href = link.href; }, 1600);
+
+    setTimeout(() => { 
+        window.location.href = link.href; 
+    }, 1600);
 }
 
 /* --- 4. ALL INITIALIZERS --- */

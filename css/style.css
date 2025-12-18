@@ -80,6 +80,18 @@ html, body {
   animation: sparkle-burst 1.5s ease-out forwards;
 }
 
+.logo-dissolve {
+    pointer-events: none;
+    animation: dissolve 1.5s ease-in forwards !important;
+    opacity: 0; /* Ensures it stays gone if the animation finishes early */
+}
+
+@keyframes dissolve {
+    0% { transform: scale(1); opacity: 1; filter: brightness(1) blur(0); }
+    30% { transform: scale(1.2); opacity: 0.8; filter: brightness(3) blur(5px); }
+    100% { transform: scale(1.8); opacity: 0; filter: brightness(5) blur(20px); }
+}
+
 /* THE ANIMATIONS */
 @keyframes trail-fade {
   0% { opacity: 1; transform: translate(0, 0) scale(1); }
@@ -408,6 +420,29 @@ h3.gallery-title {
     vertical-align: middle; /* <-- Add this line */
 }
 
+.logo-link img.logo-static.logo-dissolve {
+    pointer-events: none !important;
+    animation: dissolve 1.5s ease-in forwards !important;
+}
+
+@keyframes dissolve {
+    0% { 
+        transform: scale(1); 
+        opacity: 1; 
+        filter: brightness(1) blur(0); 
+    }
+    30% { 
+        transform: scale(1.1); 
+        opacity: 0.7; 
+        filter: brightness(3) blur(5px); 
+    }
+    100% { 
+        transform: scale(1.6); 
+        opacity: 0; 
+        filter: brightness(5) blur(20px); 
+    }
+}
+
 .has-overlay .logo {
     animation: none !important; 
 }
@@ -616,33 +651,6 @@ input[type="submit"]:hover {
 /* ==========================================================================
    Utility/Helper Classes & Animations
    ========================================================================== */
-
-/* CSS for the click wave effect */
-/* CSS for the improved click wave effect */
-.ripple {
-  position: fixed;
-  border-radius: 50%;
-  /* Use a subtle gold color, dynamically sized by JS */
-  background: var(--ripple-color, rgba(181, 154, 87, 0.3)); 
-  animation: ripple-effect 0.8s ease-out forwards; /* Smoother ease-out timing */
-  pointer-events: none; 
-  z-index: 9999999; 
-  overflow: visible;
-  /* Removed fixed width/height here; managed by JS now */
-  will-change: transform, opacity;
-}
-
-/* Update the Keyframes to use a complete starting state */
-@keyframes ripple-effect  {
-  from {
-    opacity: 0.8; /* Start slightly more opaque */
-    transform: scale(0.1); 
-	}
-  to {
-    transform: scale(3); /* Slightly less dramatic scale */
-    opacity: 0;
-  }
-} 
 
 
 .surprise-container {
