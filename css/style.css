@@ -72,18 +72,43 @@ html, body {
 }
 
 /* Individual Explosion Particle Styles */
-.sparkle-particle {
-  background: radial-gradient(circle, #fff 30%, #facc15 70%, transparent 90%);
-  box-shadow: 0 0 20px #facc15, 0 0 10px #fff;
-  mix-blend-mode: screen; /* Makes them glow like real light */
-  filter: brightness(1.5);
-  animation: sparkle-burst 1.5s ease-out forwards;
-}
+
 
 .logo-dissolve {
     pointer-events: none;
     animation: dissolve 1.5s ease-in forwards !important;
     opacity: 0; /* Ensures it stays gone if the animation finishes early */
+}
+
+/* Clean, Luxury Sparkle Style */
+.sparkle-particle {
+  position: fixed;
+  border-radius: 50%; /* Keeps them as round sparkles */
+  pointer-events: none;
+  z-index: 100001;
+  mix-blend-mode: screen; /* Makes them glow against your wood background */
+  filter: brightness(1.5);
+  will-change: transform, opacity;
+  
+  /* Fallback color if JS fails */
+  background: radial-gradient(circle, #fff 30%, #facc15 70%, transparent 90%);
+  box-shadow: 0 0 15px #facc15;
+  
+  /* The Animation */
+  animation: sparkle-burst 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+/* Unified Burst Animation */
+@keyframes sparkle-burst {
+  0% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 1; 
+  }
+  100% { 
+    /* var(--x) and var(--y) are fed in by the JavaScript below */
+    transform: translate(var(--x), var(--y)) scale(0); 
+    opacity: 0; 
+  }
 }
 
 @keyframes dissolve {
@@ -98,10 +123,6 @@ html, body {
   100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); }
 }
 
-@keyframes sparkle-burst {
-  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
-  100% { transform: translate(var(--x), var(--y)) scale(0) rotate(180deg); opacity: 0; }
-}
 
 
 /* Ensure the body overlay works ONLY for pages with the .has-overlay class */

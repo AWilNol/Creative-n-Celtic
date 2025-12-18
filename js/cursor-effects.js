@@ -7,92 +7,80 @@ document.addEventListener('pointermove', (e) => {
 });
 
 /* --- 2. THE ENGINE: Improved with Safety Removal --- */
+/* --- 2. THE ENGINE: Firework Streaks (Gold & Rainbow) --- */
+function createSparkle(x, y, isTrail) {
+    const p = document.createElement('div');
+    // Using a specific class for the firework effect
+    p.className = isTrail ? 'sparkle' : 'sparkle-streak';
+    document.body.appendChild(p);
+    
+    // Randomize Colors: Gold vs Rainbow
+    /* --- 2. THE ENGINE: Firework Sparkles (Gold & Rainbow dots) --- */
 function createSparkle(x, y, isTrail) {
     const p = document.createElement('div');
     p.className = isTrail ? 'sparkle' : 'sparkle-particle';
     document.body.appendChild(p);
     
+    // 1. Size and range logic
     const size = (Math.random() * (isTrail ? 6 : 12) + 4) + 'px';
     const range = isTrail ? 30 : 500;
-    const destX = (Math.random() - 0.5) * range + 'px';
-    const destY = (Math.random() - 0.5) * range + 'px';
+    
+    // 2. Firework Math: Calculate radial direction
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * range;
+    const destX = Math.cos(angle) * distance;
+    const destY = Math.sin(angle) * distance;
 
-    p.style.cssText = `position:fixed; width:${size}; height:${size}; left:${x}px; top:${y}px; z-index:100001; pointer-events:none;`;
-    p.style.setProperty('--x', destX);
-    p.style.setProperty('--y', destY);
+    // 3. THE COLOR MIX: Only for the Logo Explosion
+    if (!isTrail) {
+        if (Math.random() > 0.5) {
+            // RAINBOW: Pick a random hue
+            const hue = Math.floor(Math.random() * 360);
+            const color = `hsl(${hue}, 100%, 75%)`;
+            p.style.background = color;
+            p.style.boxShadow = `0 0 15px ${color}`;
+        } else {
+            // GOLD: Use your signature luxury gold
+            const goldColor = '#facc15';
+            p.style.background = `radial-gradient(circle, #fff 30%, ${goldColor} 70%, transparent 90%)`;
+            p.style.boxShadow = `0 0 20px ${goldColor}`;
+        }
+    }
+
+    // 4. Set final properties
+    p.style.width = size;
+    p.style.height = size;
+    p.style.left = `${x}px`;
+    p.style.top = `${y}px`;
     
-    // Safety Net: If animation fails to trigger the 'remove', this forces it after 1 second
-    setTimeout(() => { if(p.parentElement) p.remove(); }, 1000);
+    p.style.setProperty('--x', `${destX}px`);
+    p.style.setProperty('--y', `${destY}px`);
     
-    // Standard Cleanup
+    // 5. High-Performance Safety Removal
+    setTimeout(() => { if(p.parentElement) p.remove(); }, 1300);
     p.addEventListener('animationend', () => p.remove());
 }
 
-/* --- 3. THE FLOURISH: Massive Logo Explosion --- */
+/* --- 3. THE FLOURISH: Radial Firework Explosion --- */
 function triggerLogoExplosion(e) {
     e.preventDefault();
     const link = e.currentTarget;
     const logoImg = link.querySelector('.logo-static');
 
     if (logoImg) {
-        // 1. Existing white dissolve logic
         logoImg.classList.add('logo-dissolve');
-        void logoImg.offsetWidth; // Force re-flow
-
-        // 2. NEW: Trigger rainbow sparkles
-        const rect = logoImg.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        // Create 20–30 rainbow sparkles
-        for (let i = 0; i < 30; i++) {
-            createRainbowSparkle(centerX, centerY);
-        }
+        void logoImg.offsetWidth; 
     }
-}
 
-// Helper function to create individual rainbow sparkles
-function createRainbowSparkle(x, y) {
-    const sparkle = document.createElement("div");
-    sparkle.classList.add("rainbow-sparkle");
-    
-    // Randomize rainbow color using HSL
-    const hue = Math.floor(Math.random() * 360);
-    const size = Math.random() * 8 + 4; // Sparkle size 4px-12px
-    
-    // Initial styles
-    Object.assign(sparkle.style, {
-        position: "fixed",
-        left: `${x}px`,
-        top: `${y}px`,
-        width: `${size}px`,
-        height: `${size}px`,
-        backgroundColor: `hsl(${hue}, 100%, 75%)`, // Bright luxury rainbow tones
-        borderRadius: "50%",
-        boxShadow: `0 0 10px hsl(${hue}, 100%, 80%)`,
-        pointerEvents: "none",
-        zIndex: "9999"
-    });
+    // Capture the center of the logo for the firework launch point
+    const rect = logoImg.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
 
-    document.body.appendChild(sparkle);
-
-    // Animate outward in a random direction
-    const angle = Math.random() * Math.PI * 2;
-    const distance = Math.random() * 100 + 50;
-    
-    const animation = sparkle.animate([
-        { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-        { transform: `translate(calc(-50% + ${Math.cos(angle) * distance}px), 
-                      calc(-50% + ${Math.sin(angle) * distance}px)) scale(0)`, 
-          opacity: 0 }
-    ], {
-        duration: 1000 + Math.random() * 500, // Vary speed for "pizazz"
-        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-    });
-
-    // Clean up after animation finishes
-    animation.onfinish = () => sparkle.remove();
-}
+    // Trigger 800 particles in a burst
+    for (let i = 0; i < 800; i++) {
+        createSparkle(centerX, centerY, false);
+    }
 
     setTimeout(() => { 
         window.location.href = link.href; 
