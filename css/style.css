@@ -764,7 +764,36 @@ footer p {
     /* Uses the beautiful dissolve animation we already built */
     animation: dissolve 0.8s ease-out forwards; 
 }
- /* ==========================================================================
+/* ==========================================================================
+   MOBILE DIMENSION FIX (For screens 767px and smaller)
+   ========================================================================== */
+@media screen and (max-width: 767px) {
+    
+    /* 1. LOWER THE LOGO: Adds a gap at the top so it's not "crammed" up high */
+    .logo-wrapper {
+        padding-top: 40px; /* Increase this number to move it lower */
+        margin-bottom: 20px;
+    }
+
+    /* 2. SHRINK LANDING PAGE LETTERS: Makes taglines fit on one or two lines */
+    .tagline-main {
+        font-size: 24px !important; /* Reduced from 38px for mobile */
+        line-height: 1.2;
+        padding: 0 15px; /* Keeps text from touching screen edges */
+    }
+
+    .tagline-subtitle {
+        font-size: 18px !important; /* Reduced from 28px for mobile */
+        margin-top: 10px;
+    }
+
+    /* 3. LOGO SIZE: Ensures it's impactful but not overwhelming */
+    .logo-wrapper img, .logo-static {
+        width: 180px !important; /* Adjust this to your preferred mobile logo size */
+        height: auto;
+    }
+
+    /* ==========================================================================
    MOBILE DIMENSION FIX (For screens 767px and smaller)
    ========================================================================== */
 @media screen and (max-width: 767px) {
@@ -776,7 +805,7 @@ footer p {
         margin-bottom: 25px;
     }
 
-     /* 2. SHRINK LANDING PAGE LETTERS: Makes taglines fit on one or two lines */
+    /* 2. SHRINK LANDING PAGE LETTERS: Makes taglines fit on one or two lines */
     /* 3. REFINED TAGLINES: Smaller size to let the large logo 'breathe' */
     .tagline-main {
         font-size: 20px !important; /* Reduced to balance with the larger logo */
@@ -793,7 +822,7 @@ footer p {
     }
 
     /* 3. LOGO SIZE: Ensures it's impactful but not overwhelming */
-    /* 4. THE STATEMENT LOGO: Scaled up for impact */
+    /* 1. THE STATEMENT LOGO: Scaled up for impact */
     .logo-wrapper img, .logo-static {
         width: 80% !important; /* Increased from 180px for a bold statement */
         height: auto;
@@ -802,22 +831,10 @@ footer p {
         transition: transform 0.3s ease;
     }
 
- /* 4. LANDING CONTAINER: Ensures the background feels infinite */
+     /* 4. LANDING CONTAINER: Ensures the background feels infinite */
     .luxury-container {
         min-height: 100vh;
         padding-top: 12vh; /* Positions entire content block for a balanced look */
         justify-content: flex-start;
     }
 }
-   
-
-    
-    
-
-   
-
-    
-
-    
-
-    
