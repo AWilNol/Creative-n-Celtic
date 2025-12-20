@@ -765,39 +765,3 @@ footer p {
     /* Uses the beautiful dissolve animation we already built */
     animation: dissolve 0.8s ease-out forwards; 
 }
-/* ==========================================================================
-   MOBILE DIMENSION FIX (For screens 767px and smaller)
-   ========================================================================== */
-@media screen and (max-width: 767px) {
-    
-    /* 1. LOWER THE LOGO: Adds a gap at the top so it's not "crammed" up high */
-    .logo-wrapper {
-        padding-top: 40px; /* Increase this number to move it lower */
-        margin-bottom: 20px;
-    }
-
-    /* 2. SHRINK LANDING PAGE LETTERS: Makes taglines fit on one or two lines */
-    .tagline-main {
-        font-size: 24px !important; /* Reduced from 38px for mobile */
-        line-height: 1.2;
-        padding: 0 15px; /* Keeps text from touching screen edges */
-    }
-
-    .tagline-subtitle {
-        font-size: 18px !important; /* Reduced from 28px for mobile */
-        margin-top: 10px;
-    }
-
-    /* 3. LOGO SIZE: Ensures it's impactful but not overwhelming */
-    .logo-wrapper img, .logo-static {
-        width: 180px !important; /* Adjust this to your preferred mobile logo size */
-        height: auto;
-    }
-
-    /* 4. CONTENT SPACING: Ensures everything is centered and readable */
-    .luxury-container {
-        padding: 20px;
-        justify-content: flex-start; /* Starts content a bit higher for better scrolling */
-        padding-top: 10vh; /* Positions the entire content block lower on the screen */
-    }
-}
