@@ -104,6 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+    const menu = document.getElementById('site-links-menu');
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('pointerdown', (e) => {
+            e.stopPropagation(); 
+            menu.classList.toggle('active');
+        });
+    }
+
     // Image Rotator (13 Images)
     const featureImg = document.getElementById('rotating-feature-img');
     if (featureImg) {
