@@ -722,7 +722,7 @@ footer p {
     pointer-events: none;
     z-index: 100002; /* Sits exactly on top of the trail */
     /* Uses the beautiful dissolve animation we already built */
-    animation: dissolve 0.8s ease-out forwards; 
+    animation: dissolve 0.85s ease-out forwards; 
 }
 
 /* Add this new animation and class to the bottom of style.css */

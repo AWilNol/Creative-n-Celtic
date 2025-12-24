@@ -26,8 +26,20 @@ function createSparkle(x, y, isTrail) {
 
 // 1. Trail Logic
 document.addEventListener('pointermove', (e) => {
-    createSparkle(e.clientX, e.clientY, true);
-    if (Math.random() > 0.8) createSparkle(e.clientX, e.clientY, true);
+    const x = e.pageX;
+    const y = e.pageY;
+
+    // FOR MOBILE: Always give them a rich, dense trail (3 sparkles)
+    if (e.pointerType === 'touch') {
+        for (let i = 0; i < 3; i++) {
+            createSparkle(x, y, true);
+        }
+    } 
+    // FOR DESKTOP: Keep your original "random" logic for the mouse
+    else {
+        createSparkle(x, y, true);
+        if (Math.random() > 0.85) createSparkle(x, y, true);
+    }
 });
 
 // 2. Explosion Logic
