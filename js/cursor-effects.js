@@ -36,8 +36,8 @@ function triggerLogoExplosion(e) {
     const logoImg = link.querySelector('.logo-static');
     
     if (logoImg && !logoImg.classList.contains('logo-dissolve')) {
-        e.preventDefault();
-        
+        e.preventDefault(); // Stops the link from opening immediately
+        // 1. Check if the user has "Reduced Motion" enabled in their system settings
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const delay = prefersReducedMotion ? 0 : 1550; 
 
@@ -52,7 +52,7 @@ function triggerLogoExplosion(e) {
                 setTimeout(() => createSparkle(centerX, centerY, false), i * 3);
             }
         }
-
+        // 4. Transport the user after the chosen delay
         // This single line handles both cases: 
         // 0ms delay for reduced motion, 1550ms for the full magic effect!
         setTimeout(() => { window.location.href = link.href; }, delay);
