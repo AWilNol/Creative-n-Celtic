@@ -98,6 +98,14 @@ p {
     color: #e0e0e0;
 }
 
+.synergy-title {
+  font-size: clamp(1.5rem, 5vw, 3rem); /* Dynamically shrinks on small screens */
+  text-wrap: balance; /* Prevents awkward gaps between lines */
+  word-spacing: normal; /* Ensures standard spacing between words */
+  text-align: center;
+  overflow-wrap: break-word; /* Prevents the text from disappearing off-screen */
+}
+
 h1.about-title {
   margin: 0; background-color: transparent; 
   font-family: 'Cormorant Garamond', serif;
