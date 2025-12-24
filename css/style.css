@@ -105,6 +105,7 @@ p {
   word-spacing: normal; /* Ensures standard spacing between words */
   text-align: center;
   overflow-wrap: break-word; /* Prevents the text from disappearing off-screen */
+  color: white;
 }
 
 h1.about-title {
