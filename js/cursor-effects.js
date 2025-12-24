@@ -39,6 +39,7 @@ function triggerLogoExplosion(e) {
         e.preventDefault(); // Stops the link from opening immediately
         // 1. Check if the user has "Reduced Motion" enabled in their system settings
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		// Choose delay: 0ms for instant movement, or 1550ms for the full magic
         const delay = prefersReducedMotion ? 0 : 1550; 
 
         // Only run the visual effect if the user doesn't have "reduced motion" enabled
@@ -58,6 +59,7 @@ function triggerLogoExplosion(e) {
         setTimeout(() => { window.location.href = link.href; }, delay);
     }
 }
+
 // 3. Initialize & Menu Fix
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.logo-link').forEach(link => {
