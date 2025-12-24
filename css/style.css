@@ -129,11 +129,14 @@ h3.gallery-title {
    }
    
    .main {
-       margin-left: 20%; /* Pushes content past the sidebar */
-       /* FIX FOR "NUDGED RIGHT" ISSUE: Use Calc to fill remaining 80% */
-       width: calc(80% - 1em); /* 80% of screen width minus padding */
-	   padding-top: 0;
-   }
+  margin-left: 20%; 
+  width: auto; /* Let the browser calculate the 80% automatically */
+  padding: .5em; 
+  box-sizing: border-box; /* Vital: Keeps padding inside the box */
+  padding-top: 0;
+  position: relative;
+  overflow: auto;
+  min-height: 100vh;
 }
 
 .main {
