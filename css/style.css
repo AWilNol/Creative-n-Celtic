@@ -414,7 +414,9 @@ h3.gallery-title {
     100% { transform: rotate(180deg) translateX(30px); } /* Rotate to 6 o'clock & slide right by 30px */
 }
 
-
+.social-links-home {
+	display: align-content;
+}
 
 /* ==========================================================================
    Gallery & Widget Components
