@@ -651,25 +651,21 @@ footer p {
 
 /* MOBILE: Scale down for smaller screens */
 @media screen and (max-width: 767px) {
-    .logo-static {
-        width: 200px; 
-    }
+    .logo-static, .original-banner-img {
+    width: 100% !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
+  }
+  
     .navigation {
-        position: static; 
-        width: 100%;     
-        height: auto;
-    }
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+  }
    
-    .main {
-        margin-left: 0;  
-        width: 100%; 
-        /* The mobile top margin is defined correctly here inside the media query */
-        margin-top: 60px; 		
-    }
+   .main { margin-left: 0 !important; width: 100% !important; }
     
-    body {
-        font-size: 0.5em; 
-    }
+    body { font-size: 1rem !important; }
     
     h1.about-title {
 		font-size: clamp(24px, 5vw, 48px);
