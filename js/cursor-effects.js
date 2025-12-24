@@ -34,20 +34,30 @@ document.addEventListener('pointermove', (e) => {
 function triggerLogoExplosion(e) {
     const link = e.currentTarget;
     const logoImg = link.querySelector('.logo-static');
+    
     if (logoImg && !logoImg.classList.contains('logo-dissolve')) {
         e.preventDefault();
-        logoImg.classList.add('logo-dissolve');
-        const rect = logoImg.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const delay = prefersReducedMotion ? 0 : 1550; 
 
-        for (let i = 0; i < 120; i++) {
-            setTimeout(() => createSparkle(centerX, centerY, false), i * 3);
+        // Only run the visual effect if the user doesn't have "reduced motion" enabled
+        if (!prefersReducedMotion) {
+            logoImg.classList.add('logo-dissolve');
+            const rect = logoImg.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 120; i++) {
+                setTimeout(() => createSparkle(centerX, centerY, false), i * 3);
+            }
         }
-        setTimeout(() => { window.location.href = link.href; }, 1550);
+
+        // This single line handles both cases: 
+        // 0ms delay for reduced motion, 1550ms for the full magic effect!
+        setTimeout(() => { window.location.href = link.href; }, delay);
     }
 }
-
 // 3. Initialize & Menu Fix
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.logo-link').forEach(link => {
