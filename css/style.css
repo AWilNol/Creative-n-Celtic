@@ -76,7 +76,7 @@ body.landing-page::before {
   position: absolute; pointer-events: none; border-radius: 50%;
   mix-blend-mode: screen; /* Makes black parts transparent */
   will-change: transform, opacity;
-  animation: sparkle-dance 0.8s ease-out forwards;
+  animation: sparkle-dance 0.85s ease-out forwards;
   /* Gold-toned gradient for a luxury look */
   background: radial-gradient(circle, #fff 10%, #D4AF37 40%, #B59A57 100%);
   box-shadow: 0 0 10px #D4AF37;
