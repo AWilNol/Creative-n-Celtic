@@ -44,7 +44,7 @@ function triggerLogoExplosion(e) {
         for (let i = 0; i < 120; i++) {
             setTimeout(() => createSparkle(centerX, centerY, false), i * 3);
         }
-        setTimeout(() => { window.location.href = link.href; }, 1600);
+        setTimeout(() => { window.location.href = link.href; }, 1550);
     }
 }
 
