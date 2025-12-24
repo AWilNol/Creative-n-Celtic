@@ -87,9 +87,6 @@ body.landing-page::before {
   100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
 }
 
-/* ... (Rest of animations like dissolve, trail-fade, etc. remain the same) ... */
-
-
 /* ==========================================================================
    Typography & Shared Text Styles
    ========================================================================== */
