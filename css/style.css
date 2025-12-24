@@ -99,6 +99,7 @@ p {
 }
 
 .synergy-title {
+  font-family: Lora, serif;
   font-size: clamp(1.5rem, 5vw, 3rem); /* Dynamically shrinks on small screens */
   text-wrap: balance; /* Prevents awkward gaps between lines */
   word-spacing: normal; /* Ensures standard spacing between words */
