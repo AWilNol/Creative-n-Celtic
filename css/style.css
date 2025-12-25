@@ -655,7 +655,7 @@ footer p {
 
 /* MOBILE: Scale down for smaller screens */
 @media screen and (max-width: 767px) {
-    .logo-static, .original-banner-img, .fun-image {
+    .logo-static, .original-banner-img, .fun-image, .featured-widget {
         width: 100% !important;
         max-width: 300px !important;
         margin: 0 auto !important;
