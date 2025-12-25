@@ -453,6 +453,7 @@ h3.gallery-title {
 
 .featured-widget {
 	font-family: Lora, serif;
+	color: white;
     width: 90%; 
     max-width: 500px; 
     margin: 2em auto; 
