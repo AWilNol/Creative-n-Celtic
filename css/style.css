@@ -652,19 +652,25 @@ footer p {
 
 /* MOBILE: Scale down for smaller screens */
 @media screen and (max-width: 767px) {
-    .logo-static, .original-banner-img {
-    width: 100% !important;
-    max-width: 300px !important;
-    margin: 0 auto !important;
-  }
+    .logo-static, .original-banner-img, .fun-image {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        height: auto !important;
+    }
   
     .navigation {
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
   }
    
-   .main { margin-left: 0 !important; width: 100% !important; }
+   .main {
+        margin-left: 0 !important;
+        margin-top: 0 !important; /* Removes the 60px gap */
+        width: 100% !important;
+        padding: 15px !important;
+    }
     
     body { font-size: 1rem !important; }
     
@@ -692,7 +698,6 @@ footer p {
 	.site-links {
         display: none; 
         width: 100%;
-        padding-bottom: 1em; 
     }
 
     /* Show the menu links ONLY when the JavaScript adds the .active class */
