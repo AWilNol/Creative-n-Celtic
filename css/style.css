@@ -140,15 +140,15 @@ h3.gallery-title {
    }
    
    .main {
-  margin-left: 20%; 
-  width: auto; /* Let the browser calculate the 80% automatically */
-  padding: .5em;   
-  padding-top: 0;
-  position: relative;
-  overflow: auto;
-  min-height: 100dvh;
-  box-sizing: border-box; /* Vital: Keeps padding inside the box */
-}
+      margin-left: 20%; 
+      width: auto; /* Let the browser calculate the 80% automatically */
+      padding: .5em;   
+      padding-top: 0;
+      position: relative;
+      overflow: auto;
+      min-height: 100dvh;
+      box-sizing: border-box; /* Vital: Keeps padding inside the box */
+   }
 
 /* ==========================================================================
    Navigation & Sidebar Components 
@@ -307,7 +307,7 @@ h3.gallery-title {
 
 .luxury-container {
    background-color: rgba(10, 10, 10, 0.5);
-   height: 100vh;
+   height: 100dvh;
    text-align: center;
    flex-grow: 1;
    display: flex;
@@ -318,8 +318,11 @@ h3.gallery-title {
    animation: fadeIn .5s ease-out forwards;
    /* Add these two lines to fix movement: */
    position: fixed;
+   top: 0;
+   left: 0;
    width: 100%;
    z-index: 1;
+   padding: 20px; /* Prevents text from touching screen edges */
 }
 
 @keyframes fadeIn {
@@ -658,11 +661,13 @@ footer p {
         margin: 0 auto !important;
         height: auto !important;
     }
-  
+    /* 1. Un-fix the sidebar so it sits at the top of the page */
     .navigation {
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 20px !important;
   }
    
    .main {
@@ -710,6 +715,16 @@ footer p {
         width: 250px; 
         height: auto; 
         max-width: 100%; 
+    }
+	
+	.tagline-main {
+       font-family: 'Cormorant Garamond', serif; 
+        /* Shrinks to 24px on tiny phones, grows to 38px on desktop */
+       font-size: clamp(24px, 8vw, 38px); 
+       font-weight: 300;
+       letter-spacing: 2px;
+       color: #D4AF37;
+       text-wrap: balance; /* Keeps words from being lonely on one line */
     }
 } 
 /* --- MOBILE: DISSOLVING TOUCH SPOTS --- */
