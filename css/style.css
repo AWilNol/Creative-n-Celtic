@@ -146,7 +146,7 @@ h3.gallery-title {
   padding-top: 0;
   position: relative;
   overflow: auto;
-  min-height: 100vh;
+  min-height: 100dvh;
   box-sizing: border-box; /* Vital: Keeps padding inside the box */
 }
 
